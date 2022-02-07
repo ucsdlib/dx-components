@@ -1,0 +1,83 @@
+<style>
+  .bar {
+      background-color: lightgray;
+      margin-top: 3px;
+      float: left;
+      display: inline-block;
+      height: 20px;
+  }
+  .bar-left {
+      border-radius: 5px 0px 0px 5px;
+  }
+  .bar-right {
+      border-radius: 0px 5px 5px 0px;
+  }
+  .text-left {
+      float: left; 
+      padding-left: 20px;
+      color: white;
+      font-size: 13px;
+  }
+  .text-right {
+      float: right; 
+      padding-right: 20px;
+      color:white;
+      font-size: 13px;
+  }
+  .vertical-align {
+      display: flex;
+      align-items: center;
+  }
+  /* Small devices (tablets, 992px and up) */
+  @media (max-width: 992px) {
+      .row.vertical-align {
+          display: block; /* Turn off the flexible box layout */
+      }
+  }
+</style>
+<h2 class="header">Project Timeline 2</h2>
+<!--- Phase 1 -->
+<div class="row vertical-align">
+  <!-- col-md-6 class makes items stack in mobile view -->
+  <div class="col-md-6">
+    <h3 class="header">Phase 1</h3>
+    <p>Assessment: Kickoff and data collection</p>
+  </div>
+  <div class="col-md-6">
+    <!-- aria-label is for screen reader -->
+    <div aria-label="Start date: September 2021, end date: December 2022" class="bar bar-left" style="width: 50%; background-color: #00629b;"><!-- aria-hidden makes screen reader skip text -->
+      <p aria-hidden="true" class="text-left">Sep '21</p>
+      <p aria-hidden="true" class="text-right">Dec '22</p>
+    </div>
+    <div class="bar bar-right" style="width: 50%;"></div>
+  </div>
+</div>
+<!--- Phase 2 -->
+<div class="row vertical-align">
+  <div class="col-md-6">
+    <h3 class="header">Phase 2</h3>
+    <p>Future State and Strategic Planning: Define values, vision, mission, goals and strategic initiatives</p>
+  </div>
+  <div class="col-md-6">
+    <div class="bar bar-left" style="width: 12.5%;"></div>
+    <div aria-label="Start date: October 2021, end date: February 2022" class="bar" style="width: 62.5%; background-color: #00629b;">
+      <p aria-hidden="true" class="text-left">Oct '21</p>
+      <p aria-hidden="true" class="text-right">Feb '22</p>
+    </div>
+    <div class="bar bar-right" style="width: 25%;"></div>
+  </div>
+</div>
+<!--- Phase 3 -->
+<div class="row vertical-align">
+  <div class="col-md-6">
+    <h3 class="header">Phase 3</h3>
+    <p>Finalization and Implementation: Develop strategic plan and prepare for implementation</p>
+  </div>
+  <div class="col-md-6">
+    <div class="bar bar-left" style="width: 50%;"></div>
+    <div aria-label="Start date: January 2022, end date: April 2022" class="bar bar-right" style="width: 50%; background-color: #00629b;">
+      <p aria-hidden="true" class="text-left">Jan '22</p>
+      <p aria-hidden="true" class="text-right">Apr '22</p>
+    </div>
+  </div>
+</div>
