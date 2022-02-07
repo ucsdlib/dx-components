@@ -1,0 +1,142 @@
+<style>
+  .bar {
+      background-color: #eeeeee;
+      float: left;
+      display: inline-block;
+      height: 20px;
+  }
+  .bar-left {
+      border-radius: 5px 0px 0px 5px;
+  }
+  .bar-right {
+      border-radius: 0px 5px 5px 0px;
+  }
+  .vertical-align {
+      display: flex;
+      align-items: center;
+  }
+  /* Small devices (tablets, 992px and up) */
+  @media (max-width: 992px) {
+      .row.vertical-align {
+          display: block; /* Turn off the flexible box layout */
+      }
+      .month {
+          font-size: 0px; /* Remove the month header */
+      }
+      .bar {
+          margin-bottom: 20px;
+      }
+  }
+  .strong {
+      font-weight: bold;
+  }
+  .month {
+      font-weight: normal;
+      float: left;
+      display: block;
+      text-align: center;
+      width: 9%;
+  }
+</style>
+<!-- Month header -->
+<h3 class="header">Timeline</h3>
+<div class="row vertical-align">
+  <div class="col-md-4"></div>
+  <div class="col-md-8">
+    <!-- aria-hidden makes invisible to screenreader, bc month header is decorational -->
+    <div aria-hidden="true" class="month">Sep</div>
+    <div aria-hidden="true" class="month">Oct</div>
+    <div aria-hidden="true" class="month">Nov</div>
+    <div aria-hidden="true" class="month">Dec</div>
+    <div aria-hidden="true" class="month">Jan</div>
+    <div aria-hidden="true" class="month">Feb</div>
+    <div aria-hidden="true" class="month">Mar</div>
+    <div aria-hidden="true" class="month">Apr</div>
+    <div aria-hidden="true" class="month">May</div>
+    <div aria-hidden="true" class="month">Jun</div>
+    <div aria-hidden="true" class="month">Jul</div>
+  </div>
+</div>
+<!--- 1 -->
+<div class="row vertical-align">
+  <!-- col-md class helps items stack in mobile view -->
+  <div class="col-md-4">
+    <div class="strong">September 2021 - December 2021</div>
+    <p>Kickoff and data collection</p>
+  </div>
+  <div class="col-md-8">
+    <div class="bar bar-left" style="width: 36%; background-color: #00629b;"></div>
+    <div class="bar bar-right" style="width: 64%;"></div>
+  </div>
+</div>
+<!--- 2 -->
+<div class="row vertical-align">
+  <div class="col-md-4">
+    <div class="strong">November 2021 - January 2022</div>
+    <p>Identify core values</p>
+  </div>
+  <div class="col-md-8">
+    <div class="bar bar-left" style="width: 18%;"></div>
+    <div class="bar" style="width: 27%; background-color: #00629b;"></div>
+    <div class="bar bar-right" style="width: 55%;"></div>
+  </div>
+</div>
+<!--- 3 -->
+<div class="row vertical-align">
+  <div class="col-md-4">
+    <div class="strong">November 2021 - February 2022</div>
+    <p>Stakeholder interviews</p>
+  </div>
+  <div class="col-md-8">
+    <div class="bar bar-left" style="width: 18%;"></div>
+    <div class="bar" style="width: 36%; background-color: #00629b;"></div>
+    <div class="bar bar-right" style="width: 46%;"></div>
+  </div>
+</div>
+<!--- 4 -->
+<div class="row vertical-align">
+  <div class="col-md-4">
+    <div class="strong">December 2021 - February 2022</div>
+    <p>Define values, vision, mission, goals and strategic initiatives</p>
+  </div>
+  <div class="col-md-8">
+    <div class="bar bar-left" style="width: 27%;"></div>
+    <div class="bar" style="width: 27%; background-color: #00629b;"></div>
+    <div class="bar bar-right" style="width: 46%;"></div>
+  </div>
+</div>
+<!--- 5 -->
+<div class="row vertical-align">
+  <div class="col-md-4">
+    <div class="strong">February 2022 - March 2022</div>
+    <p>Analysis</p>
+  </div>
+  <div class="col-md-8">
+    <div class="bar bar-left" style="width: 45%;"></div>
+    <div class="bar" style="width: 18%; background-color: #00629b;"></div>
+    <div class="bar bar-right" style="width: 37%;"></div>
+  </div>
+</div>
+<!--- 6 -->
+<div class="row vertical-align">
+  <div class="col-md-4">
+    <div class="strong">March 2022 - June 2022</div>
+    <p>Develop goals, initiatives and success metrics</p>
+  </div>
+  <div class="col-md-8">
+    <div class="bar bar-left" style="width: 54%;"></div>
+    <div class="bar" style="width: 36%; background-color: #00629b;"></div>
+    <div class="bar bar-right" style="width: 10%;"></div>
+  </div>
+</div>
+<!--- 7 -->
+<div class="row vertical-align">
+  <div class="col-md-4">
+    <div class="strong">July 2022</div>
+    <p>Rollout finalized plan</p>
+  </div>
+  <div class="col-md-8">
+    <div class="bar bar-left" style="width: 90%;"></div>
+    <div class="bar bar-right" style="width: 10%; background-color: #00629b;"></div>
+  </div>
+</div>
