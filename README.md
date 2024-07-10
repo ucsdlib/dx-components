@@ -1,7 +1,7 @@
 # cms-snippets
-A place to keep little snippets of html and css for common elements we like to make in the library CMS!
+A place to keep little snippets of html and css for common elements we like to make in for various Library web properties, such as Cascade, LibApps, and Primo VE!
 
-### File descriptions
+### File descriptions for Cascade Snippets
 - **website-background.html** — Use to set a background image for an entire webpage in the CMS. Please note that image should conform to the overall campus design direction.  
 
 - **mini-profile.html** — Use to create a mini profile with a circular profile image.

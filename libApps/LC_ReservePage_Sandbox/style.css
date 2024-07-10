@@ -1,0 +1,100 @@
+a,
+a:link {
+    text-decoration: none;
+    margin: auto 0;
+    color: black;
+}
+
+span {
+    margin-left: 1rem;
+}
+
+span {
+    font-size: 1.3rem;
+}
+
+.cal-toggle-container {
+    width: auto;
+    border-radius: 8px;
+    display: flex;
+    flex: 0 1 auto;
+    align-items: center;
+}
+
+.toggle-btn.text-btn {
+    padding-right: 2.5rem;
+    padding-left: 1.5rem;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#time_grid_cont .fc-toolbar-chunk .fc-toolbar-title>.fc-goToDate-button,
+#time_grid_cont .fc-toolbar-chunk div.bt-group button .toggle-btn {
+    box-sizing: border-box;
+    background-color: #F5F0E6;
+    padding: .8rem 1rem;
+    border: .5px #b6b0a9 solid;
+    display: inline-flex;
+    align-items: center;
+}
+
+a:active.toggle-btn {
+    background-color: #182B49;
+    color: #fff;
+}
+
+a:active.toggle-btn svg path {
+    stroke: white;
+}
+
+.toggle-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.toggle-btn.calendar-btn {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+/* }
+button#s-lc-go:hover {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+
+.input-group-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+    height: 30px !important;
+}
+
+
+.btn-group-sm>.btn, .btn-sm {
+    padding: 10px 12px;
+    font-size: 16px;
+    font-family: "Roboto flex", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #182B49;
+    color: white;
+    height: inherit !important;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+
+    
+
+
+} */
+
+/* <div class="cal-toggle-container"><a aria-describedby="calendar-view-label" class="toggle-btn calendar-btn" href="https://ucsd.libcal.com/reserve" role="button"><i aria-class="hidden" class="fa fa-calendar"></i> <span class="cal-descr" id="calendar-view-label">Calendar View</span> </a> <a aria-describedby="text-view-label" class="toggle-btn text-btn" href="https://ucsd.libcal.com/r/accessible" role="button"> <svg aria-hidden="true" fill="none" height="17" viewbox="0 0 22 17" width="22" xmlns="http://www.w3.org/2000/svg"> <path d="M1.46167 1.75024H20.2544" stroke="black" stroke-linecap="round" stroke-width="1.26558"></path> <path d="M1.46167 8.5H20.2544" stroke="black" stroke-linecap="round" stroke-width="1.26558"></path> <path d="M1.46167 15.2497H20.2544" stroke="black" stroke-linecap="round" stroke-width="1.26558"></path> </svg> <span class="text-descr" id="text-view-label">Text View</span> </a></div>
+
+<p>Please be sure to review our <a href="https://library.ucsd.edu/visit/study-spaces/reserve-study-room.html" onclick="window.open(this.href, '', 'resizable=yes,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">UCSD Library reservation policies</a> before proceeding with your reservation.</p>
+
+<p>&nbsp;</p>
+
+<p>You&#39;re currently using <i aria-hidden="true" class="fa fa-file-text-o"></i> Text-only View. | Switch to <a href="https://ucsd.libcal.com/reserve"> <i aria-hidden="true" class="fa fa-calendar"></i> Calendar View.</a></p>
+
+<p>Please be sure to review our <a href="https://library.ucsd.edu/visit/study-spaces/reserve-study-room.html" onclick="window.open(this.href, '', 'resizable=yes,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">UCSD Library reservation policies</a> before proceeding with your reservation.</p> */

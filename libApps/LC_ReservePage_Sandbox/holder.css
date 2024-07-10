@@ -1,0 +1,138 @@
+
+/* Cal-view Go-to Date + Arrow Buttons*/
+#time_grid_cont .fc-toolbar-chunk .fc-goToDate-button,
+#time_grid_cont .fc-toolbar-chunk .fc-prev-button,
+#time_grid_cont .fc-toolbar-chunk .fc-next-button,
+.fc-timelineSingleDay-button,
+.fc-resourceTimeGridWeek-button,
+.fc-goToNextAvailable-button,
+#s-lc-eq-form-times #s-lc-eq-bform-inner>button {
+    padding: 10px 12px;
+    font-size: 16px;
+    font-family: "Roboto flex", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #182B49;
+    color: white;
+}
+
+#time_grid_cont .fc-toolbar-chunk .fc-goToDate-button:hover,
+#time_grid_cont .fc-toolbar-chunk .fc-prev-button:hover,
+#time_grid_cont .fc-toolbar-chunk .fc-next-button:hover,
+#s-lc-new-reservation-form button#s-lc-go:hover,
+#s-lc-eq-form-times #s-lc-eq-bform-inner>button:hover,
+#time_grid_cont .fc-toolbar-chunk .fc-goToNextAvailable-button:hover {
+    color: #333;
+    background-color: #F5F0E6;
+    border-color: #adadad;
+}
+
+#time_grid_cont .fc-toolbar-chunk .fc-goToDate-button,
+#time_grid_cont .fc-toolbar-chunk .fc-goToNextAvailable-button {
+    border-radius: 8px;
+}
+
+#time_grid_cont .fc-toolbar-chunk .fc-prev-button {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+#time_grid_cont .fc-toolbar-chunk .fc-next-button {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* TEXT-VIEW-SUBMIT*/
+button#s-lc-go {
+    background-color: #182B49;
+    border-color: transparent;
+}
+
+button#s-lc-go:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+/* TOGGLE CAL-TEXT BUTTONS*/
+.cal-toggle-container a.toggle-btn,
+.cal-toggle-container a.toggle-btn:link {
+    text-decoration: none;
+    margin: auto 0;
+    color: black;
+}
+
+a.calendar-btn .fa {
+    font-size: 17px;
+}
+
+.toggle-btn span {
+    margin-left: .8rem;
+    font-size: 16px;
+}
+
+#s-lc-location-description .cal-toggle-container,
+#s-lc-public-pd .cal-toggle-container {
+    margin: 1rem 0 2rem 0;
+    width: auto;
+    border-radius: 8px;
+    display: flex;
+    flex: 0 1 auto;
+    align-items: center;
+}
+
+.cal-toggle-container>.toggle-btn.text-btn {
+    padding-right: 2.6rem;
+    padding-left: 1.6rem;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.cal-toggle-container .toggle-btn {
+    box-sizing: border-box;
+    background-color: #B6B1A9;
+    padding: 1rem 1.2rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.cal-toggle-container .toggle-btn:hover {
+    background-color: #F5F0E6;
+}
+
+/* Will need to decide hover behavior.  a.toggle-btn:hover{}*/
+
+#s-lc-location-description .cal-toggle-container a.active-toggle,
+#s-lc-public-pd .cal-toggle-container a.active-toggle {
+    background-color: #182B49;
+    color: #fff;
+}
+
+#s-lc-public-pd .cal-toggle-container a.active-toggle:hover,
+#s-lc-location-description .cal-toggle-container a.active-toggle:hover {
+    background-color: #F5F0E6;
+    color: #333;
+}
+
+a.active-toggle svg path {
+    stroke: white;
+}
+
+a.active-toggle:hover svg path {
+    stroke: #333;
+}
+
+.cal-toggle-container .toggle-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.cal-toggle-container .toggle-btn.calendar-btn {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+#eq-time-grid button.fc-resourceTimeGridWeek-button.btn.btn-default.btn-sm.active:hover, #eq-time-grid button.fc-resourceTimeGridWeek-button.btn.btn-default.btn-sm:hover,  #eq-time-grid button.fc-timelineSingleDay-button.btn.btn-default.btn-sm.active:hover,  #eq-time-grid button.fc-timelineSingleDay-button.btn.btn-default.btn-sm:hover{
+    background-color: #F5F0E6;
+    color: #333;
+    }
