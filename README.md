@@ -1,5 +1,5 @@
 # cms-snippets
-A place to keep little snippets of html and css for common elements we like to make in for various Library web properties, such as Cascade and LibApps! For PrimoVE repo content, see [our GitLab repo](https://gitlab.com/ucsdlibrary/development/primo-stage/-/tree/trunk?ref_type=heads).
+A place to keep our html components (in LibApps and Cascade CMS) and our scripts for web utilities. For PrimoVE repo content, see [our GitLab repo](https://gitlab.com/ucsdlibrary/development/primo-stage/-/tree/trunk?ref_type=heads).
 
 ### File descriptions for Cascade Snippets
 - **website-background.html** — Use to set a background image for an entire webpage in the CMS. Please note that image should conform to the overall campus design direction.  
