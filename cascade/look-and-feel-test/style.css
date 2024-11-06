@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:500");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Teko:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Teko:wght@300..700&display=swap');
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+:root{
+    --navy: #182B49;
+    --uc-blue: #00629B;
+    --uc-gold: #C69214;
+    --sand: #F5F0E6;
+}
+
+/* MULTI COLUMN CARDS START*/
+div.multi-col-card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    /* grid-auto-flow: dense;
+    */
+    gap: 1em;
+}
+
+.multi-col-card {
+    background-color: #182b49;
+    border-radius: 10px;
+}
+
+.multi-col-card-media {
+    border-radius: 10px 10px 0 0;
+}
+
+.multi-col-card-media img {
+    height: 300px !important;
+    width: 100%;
+    margin: 0;
+    border-radius: inherit;
+}
+
+.multi-col-card-body {
+    padding-inline-start: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 100px auto;
+}
+
+.multi-col-card-body h3,
+p.multi-col-card-text {
+    color: #fff;
+}
+
+.multi-col-card-body a.btn {
+    width: 95%;
+    height: fit-content;
+    margin-block-start: 2em;
+    padding: 1em;
+}
+
+@media (max-width: 1200px) {
+    div.multi-col-card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
+    div.multi-col-card-container {
+        grid-template-columns: .6fr;
+    }
+}
+
+/* MULTI COLUMN CARDS END*/
+
+/* Resource Connection TOOL START */
+@keyframes runCheck{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+button#access-config-check{
+    transition: background-color .1s linear;
+    &:hover{
+        background-color: #00C6D7;
+    }
+}
+#tool-container {
+    display: none;
+    flex-direction: column;
+    gap: .5rem;
+    border-radius: 5.914px;
+    padding: 1.2rem;
+    transition: opacity .5s linear;
+    /* >:last-child {
+        margin-block-start: 1.5rem;
+    } */
+    &.ucsd-allthru {
+        border: 2px #00BA00 solid;
+    }
+    &.split{
+        border: 2px #FFCD00 solid;
+    }
+    &.no-connection{
+        border: 2px #F44336 solid;
+    }
+    &.guest-connection{
+        border: 2px #F44336 solid;
+    }
+    &.server-issue{
+        border: 2px #F44336 solid;
+    }
+    .connection-heading{
+        display: flex;
+        gap: .5rem;
+        align-items: baseline;
+        font-size: 1.5rem;
+        h3{
+            font-size: 2rem;
+        }
+        .glyphicon.glyphicon-remove-sign{
+            color: #F44336;
+            font-size: 2rem;
+        }
+        .glyphicon.glyphicon-ok-sign{
+            font-size: 2rem;
+            color: #00BA00;
+        }
+        .glyphicon.glyphicon-exclamation-sign{
+            font-size: 2rem;
+            color: #FFCD00;
+        }
+    }
+    #explanation{
+        display: none;
+        gap: .5rem;
+        /* align-items: baseline; */
+        font-size: 1.2rem;
+    }
+    details{
+        ::-webkit-details-marker{
+            display: none;
+        }
+        summary::before{
+            content: '▶' !important;
+            display: inline-block !important;
+            margin-inline-end: .3em;
+            transition: transform .2s ease-out
+        }
+        &[open] summary::before{
+            transform: rotate(90deg);
+        }
+    }
+    #next-steps{
+        display: flex;
+        justify-content: space-between;
+        align-items:baseline;
+        #refresh-btn{
+            background-color: transparent;
+            border: none;
+            font-size: 1.7rem;
+        }
+    }
+}
+/* Resource Connection TOOL END */
+
+/* BENTO BOX FLAIR START */
+
+
+.bento-box{
+    display: grid;
+    grid-template: repeat(2, auto) / repeat(2,auto);
+    gap: 1em;
+}
+@media only screen and (max-width: 991px){
+    .bento-box{
+        grid-template-columns: auto;
+
+        gap: 1em;
+    }
+}
+.bento{
+    border-radius: 8px;
+    padding: 1em;
+}
+.bento-icon{
+    font-size: 3.3rem;
+}
+    .bento-icon .top{
+        font-size: 3.5rem;
+        color: #fff;
+    }
+    .bento-icon .bottom{
+        color: var(--navy);
+    }
+    .course-integrated{
+        background-color: var(--navy);
+        color: #fff;
+        /* margin: 0 1em 1em 0; */
+    }
+    .research-integrated{
+        background-color: var(--uc-blue);
+        color: #fff;
+    }
+    .course-integrated h3, .research-integrated h3{
+        color: #fff;
+    }
+    .online-materials{
+        background-color: var(--sand);
+    }
+    .consultations-instr{
+        background-color: var(--uc-gold);
+    }
+/* BENTO BOX FLAIR END */
+
+/* HVAC CLOSURE NOTICE HOME PAGE */
+
+.hvac-notice{
+    align-content: center;
+    background-color: aquamarine;
+    border-radius: 8px;
+}
+
+#hvac-notice > p{
+    margin: none;
+}
+
+/* color: #182B49;
+background-color: #F3E500;
+border-radius: 6px;
+padding-block: .6rem;
+margin: 0 0 .8rem 0;
+text-align: center;
+font-size: 1rem; */
