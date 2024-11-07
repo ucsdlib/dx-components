@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "mocha": "^10.8.2"
+  },
+  "name": "cascade-tests",
+  "version": "1.0.0",
+  "description": "Helps developers test micro service scripts before pasting into Cascade CMS",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "CLL",
+  "license": "ISC"
+}
