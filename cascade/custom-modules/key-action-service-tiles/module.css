@@ -1,0 +1,156 @@
+/*CUSTOM MODULE STYLES [CL]*/
+div[aria-label="Tiles with Links and Descriptions"] {
+    padding: 1rem 2.25rem 2.25rem 2.25rem;
+}
+
+.ct-navy-container-bg {
+    background-color: #182b49;
+}
+
+.ct-blue-container-bg {
+    background-color: #00629B;
+}
+
+.ct-navy-container-bg h2,
+.ct-blue-container-bg h2 {
+    color: #fff;
+    margin-block-end: .5em;
+}
+
+.transparent-container-bg {
+    background-color: transparent;
+}
+
+.ct-sand-container-bg {
+    background-color: #F5F0E6;
+}
+
+.ct-sand-container-bg h2,
+.transparent-container-bg h2 {
+    color: #182b49;
+    margin-block-end: .5em;
+}
+
+.tiles-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 1em 1.5em;
+}
+
+div[aria-label="Tiles with Links and Descriptions"] .tile-card {
+    padding: 1em;
+    flex: 1 0 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color .3s linear;
+}
+
+.tile-card h3 {
+    font-weight: 700;
+}
+
+.ct-light-tile-bg {
+    background-color: #fff;
+    color: #182b49;
+}
+
+.ct-light-tile-bg:hover,
+.ct-light-tile-bg:active,
+.ct-light-tile-bg:focus {
+    background-color: #f5f0e6;
+    color: #182b49;
+}
+
+.ct-sand-tile-bg {
+    color: #182b49;
+    background-color: #f5f0e6;
+}
+
+.ct-sand-tile-bg:hover,
+.ct-sand-tile-bg:active,
+.ct-sand-tile-bg:focus {
+    background-color: #fff;
+    color: #182b49;
+}
+
+.ct-light-tile-bg>h3,
+.ct-sand-tile-bg>h3 {
+    color: #182b49;
+}
+
+.ct-navy-tile-bg {
+    background-color: #182b49;
+    color: #fff;
+}
+
+.ct-navy-tile-bg:hover,
+.ct-navy-tile-bg:active,
+.ct-navy-tile-bg:focus {
+    background-color: #00629B;
+    color: #fff;
+}
+
+.ct-blue-tile-bg {
+    background-color: #00629B;
+    color: #fff;
+}
+
+.ct-blue-tile-bg:hover,
+.ct-blue-tile-bg:active,
+.ct-blue-tile-bg:focus {
+    background-color: #182b49;
+    color: #fff;
+}
+
+.ct-navy-tile-bg>h3,
+.ct-blue-tile-bg>h3 {
+    color: #fff;
+}
+
+.tiles-container>.tile-card:nth-last-of-type(1):nth-child(odd) {
+    flex-basis: 100%;
+}
+
+a.tile-card>* {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.tile-card>svg.tile-icon {
+    width: 20%;
+    margin-inline: auto;
+    background-color: transparent;
+    transition: background-color .3s linear;
+}
+
+.tile-card:nth-last-of-type(1):nth-child(odd) svg.tile-icon {
+    width: calc(20%/2);
+}
+
+@media only screen and (max-width: 992px) {
+    .tiles-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1em 1.5em;
+    }
+
+    div[aria-label="Tiles with Links and Descriptions"] .tile-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    a.tile-card>svg.tile-icon,
+    .tile-card:nth-last-of-type(1):nth-child(odd) svg.tile-icon {
+        flex-basis: 12vw;
+        width: auto;
+    }
+}
+
+/*END OF CUSTOM MODULE STYLES*/
