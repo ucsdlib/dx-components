@@ -1,0 +1,48 @@
+*,
+    *::after,
+    *::before {
+        box-sizing: border-box;
+}
+.bento-box{
+display: grid;
+grid-template: repeat(2, auto) / repeat(2,auto);
+gap: 1em;
+}
+@media only screen and (max-width: 991px){
+    .bento-box{
+        grid-template-columns: auto;
+        gap: 1em;
+    }
+}
+.bento{
+    border-radius: 8px;
+    padding: 1em;
+}
+.bento-icon{
+    font-size: 3.3rem;
+}
+.bento-icon .top{
+    font-size: 3.5rem;
+    color: #fff;
+}
+.bento-icon .bottom{
+    color: #00629B;
+}
+.course-integrated{
+    background-color:  #182B49;
+    color: #fff;
+    /* margin: 0 1em 1em 0; */
+}
+.research-integrated{
+    background-color: #00629B;
+    color: #fff;
+}
+.course-integrated h3, .research-integrated h3{
+    color: #fff;
+}
+.online-materials{
+    background-color: #F5F0E6;
+}
+.consultations-instr{
+    background-color: #C69214;
+}
