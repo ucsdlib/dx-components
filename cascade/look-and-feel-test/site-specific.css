@@ -1,4 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:500");
+/* style="
+    float: inline-end;
+    min-width: 30%;
+    max-width: 37%;
+    padding: 15px;
+     max-height: 430px; */
+
+:root{
+    --brand-rounded-corners: 5px;
+}
 
 /* LIBRARY POPUP SCRIPT (10/23/22) [DT] */
 body {
@@ -602,6 +612,64 @@ p#havc-hours-notice {
 }
 
 /*END ENDOWMENT*/
+/* START 404 Refresh */
+.container-404{
+    background-image: url("https://library.ucsd.edu/_files/error/raccoon-speech-bubble.png");
+    background-repeat: no-repeat;
+    background-position-y: top;
+    background-position-x: right;
+    background-size: 36%;
+    margin-block-start: calc(16px* 1.5);
+}
+
+.container-404__body{
+    h1{
+        margin-block-start: 0px;
+    }
+    & > * + *{
+        margin-block-end: 32px;
+    }
+    padding-inline-end: 40%;
+    .input-logo-bg{
+    padding-block: 25px;
+    padding-inline: 130px 20px;
+    background: url("https://library.ucsd.edu/_files/error/library-logo.png") no-repeat scroll 15px center / 100px;
+    }
+    input[type="search"]{
+        border-radius: 8px;
+        border: none;
+        box-shadow: none;
+    }
+    .site-search-container{
+        display: flex;
+        background: transparent;
+        border: 1px #777 solid;
+        border-radius: 5px;
+        span{
+            color: #fff;
+        }
+        button[type="submit"] {
+            background: #D462AD;
+            border: 2px solid #fff;
+            padding: 0 1em;
+            border-radius: 0 5px 5px 0;
+            margin: 0;
+            font-size: 1.75em;
+            transition: all .3s;
+        }
+    }
+}
+
+@media only screen and (width < 768px){
+    .container-404{
+        background-image: none;
+    }
+    .container-404__body{
+        padding-inline-end: 10%;
+    }
+}
+
+/* END 404 Refresh */
 /* MAKE YOUTUBE VIDS RESPONSIVE [DT] */
 .videoWrapper {
     position: relative;
