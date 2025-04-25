@@ -583,7 +583,7 @@ p#havc-hours-notice {
     /*justify-content: space-between;
 	*/
     .endowment__text-body {
-        flex: 0 1 60%;
+        flex:1;
     }
 
     .text-body__donor-rec {
