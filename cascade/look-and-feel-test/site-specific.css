@@ -574,44 +574,6 @@ p#havc-hours-notice {
 }
 
 /*END HVAC HOURS*/
-/*START ENDOWMENT*/
-.endowment {
-    display: flex;
-    /* flex-wrap: wrap; */
-    gap: 2.5rem;
-
-    /*justify-content: space-between;
-	*/
-    .endowment__text-body {
-        flex:1;
-    }
-
-    .text-body__donor-rec {
-        font-size: 1.4rem;
-    }
-
-    .text-body__link {
-        font-size: 1.4rem;
-        display: inline-block;
-        margin-block: .5rem 1rem;
-        color: #000;
-        text-decoration: underline;
-    }
-
-    .endowment__figure {
-        /*width: 21.3rem;
-		*/
-        width: clamp(15rem, 20vw, 20rem);
-
-        img {
-            /*height: inherit;
-			*/
-            width: inherit;
-        }
-    }
-}
-
-/*END ENDOWMENT*/
 /* START 404 Refresh */
 .container-404{
     background-image: url("https://library.ucsd.edu/_files/error/raccoon-speech-bubble.png");
