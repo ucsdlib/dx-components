@@ -3,7 +3,7 @@
         <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale = 1.0">
-                <title>Two Column Template</title>
+                <title>All Endowments Template</title>
                 <!--Campus & Library CSS Relatively Called-->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
                         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -14,7 +14,69 @@
                 <!--Campus & Library CSS Relatively Called/-->
                 <link rel="stylesheet" type="text/css" href="./style.css">
                 <style>
-
+                        /* Experiment Stylesheet, do not paste into velocity script */
+                        :root{
+                                --accent-magenta: #D462AD;
+                                --accent-magenta-hover: #CA3F9B;
+                                --classic-blue: #00629B;
+                        }
+                        /* modular styling to add to site-specific css*/
+                                .btn.bttn--search{
+                                        flex:0 0 min(20%, 90px);
+                                        padding: 1rem;
+                                        display: flex;
+                                        align-content: center;
+                                        justify-content: center;
+                                        font-size: 1.75rem;
+                                        color: #fff;
+                                        border-top-left-radius: 0px;
+                                        border-bottom-left-radius: 0px;
+                                        background-color: var(--accent-magenta);
+                                        &:hover{
+                                                background-color: var(--accent-magenta-hover);
+                                        }
+                                }
+                                /*At this point, our search bar here should be a part of the design system, which would make this bar with the inline input a variation on it. Hence, the BEM styling here. Will add to JIRA task*/
+                                .search-bar--select{
+                                        display: flex;
+                                        border: solid 1px #000;
+                                        border-radius: 15px;
+                                        overflow: clip;
+                                        
+                                        input{
+                                        border: none;
+                                        flex: 1;
+                                        
+                                        &::placeholder{color:#000 !important;}
+                                        }
+                                        select{
+                                                -webkit-appearance: none;
+                                                -moz-appearance: none;
+                                                appearance: none;
+                                                border: none;
+                                                background-color: var(--classic-blue);
+                                                color: #fff;
+                                                padding-inline-start: 1rem;
+                                                flex: 0 1 min(25%, 150px);
+                                                background-image: url('data:image/svg+xml;utf8,<svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5"/> </svg>');
+                                                background-repeat: no-repeat !important;
+                                                background-position: right 1rem center !important;
+                                                font-family: Roboto !important;
+                                                font-size: 16px !important;
+                                                font-style: normal !important;
+                                                font-weight: 400 !important;
+                                                line-height: 150% !important; /* 24px */
+                                        }
+                                }
+                        /* Listing Page & Endowment styling*/
+                        .listing-page__search{
+                                border: 2px solid #000;
+                                border-radius: 20px;
+                                overflow: clip;
+                                padding: 40px;
+                                
+                                
+                        }
                 </style>
         </head>
         
@@ -514,14 +576,14 @@
                                                 <h2 id="search-label">Search Endowments</h2>
                                                 <search>
                                                         <form class="listing-page__search">
-                                                                <div>
-                                                                        <input aria-label="Search our Library Endowments" type="text" name="query" id="query">
+                                                                <div class="search-bar--select">
+                                                                        <input aria-label="Search our {Library Endowments}" type="text" name="query" id="query" placeholder="Enter text here...">
                                                                         <select name="filter-one" aria-label="filter-one">
                                                                                 <option value="one">one</option>
                                                                                 <option value="two">two</option>
                                                                                 <option value="three">three</option>
                                                                         </select>
-                                                                        <button class=" bttn--search" type="submit" aria-label="search {items}"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
+                                                                        <button class=" btn bttn--search" type="submit" aria-label="submit your search"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
                                                                 </div>
                                                         </form>
                                                 </search>
