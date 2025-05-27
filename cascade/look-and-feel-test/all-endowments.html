@@ -36,7 +36,7 @@
                                                 background-color: var(--accent-magenta-hover);
                                         }
                                 }
-                                /*At this point, our search bar here should be a part of the design system, which would make this bar with the inline input a variation on it. Hence, the BEM styling here. Will add to JIRA task*/
+                        /*At this point, our search bar here should be a part of the design system, which would make this bar with the inline input a variation on it. Hence, the BEM styling here. Will add to JIRA task*/
                                 .search-bar--select{
                                         display: flex;
                                         border: solid 1px #000;
@@ -61,15 +61,30 @@
                                                 background-image: url('data:image/svg+xml;utf8,<svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5"/> </svg>');
                                                 background-repeat: no-repeat;
                                                 background-position: right 1rem center;
+                                        }
                                 }
                         /* Listing Page & Endowment styling*/
                         .listing-page__search{
                                 border: 2px solid #000;
                                 border-radius: 20px;
-                                overflow: clip;
-                                padding: 40px;
-                                
-                                
+                                /* overflow: clip; */
+                                padding: 0px 25px 40px 25px;
+                                position: relative;
+                                .gradient-sphere{
+                                        position: absolute;
+                                        &.blue-magenta{
+                                                top: -17.5px;
+                                                left: 75%;
+                                        }
+                                        &.magenta-gold{
+                                                bottom: -21px;
+                                                right: 5%;
+                                        }
+                                        &.blue-turq{
+                                                top: 25%;
+                                                left: -24.5px;
+                                        }
+                                }
                         }
                 </style>
         </head>
@@ -567,18 +582,35 @@
                                         <section aria-label="Main Content" class="col-xs-12 col-md-9 main-section pull-right listing-page">
                                                 <h1>Library Endowments</h1>
                                                 <p>Endowments empower the UC San Diego Library to enhance collections, improve student experiences, and maintain academic excellence. Search or browse our Library Endowments to learn more about the groundbreaking discoveries, treatments, and intellectual achievements they have generated.</p>
-                                                <h2 id="search-label">Search Endowments</h2>
                                                 <search>
                                                         <form class="listing-page__search">
+                                                                <h2 id="search-label">Search Endowments</h2>
                                                                 <div class="search-bar--select">
                                                                         <input aria-label="Search our {Library Endowments}" type="text" name="query" id="query" placeholder="Enter text here...">
                                                                         <select name="filter-one" aria-label="filter-one">
-                                                                                <option value="one">one</option>
-                                                                                <option value="two">two</option>
-                                                                                <option value="three">three</option>
+                                                                                <option>Filter by Subject</option>
+                                                                                <option value="Anthropology">Anthropology</option>
+                                                                                <option value="Arts">Arts</option>
+                                                                                <option value="Biology">Biology</option>
+                                                                                <option value="East Asia">East Asia</option>
+                                                                                <option value="GPS">GPS</option>
+                                                                                <option value="History">History</option>
+                                                                                <option value="Humanities">Humanities</option>
+                                                                                <option value="Judaic Studies">Judaic Studies</option>
+                                                                                <option value="Latin American Studies">Latin American Studies</option>
+                                                                                <option value="Marine Sciences">Marine Sciences</option>
+                                                                                <option value="Medicine">Medicine</option>
+                                                                                <option value="Music">Music</option>
+                                                                                <option value="Pacitic Studies">Pacitic Studies</option>
+                                                                                <option value="Physical Sciences &amp; Engineering">Physical Sciences &amp; Engineering</option>
+                                                                                <option value="SIO Archives">SIO Archives</option>
+                                                                                <option value="Social Sciences">Social Sciences</option>
                                                                         </select>
                                                                         <button class=" btn bttn--search" type="submit" aria-label="submit your search"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
                                                                 </div>
+                                                                <img class=" gradient-sphere blue-magenta" src="./blue-magenta.svg" alt="''">
+                                                                <img class=" gradient-sphere magenta-gold" src="./magenta-gold.svg" alt="''">
+                                                                <img class=" gradient-sphere blue-turq" src="./blue-turq.svg" alt="''">
                                                         </form>
                                                 </search>
                                                 <h2>Featured Endowments</h2>
