@@ -18,7 +18,9 @@
                         :root{
                                 --accent-magenta: #D462AD;
                                 --accent-magenta-hover: #CA3F9B;
-                                --classic-blue: #00629B;
+                                --primary-blue: #00629B;
+                                --primary-navy: #182B49;
+                                --default-corner-radius: 8px;
                         }
                         /* modular styling to add to site-specific css*/
                                 .btn.bttn--search{
@@ -36,13 +38,38 @@
                                                 background-color: var(--accent-magenta-hover);
                                         }
                                 }
+                        /* Modular styling for a card */
+                        /* Should discuss with content strategist and Ada. How do we want things to be responsive.  particularly with things like cards. There options: 1. what we have, 2. keep at  3 X 1 as long as we can until we should wrap, 3. fill up extra space as wrapping occurs. */
+                        div .card{
+                                text-decoration: none;
+                                &.card--featured{
+                                        h3{color: #fff; text-decoration: underline;}
+                                        color: #fff;
+                                        background-color: var(--primary-navy);
+                                        
+                                        flex: 0 0 calc(820px/3);
+                                        border: #000 1px solid;
+                                        img{
+                                                display: inline-block;
+                                                width: 100%;
+                                                height: 380px;
+                                        }
+                                        overflow: clip;
+                                        border-radius: var(--default-corner-radius);
+                                }
+                                & .card__body{
+                                        padding-inline: 10px;
+                                        padding-block-end: 20px;
+                                        text-wrap-style:pretty;
+                                }
+                        }
                         /*At this point, our search bar here should be a part of the design system, which would make this bar with the inline input a variation on it. Hence, the BEM styling here. Will add to JIRA task*/
                                 .search-bar--select{
                                         display: flex;
                                         border: solid 1px #000;
                                         border-radius: 15px;
                                         overflow: clip;
-                                        
+                                        /* min-width: fit-content; */
                                         input{
                                         border: none;
                                         flex: 1;
@@ -50,14 +77,16 @@
                                         &::placeholder{color:#000 !important;}
                                         }
                                         select{
+                                                /* Having trouble controlling sixe through flex. I think because of its placement, it won't shrink to help with responsiveness. I'll need to rethink this more when we get to resposniveness. Setting position to absolute will be a start as well as using container queries */
                                                 -webkit-appearance: none;
                                                 -moz-appearance: none;
                                                 appearance: none;
                                                 border: none;
-                                                background-color: var(--classic-blue);
+                                                background-color: var(--primary-blue);
                                                 color: #fff;
                                                 padding-inline-start: 1rem;
-                                                flex: 0 1 min(25%, 150px);
+                                                flex: 0 1 min(20%, 150px) ;
+                                                min-width: min(45%, 250px);
                                                 background-image: url('data:image/svg+xml;utf8,<svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5"/> </svg>');
                                                 background-repeat: no-repeat;
                                                 background-position: right 1rem center;
@@ -85,6 +114,15 @@
                                                 left: -24.5px;
                                         }
                                 }
+                        }
+                        .listing-page__featured{
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: center;
+                                gap: 1rem;
+                        }
+                        .filler{
+                                display: none;
                         }
                 </style>
         </head>
@@ -608,27 +646,36 @@
                                                                         </select>
                                                                         <button class=" btn bttn--search" type="submit" aria-label="submit your search"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
                                                                 </div>
-                                                                <img class=" gradient-sphere blue-magenta" src="./blue-magenta.svg" alt="''">
-                                                                <img class=" gradient-sphere magenta-gold" src="./magenta-gold.svg" alt="''">
-                                                                <img class=" gradient-sphere blue-turq" src="./blue-turq.svg" alt="''">
+                                                                <img class=" gradient-sphere blue-magenta" src="./resources/blue-magenta.svg" alt="''">
+                                                                <img class=" gradient-sphere magenta-gold" src="./resources/magenta-gold.svg" alt="''">
+                                                                <img class=" gradient-sphere blue-turq" src="./resources/blue-turq.svg" alt="''">
                                                         </form>
                                                 </search>
                                                 <h2>Featured Endowments</h2>
                                                         <div class="listing-page__featured">
                                                                 <a class="card card--featured" href="/">
-                                                                        <img class="" src="" alt='""'>
-                                                                        <h3>San Diego Technology History</h3>
+                                                                        <img class="" src="./resources/general_collections.jpeg" alt='""'>
+                                                                        <div class="card__body">
+                                                                                <h3>San Diego Technology History</h3>
                                                                         <p>To develop an archive of oral histories of science and technology leaders in San Diego.</p>
+                                                                        </div>
+                                                                        
                                                                 </a>
                                                                 <a class="card card--featured" href="/">
-                                                                        <img class="" src="" alt='""'>
-                                                                        <h3>Melanesian Studies</h3>
-                                                                        <p>Supporting the UC San Diego Library’s efforts to enhance, preserve, and digitize their Melanesian collections for broader, long-term access.</p>
+                                                                        <img class="" src="./resources/image.png" alt='""'>
+                                                                        <div class="card__body">
+                                                                                <h3>Melanesian Studies</h3>
+                                                                                <p>Supporting the UC San Diego Library’s efforts to enhance, preserve, and digitize their Melanesian collections for broader, long-term access.</p>
+                                                                        </div>
+                                                                        
                                                                 </a>
                                                                 <a class="card card--featured" href="/">
-                                                                        <img class="" src="" alt='""'>
-                                                                        <h3>NEH Challenge Grant Endowment</h3>
-                                                                        <p>For the acquisition of books and library materials for the UC San Diego Library.</p>
+                                                                        <img class="" src="./resources/image copy.png" alt='""'>
+                                                                        <div class="card__body">
+                                                                                <h3>NEH Challenge Grant Endowment</h3>
+                                                                                <p>For the acquisition of books and library materials for the UC San Diego Library.<p>
+                                                                        </div>
+                                                                        
                                                                 </a>
                                                         </div>
                                                 <h2>All Endowments</h2>
