@@ -18,9 +18,12 @@
                         :root{
                                 --accent-magenta: #D462AD;
                                 --accent-magenta-hover: #CA3F9B;
+                                --accent-turqoise: #00C6D7;
                                 --primary-blue: #00629B;
                                 --primary-navy: #182B49;
-                                --default-corner-radius: 8px;
+                                --brand-corner-radius: 8px;
+                                --brand-border: solid 1px var(--primary-navy);
+                                --brand-heading3-font: 400 1.5rem/1.5 "Roboto";
                         }
                         /* modular styling to add to site-specific css*/
                                 .btn.bttn--search{
@@ -42,6 +45,13 @@
                         /* Should discuss with content strategist and Ada. How do we want things to be responsive.  particularly with things like cards. There options: 1. what we have, 2. keep at  3 X 1 as long as we can until we should wrap, 3. fill up extra space as wrapping occurs. */
                         div .card{
                                 text-decoration: none;
+                                border-radius: var(--brand-corner-radius);
+                                overflow: clip;
+                                & .card__body{
+                                        padding-inline: 10px;
+                                        padding-block-end: 20px;
+                                        text-wrap-style:pretty;
+                                }
                                 &.card--featured{
                                         h3{color: #fff; text-decoration: underline;}
                                         color: #fff;
@@ -54,14 +64,31 @@
                                                 width: 100%;
                                                 height: 380px;
                                         }
-                                        overflow: clip;
-                                        border-radius: var(--default-corner-radius);
                                 }
-                                & .card__body{
-                                        padding-inline: 10px;
-                                        padding-block-end: 20px;
-                                        text-wrap-style:pretty;
+                                &.card--listed{
+                                        border: var(--brand-border);
+                                        & .card--listed__body{
+                                                padding: 20px;
+                                                color: var(--primary-navy);
+                                                span{font: var(--brand-heading3-font); margin-block-end: 10px; display: block;}
+                                                p,span{font-style:italic; color:var(--primary-navy);}
+                                        }
+                                        & .card--listed__tag-strip{
+                                                background-color: var(--primary-navy);
+                                                padding-block: 1rem;
+                                                padding-inline-start: 20px;
+                                                
+                                        }
                                 }
+                        }
+                        /*module styling for a pill*/
+                        .pill--magenta{
+                                border-radius: 8px 0px;
+                                padding: 8px 16px;
+                                color: var(--primary-navy); 
+                                text-decoration: none !important;
+                                background: #fff;
+                                border: 3px solid var(--accent-magenta);
                         }
                         /*At this point, our search bar here should be a part of the design system, which would make this bar with the inline input a variation on it. Hence, the BEM styling here. Will add to JIRA task*/
                                 .search-bar--select{
@@ -121,8 +148,9 @@
                                 justify-content: center;
                                 gap: 1rem;
                         }
-                        .filler{
-                                display: none;
+                        .listing-page__card-list{
+                                list-style: none;
+                                padding: 0;
                         }
                 </style>
         </head>
@@ -679,14 +707,17 @@
                                                                 </a>
                                                         </div>
                                                 <h2>All Endowments</h2>
-                                                <ul class="listing-page__asset-list">
-                                                        <li class="asset-list__item">
-                                                                <a href="/" >
-                                                                <h3>25th Anniversary-Library Special Collections</h3>
-                                                                <p>For the acquisition and processing of library materials in the humanities fields.</p>
-                                                                </a>
-                                                                <div class="asset-list__item__tag-strip">
-                                                                        <a class="tag" href="/">Art</a>
+                                                <ul class="listing-page__card-list">
+                                                        <li class="card card--listed">
+                                                                <div class="card--listed__body">
+                                                                        <a href="/">
+                                                                        <span>25th Anniversary-Library Special Collections</span>
+                                                                        <p>For the acquisition and processing of library materials in the humanities fields.</p>
+                                                                        </a>
+                                                                </div>
+                                                                
+                                                                <div class="card--listed__tag-strip">
+                                                                        <a class="pill--magenta" href="/">Art</a>
                                                                 </div>
                                                         </li>
                                                         
