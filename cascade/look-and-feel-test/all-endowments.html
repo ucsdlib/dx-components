@@ -47,6 +47,17 @@
                                 text-decoration: none;
                                 border-radius: var(--brand-corner-radius);
                                 overflow: clip;
+                                position: relative;
+                                                        & a.card-target::after{
+                                                        bottom: 0;
+                                                        content: "";
+                                                        left: 0;
+                                                        min-height: 44px;
+                                                        min-width: 44px;
+                                                        position: absolute;
+                                                        right: 0;
+                                                        top: 0;  
+                                }
                                 & .card__body{
                                         padding-inline: 10px;
                                         padding-block-end: 20px;
@@ -62,12 +73,13 @@
                                         img{
                                                 display: inline-block;
                                                 width: 100%;
-                                                height: 380px;
+                                                min-height: 380px;
                                         }
                                 }
                                 &.card--listed{
                                         border: var(--brand-border);
                                         & .card--listed__body{
+                                                position: relative;
                                                 padding: 20px;
                                                 color: var(--primary-navy);
                                                 span{font: var(--brand-heading3-font); margin-block-end: 10px; display: block;}
@@ -147,6 +159,8 @@
                                 flex-wrap: wrap;
                                 justify-content: center;
                                 gap: 1rem;
+                                list-style: none;
+                                padding-inline-start: 0;
                         }
                         .listing-page__card-list{
                                 list-style: none;
@@ -635,7 +649,7 @@
                                                                                 target="_parent">About</a></li>
                                                                 <li><a href="/entity/open.act?type=page&amp;id=bb00be72ac1a02083193ceddfe44aa7f&amp;confId=bb08574eac1a02083193cedd58bed34a"
                                                                                 target="_parent">Support the Library</a></li>
-                                                                <li aria-current="page">Collection Endowments</li>
+                                                                <li aria-current="page">Library Endowments</li>
         
         
                                                         </ol>
@@ -674,50 +688,50 @@
                                                                         </select>
                                                                         <button class=" btn bttn--search" type="submit" aria-label="submit your search"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
                                                                 </div>
-                                                                <img class=" gradient-sphere blue-magenta" src="./resources/blue-magenta.svg" alt="''">
-                                                                <img class=" gradient-sphere magenta-gold" src="./resources/magenta-gold.svg" alt="''">
-                                                                <img class=" gradient-sphere blue-turq" src="./resources/blue-turq.svg" alt="''">
+                                                                <img aria-hidden="true" class=" gradient-sphere blue-magenta" src="./resources/blue-magenta.svg" alt="''">
+                                                                <img aria-hidden="true" class=" gradient-sphere magenta-gold" src="./resources/magenta-gold.svg" alt="''">
+                                                                <img aria-hidden="true" class=" gradient-sphere blue-turq" src="./resources/blue-turq.svg" alt="''">
                                                         </form>
                                                 </search>
                                                 <h2>Featured Endowments</h2>
-                                                        <div class="listing-page__featured">
-                                                                <a class="card card--featured" href="/">
-                                                                        <img class="" src="./resources/general_collections.jpeg" alt='""'>
+                                                        <ul class="listing-page__featured">
+                                                                <li class="card card--featured">
+                                                                        
+                                                                        <img class="" aria-hidden="true" src="./resources/general_collections.jpeg" alt='""'>
                                                                         <div class="card__body">
-                                                                                <h3>San Diego Technology History</h3>
+                                                                        <a class="card-target" href="/"><h3>San Diego Technology History</h3></a>
                                                                         <p>To develop an archive of oral histories of science and technology leaders in San Diego.</p>
                                                                         </div>
-                                                                        
-                                                                </a>
-                                                                <a class="card card--featured" href="/">
-                                                                        <img class="" src="./resources/image.png" alt='""'>
+                                                                </li>
+                                                                <li class="card card--featured">
+                                                                        <img class="" aria-hidden="true" src="./resources/image.png" alt='""'>
                                                                         <div class="card__body">
-                                                                                <h3>Melanesian Studies</h3>
+                                                                                <a class="card-target" href="/"><h3>Melanesian Studies</h3></a>
                                                                                 <p>Supporting the UC San Diego Library’s efforts to enhance, preserve, and digitize their Melanesian collections for broader, long-term access.</p>
                                                                         </div>
                                                                         
-                                                                </a>
-                                                                <a class="card card--featured" href="/">
-                                                                        <img class="" src="./resources/image copy.png" alt='""'>
+                                                                        
+                                                                </li>
+                                                                <li class="card card--featured">
+                                                                        <img class="" aria-hidden="true" src="./resources/image copy.png" alt='""'>
                                                                         <div class="card__body">
-                                                                                <h3>NEH Challenge Grant Endowment</h3>
+                                                                                <a class="card-target" href="/"><h3>NEH Challenge Grant Endowment</h3></a>
                                                                                 <p>For the acquisition of books and library materials for the UC San Diego Library.<p>
                                                                         </div>
-                                                                        
-                                                                </a>
-                                                        </div>
+                                                                </li>
+                                                                
+                                                        </ul>
                                                 <h2>All Endowments</h2>
                                                 <ul class="listing-page__card-list">
                                                         <li class="card card--listed">
                                                                 <div class="card--listed__body">
-                                                                        <a href="/">
-                                                                        <span>25th Anniversary-Library Special Collections</span>
+                                                                        <a class="card-target" href="/">
+                                                                        <span>25th Anniversary-Library Special Collections</span></a>
                                                                         <p>For the acquisition and processing of library materials in the humanities fields.</p>
-                                                                        </a>
                                                                 </div>
                                                                 
                                                                 <div class="card--listed__tag-strip">
-                                                                        <a class="pill--magenta" href="/">Art</a>
+                                                                        <a class="pill--magenta" href="/list">Art</a>
                                                                 </div>
                                                         </li>
                                                         
