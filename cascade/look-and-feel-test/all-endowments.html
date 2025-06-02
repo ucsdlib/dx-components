@@ -43,10 +43,21 @@
                                 }
                         /* Modular styling for a card */
                         /* Should discuss with content strategist and Ada. How do we want things to be responsive.  particularly with things like cards. There options: 1. what we have, 2. keep at  3 X 1 as long as we can until we should wrap, 3. fill up extra space as wrapping occurs. */
-                        div .card{
+                        li.card{
                                 text-decoration: none;
                                 border-radius: var(--brand-corner-radius);
                                 overflow: clip;
+                                position: relative;
+                                & a.card-target::after{
+                                        bottom: 0;
+                                        content: "";
+                                        left: 0;
+                                        min-height: 44px;
+                                        min-width: 44px;
+                                        position: absolute;
+                                        right: 0;
+                                        top: 0;  
+                                }
                                 & .card__body{
                                         padding-inline: 10px;
                                         padding-block-end: 20px;
@@ -62,12 +73,13 @@
                                         img{
                                                 display: inline-block;
                                                 width: 100%;
-                                                height: 380px;
+                                                min-height: 380px;
                                         }
                                 }
                                 &.card--listed{
                                         border: var(--brand-border);
                                         & .card--listed__body{
+                                                position: relative;
                                                 padding: 20px;
                                                 color: var(--primary-navy);
                                                 span{font: var(--brand-heading3-font); margin-block-end: 10px; display: block;}
@@ -82,44 +94,59 @@
                                 }
                         }
                         /*module styling for a pill*/
-                        .pill--magenta{
-                                border-radius: 8px 0px;
+                        a.pill--magenta{
+                                border-radius: var(--brand-corner-radius);
                                 padding: 8px 16px;
-                                color: var(--primary-navy); 
-                                text-decoration: none !important;
-                                background: #fff;
-                                border: 3px solid var(--accent-magenta);
+                                color: #94286F; 
+                                text-decoration: none;
+                                &:hover{
+                                        text-decoration: underline;
+                                }
+                                background: #FFF5FB;
+                                border: 2px solid var(--accent-magenta);
                         }
                         /*At this point, our search bar here should be a part of the design system, which would make this bar with the inline input a variation on it. Hence, the BEM styling here. Will add to JIRA task*/
-                                .search-bar--select{
-                                        display: flex;
-                                        border: solid 1px #000;
-                                        border-radius: 15px;
-                                        overflow: clip;
-                                        /* min-width: fit-content; */
-                                        input{
+                        .search-bar--select{
+                                display: flex;
+                                border: solid 1px #000;
+                                border-radius: 15px;
+                                overflow: clip;
+                                container: select-layout / inline-size;
+                                /* min-width: fit-content; */
+                                input{
+                                border: none;
+                                flex: 1;
+                                &::placeholder{color:#000 !important;}
+                                }
+                                select{
+                                        /* Having trouble controlling sixe through flex. I think because of its placement, it won't shrink to help with responsiveness. I'll need to rethink this more when we get to resposniveness. Setting position to absolute will be a start as well as using container queries */
+                                        -webkit-appearance: none;
+                                        -moz-appearance: none;
+                                        appearance: none;
                                         border: none;
-                                        flex: 1;
-                                        
-                                        &::placeholder{color:#000 !important;}
-                                        }
+                                        background-color: var(--primary-blue);
+                                        color: #fff;
+                                        padding-inline-start: 1rem;
+                                        flex: 0 1 min(20%, 150px) ;
+                                        min-width: min(45%, 250px);
+                                        background-image: url('data:image/svg+xml;utf8,<svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5"/> </svg>');
+                                        background-repeat: no-repeat;
+                                        background-position: right 1rem center;
+                                }
+                                @container select-layout (width <= 560px){
                                         select{
-                                                /* Having trouble controlling sixe through flex. I think because of its placement, it won't shrink to help with responsiveness. I'll need to rethink this more when we get to resposniveness. Setting position to absolute will be a start as well as using container queries */
-                                                -webkit-appearance: none;
-                                                -moz-appearance: none;
-                                                appearance: none;
-                                                border: none;
-                                                background-color: var(--primary-blue);
-                                                color: #fff;
-                                                padding-inline-start: 1rem;
-                                                flex: 0 1 min(20%, 150px) ;
-                                                min-width: min(45%, 250px);
-                                                background-image: url('data:image/svg+xml;utf8,<svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5"/> </svg>');
-                                                background-repeat: no-repeat;
-                                                background-position: right 1rem center;
+                                                position: absolute;
+                                                bottom: 0;
+                                                left: calc(100cqw/2 - 125px);
+                                                min-width: 50cqw;
+                                                padding: .6rem;
                                         }
                                 }
+                        }
                         /* Listing Page & Endowment styling*/
+                        search {
+                                container: search-layout / inline-size;
+                                }
                         .listing-page__search{
                                 border: 2px solid #000;
                                 border-radius: 20px;
@@ -142,11 +169,34 @@
                                         }
                                 }
                         }
+                        @container search-layout (min-width: 400px) and (max-width: 616px){
+                                        .search-bar--select select{
+                                                bottom: 5.5%;
+                                        }
+                                        .listing-page__search{
+                                                padding: 0px 25px 70px 25px;
+                                        }
+                                }
+                        @container search-layout (width <= 400px){
+                                        
+                                        .gradient-sphere{
+                                                display: none;
+                                        }
+                                        .listing-page__search{
+                                                border: none;
+                                                padding: 0px 0px 70px 0px;
+                                        }
+                                        .search-bar--select select{
+                                                bottom: 0;
+                                        }
+                                }
                         .listing-page__featured{
                                 display: flex;
                                 flex-wrap: wrap;
                                 justify-content: center;
                                 gap: 1rem;
+                                list-style: none;
+                                padding-inline-start: 0;
                         }
                         .listing-page__card-list{
                                 list-style: none;
@@ -635,7 +685,7 @@
                                                                                 target="_parent">About</a></li>
                                                                 <li><a href="/entity/open.act?type=page&amp;id=bb00be72ac1a02083193ceddfe44aa7f&amp;confId=bb08574eac1a02083193cedd58bed34a"
                                                                                 target="_parent">Support the Library</a></li>
-                                                                <li aria-current="page">Collection Endowments</li>
+                                                                <li aria-current="page">Library Endowments</li>
         
         
                                                         </ol>
@@ -674,50 +724,50 @@
                                                                         </select>
                                                                         <button class=" btn bttn--search" type="submit" aria-label="submit your search"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
                                                                 </div>
-                                                                <img class=" gradient-sphere blue-magenta" src="./resources/blue-magenta.svg" alt="''">
-                                                                <img class=" gradient-sphere magenta-gold" src="./resources/magenta-gold.svg" alt="''">
-                                                                <img class=" gradient-sphere blue-turq" src="./resources/blue-turq.svg" alt="''">
+                                                                <img aria-hidden="true" class=" gradient-sphere blue-magenta" src="./resources/blue-magenta.svg" alt="''">
+                                                                <img aria-hidden="true" class=" gradient-sphere magenta-gold" src="./resources/magenta-gold.svg" alt="''">
+                                                                <img aria-hidden="true" class=" gradient-sphere blue-turq" src="./resources/blue-turq.svg" alt="''">
                                                         </form>
                                                 </search>
                                                 <h2>Featured Endowments</h2>
-                                                        <div class="listing-page__featured">
-                                                                <a class="card card--featured" href="/">
-                                                                        <img class="" src="./resources/general_collections.jpeg" alt='""'>
+                                                        <ul class="listing-page__featured">
+                                                                <li class="card card--featured">
+                                                                        
+                                                                        <img class="" aria-hidden="true" src="./resources/general_collections.jpeg" alt='""'>
                                                                         <div class="card__body">
-                                                                                <h3>San Diego Technology History</h3>
+                                                                        <a class="card-target" href="/"><h3>San Diego Technology History</h3></a>
                                                                         <p>To develop an archive of oral histories of science and technology leaders in San Diego.</p>
                                                                         </div>
-                                                                        
-                                                                </a>
-                                                                <a class="card card--featured" href="/">
-                                                                        <img class="" src="./resources/image.png" alt='""'>
+                                                                </li>
+                                                                <li class="card card--featured">
+                                                                        <img class="" aria-hidden="true" src="./resources/image.png" alt='""'>
                                                                         <div class="card__body">
-                                                                                <h3>Melanesian Studies</h3>
+                                                                                <a class="card-target" href="/"><h3>Melanesian Studies</h3></a>
                                                                                 <p>Supporting the UC San Diego Library’s efforts to enhance, preserve, and digitize their Melanesian collections for broader, long-term access.</p>
                                                                         </div>
                                                                         
-                                                                </a>
-                                                                <a class="card card--featured" href="/">
-                                                                        <img class="" src="./resources/image copy.png" alt='""'>
+                                                                        
+                                                                </li>
+                                                                <li class="card card--featured">
+                                                                        <img class="" aria-hidden="true" src="./resources/image copy.png" alt='""'>
                                                                         <div class="card__body">
-                                                                                <h3>NEH Challenge Grant Endowment</h3>
+                                                                                <a class="card-target" href="/"><h3>NEH Challenge Grant Endowment</h3></a>
                                                                                 <p>For the acquisition of books and library materials for the UC San Diego Library.<p>
                                                                         </div>
-                                                                        
-                                                                </a>
-                                                        </div>
+                                                                </li>
+                                                                
+                                                        </ul>
                                                 <h2>All Endowments</h2>
                                                 <ul class="listing-page__card-list">
                                                         <li class="card card--listed">
                                                                 <div class="card--listed__body">
-                                                                        <a href="/">
-                                                                        <span>25th Anniversary-Library Special Collections</span>
+                                                                        <a class="card-target" href="/">
+                                                                        <span>25th Anniversary-Library Special Collections</span></a>
                                                                         <p>For the acquisition and processing of library materials in the humanities fields.</p>
-                                                                        </a>
                                                                 </div>
                                                                 
                                                                 <div class="card--listed__tag-strip">
-                                                                        <a class="pill--magenta" href="/">Art</a>
+                                                                        <a class="pill--magenta" href="/list">Art</a>
                                                                 </div>
                                                         </li>
                                                         
