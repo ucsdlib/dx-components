@@ -43,20 +43,20 @@
                                 }
                         /* Modular styling for a card */
                         /* Should discuss with content strategist and Ada. How do we want things to be responsive.  particularly with things like cards. There options: 1. what we have, 2. keep at  3 X 1 as long as we can until we should wrap, 3. fill up extra space as wrapping occurs. */
-                        div .card{
+                        li.card{
                                 text-decoration: none;
                                 border-radius: var(--brand-corner-radius);
                                 overflow: clip;
                                 position: relative;
-                                                        & a.card-target::after{
-                                                        bottom: 0;
-                                                        content: "";
-                                                        left: 0;
-                                                        min-height: 44px;
-                                                        min-width: 44px;
-                                                        position: absolute;
-                                                        right: 0;
-                                                        top: 0;  
+                                & a.card-target::after{
+                                        bottom: 0;
+                                        content: "";
+                                        left: 0;
+                                        min-height: 44px;
+                                        min-width: 44px;
+                                        position: absolute;
+                                        right: 0;
+                                        top: 0;  
                                 }
                                 & .card__body{
                                         padding-inline: 10px;
@@ -94,44 +94,59 @@
                                 }
                         }
                         /*module styling for a pill*/
-                        .pill--magenta{
-                                border-radius: 8px 0px;
+                        a.pill--magenta{
+                                border-radius: var(--brand-corner-radius);
                                 padding: 8px 16px;
-                                color: var(--primary-navy); 
-                                text-decoration: none !important;
-                                background: #fff;
-                                border: 3px solid var(--accent-magenta);
+                                color: #94286F; 
+                                text-decoration: none;
+                                &:hover{
+                                        text-decoration: underline;
+                                }
+                                background: #FFF5FB;
+                                border: 2px solid var(--accent-magenta);
                         }
                         /*At this point, our search bar here should be a part of the design system, which would make this bar with the inline input a variation on it. Hence, the BEM styling here. Will add to JIRA task*/
-                                .search-bar--select{
-                                        display: flex;
-                                        border: solid 1px #000;
-                                        border-radius: 15px;
-                                        overflow: clip;
-                                        /* min-width: fit-content; */
-                                        input{
+                        .search-bar--select{
+                                display: flex;
+                                border: solid 1px #000;
+                                border-radius: 15px;
+                                overflow: clip;
+                                container: select-layout / inline-size;
+                                /* min-width: fit-content; */
+                                input{
+                                border: none;
+                                flex: 1;
+                                &::placeholder{color:#000 !important;}
+                                }
+                                select{
+                                        /* Having trouble controlling sixe through flex. I think because of its placement, it won't shrink to help with responsiveness. I'll need to rethink this more when we get to resposniveness. Setting position to absolute will be a start as well as using container queries */
+                                        -webkit-appearance: none;
+                                        -moz-appearance: none;
+                                        appearance: none;
                                         border: none;
-                                        flex: 1;
-                                        
-                                        &::placeholder{color:#000 !important;}
-                                        }
+                                        background-color: var(--primary-blue);
+                                        color: #fff;
+                                        padding-inline-start: 1rem;
+                                        flex: 0 1 min(20%, 150px) ;
+                                        min-width: min(45%, 250px);
+                                        background-image: url('data:image/svg+xml;utf8,<svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5"/> </svg>');
+                                        background-repeat: no-repeat;
+                                        background-position: right 1rem center;
+                                }
+                                @container select-layout (width <= 560px){
                                         select{
-                                                /* Having trouble controlling sixe through flex. I think because of its placement, it won't shrink to help with responsiveness. I'll need to rethink this more when we get to resposniveness. Setting position to absolute will be a start as well as using container queries */
-                                                -webkit-appearance: none;
-                                                -moz-appearance: none;
-                                                appearance: none;
-                                                border: none;
-                                                background-color: var(--primary-blue);
-                                                color: #fff;
-                                                padding-inline-start: 1rem;
-                                                flex: 0 1 min(20%, 150px) ;
-                                                min-width: min(45%, 250px);
-                                                background-image: url('data:image/svg+xml;utf8,<svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5"/> </svg>');
-                                                background-repeat: no-repeat;
-                                                background-position: right 1rem center;
+                                                position: absolute;
+                                                bottom: 0;
+                                                left: calc(100cqw/2 - 125px);
+                                                min-width: 50cqw;
+                                                padding: .6rem;
                                         }
                                 }
+                        }
                         /* Listing Page & Endowment styling*/
+                        search {
+                                container: search-layout / inline-size;
+                                }
                         .listing-page__search{
                                 border: 2px solid #000;
                                 border-radius: 20px;
@@ -154,6 +169,27 @@
                                         }
                                 }
                         }
+                        @container search-layout (min-width: 400px) and (max-width: 616px){
+                                        .search-bar--select select{
+                                                bottom: 5.5%;
+                                        }
+                                        .listing-page__search{
+                                                padding: 0px 25px 70px 25px;
+                                        }
+                                }
+                        @container search-layout (width <= 400px){
+                                        
+                                        .gradient-sphere{
+                                                display: none;
+                                        }
+                                        .listing-page__search{
+                                                border: none;
+                                                padding: 0px 0px 70px 0px;
+                                        }
+                                        .search-bar--select select{
+                                                bottom: 0;
+                                        }
+                                }
                         .listing-page__featured{
                                 display: flex;
                                 flex-wrap: wrap;
