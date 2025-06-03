@@ -25,6 +25,17 @@
                                 --brand-border: solid 1px var(--primary-navy);
                                 --brand-heading3-font: 400 1.5rem/1.5 "Roboto";
                         }
+                        .visually-hidden{
+                                position: absolute;
+                                clip: rect(0 0 0 0);
+                                width: 1px;
+                                height: 1px;
+                                margin: -1px;
+                                border: 0;
+                                padding: 0;
+                                overflow: hidden;
+                                white-space: no-wrap;
+                        }
                         /* modular styling to add to site-specific css*/
                                 .btn.bttn--search{
                                         flex:0 0 min(20%, 90px);
@@ -87,7 +98,7 @@
                                         }
                                         & .card--listed__tag-strip{
                                                 background-color: var(--primary-navy);
-                                                padding-block: 1rem;
+                                                padding-block: .5rem;
                                                 padding-inline-start: 20px;
                                                 
                                         }
@@ -97,6 +108,7 @@
                         a.pill--magenta{
                                 border-radius: var(--brand-corner-radius);
                                 padding: 8px 16px;
+                                display: inline-block;
                                 color: #94286F; 
                                 text-decoration: none;
                                 &:hover{
@@ -150,7 +162,6 @@
                         .listing-page__search{
                                 border: 2px solid #000;
                                 border-radius: 20px;
-                                /* overflow: clip; */
                                 padding: 0px 25px 40px 25px;
                                 position: relative;
                                 .gradient-sphere{
@@ -703,8 +714,8 @@
                                                                 <h2 id="search-label">Search Endowments</h2>
                                                                 <div class="search-bar--select">
                                                                         <input aria-label="Search our {Library Endowments}" type="text" name="query" id="query" placeholder="Enter text here...">
-                                                                        <select name="filter-one" aria-label="filter-one">
-                                                                                <option>Filter by Subject</option>
+                                                                        <select name="filter-by-{}" aria-label="Filter by Subject">
+                                                                                <option aria-hidden="true">Filter by Subject</option>
                                                                                 <option value="Anthropology">Anthropology</option>
                                                                                 <option value="Arts">Arts</option>
                                                                                 <option value="Biology">Biology</option>
@@ -767,7 +778,7 @@
                                                                 </div>
                                                                 
                                                                 <div class="card--listed__tag-strip">
-                                                                        <a class="pill--magenta" href="/list">Art</a>
+                                                                        <a class="pill--magenta" href="/list"><span class="visually-hidden">Search all endowments tagged as</span>Art</a>
                                                                 </div>
                                                         </li>
                                                         
