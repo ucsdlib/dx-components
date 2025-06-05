@@ -16,13 +16,13 @@
                 <style>
                         /* Experiment Stylesheet, do not paste into velocity script */
                         :root{
-                                --accent-magenta: #D462AD;
-                                --accent-magenta-hover: #CA3F9B;
-                                --accent-turqoise: #00C6D7;
-                                --primary-blue: #00629B;
-                                --primary-navy: #182B49;
-                                --brand-corner-radius: 8px;
-                                --brand-border: solid 1px var(--primary-navy);
+                                --color-brand-accent-magenta: #D462AD;
+                                --color-brand-accent-magenta-hover: #CA3F9B;
+                                --color-brand-accent-turqoise: #00C6D7;
+                                --color-brand-core-blue: #00629B;
+                                --color-brand-core-navy: #182B49;
+                                --corner-radius-brand: 8px;
+                                --brand-border: solid 1px var(--color-brand-core-navy);
                                 --brand-heading3-font: 400 1.5rem/1.5 "Roboto";
                         }
                         .visually-hidden{
@@ -47,19 +47,20 @@
                                         color: #fff;
                                         border-top-left-radius: 0px;
                                         border-bottom-left-radius: 0px;
-                                        background-color: var(--accent-magenta);
+                                        background-color: var(--color-brand-accent-magenta);
                                         &:hover{
-                                                background-color: var(--accent-magenta-hover);
+                                                background-color: var(--color-brand-accent-magenta-hover);
                                         }
                                 }
                         /* Modular styling for a card */
                         /* Should discuss with content strategist and Ada. How do we want things to be responsive.  particularly with things like cards. There options: 1. what we have, 2. keep at  3 X 1 as long as we can until we should wrap, 3. fill up extra space as wrapping occurs. */
-                        li.card{
+                        li.card, .card{
                                 text-decoration: none;
-                                border-radius: var(--brand-corner-radius);
+                                border-radius: var(--corner-radius-brand);
                                 overflow: clip;
                                 position: relative;
-                                & a.card-target::after{
+                                /* For usability/accessibility we're treating this an element of a card, not body */
+                                & a.card__link-target::after{
                                         bottom: 0;
                                         content: "";
                                         left: 0;
@@ -71,14 +72,17 @@
                                 }
                                 & .card__body{
                                         padding-inline: 10px;
-                                        padding-block-end: 20px;
+                                        padding-block-end: 1rem;
                                         text-wrap-style:pretty;
+                                        span{font: var(--brand-heading3-font); padding-block: 10px; display: block;}
+                                        a{text-decoration: underline;}
+                                        height: 100%;
                                 }
-                                &.card--featured{
-                                        h3{color: #fff; text-decoration: underline;}
-                                        color: #fff;
-                                        background-color: var(--primary-navy);
-                                        
+                                /* does it make more sense to place a modification outside of its block?
+                                need rework some of the card styling
+                                */
+                        }
+                        .card.card--featured{
                                         flex: 0 0 calc(820px/3);
                                         border: #000 1px solid;
                                         img{
@@ -86,27 +90,31 @@
                                                 width: 100%;
                                                 min-height: 380px;
                                         }
+                                        & .card--featured__body{
+                                                color: #fff;
+                                                background-color: var(--color-brand-core-navy);
+                                                span,a{color: #fff; }
+                                        
+                                        }
                                 }
-                                &.card--listed{
-                                        border: var(--brand-border);
-                                        & .card--listed__body{
-                                                position: relative;
-                                                padding: 20px;
-                                                color: var(--primary-navy);
-                                                span{font: var(--brand-heading3-font); margin-block-end: 10px; display: block;}
-                                                p,span{font-style:italic; color:var(--primary-navy);}
-                                        }
-                                        & .card--listed__tag-strip{
-                                                background-color: var(--primary-navy);
-                                                padding-block: .5rem;
-                                                padding-inline-start: 20px;
-                                                
-                                        }
+                        .card.card--listed{
+                                border: var(--brand-border);
+                                & .card--listed__body{
+                                        position: relative;
+                                        padding: 20px;
+                                        color: var(--color-brand-core-navy);
+                                        p,span{font-style:italic; color:var(--color-brand-core-navy);}
+                                }
+                                & .card--listed__tag-strip{
+                                        background-color: var(--color-brand-core-navy);
+                                        padding-block: .5rem;
+                                        padding-inline-start: 20px;
+                                        
                                 }
                         }
                         /*module styling for a pill*/
                         a.pill--magenta{
-                                border-radius: var(--brand-corner-radius);
+                                border-radius: var(--corner-radius-brand);
                                 padding: 8px 16px;
                                 display: inline-block;
                                 color: #94286F; 
@@ -115,7 +123,7 @@
                                         text-decoration: underline;
                                 }
                                 background: #FFF5FB;
-                                border: 2px solid var(--accent-magenta);
+                                border: 2px solid var(--color-brand-accent-magenta);
                         }
                         /*At this point, our search bar here should be a part of the design system, which would make this bar with the inline input a variation on it. Hence, the BEM styling here. Will add to JIRA task*/
                         .search-bar--select{
@@ -136,7 +144,8 @@
                                         -moz-appearance: none;
                                         appearance: none;
                                         border: none;
-                                        background-color: var(--primary-blue);
+                                        border-radius: 0;
+                                        background-color: var(--color-brand-core-blue);
                                         color: #fff;
                                         padding-inline-start: 1rem;
                                         flex: 0 1 min(20%, 150px) ;
@@ -745,15 +754,19 @@
                                                                 <li class="card card--featured">
                                                                         
                                                                         <img class="" aria-hidden="true" src="./resources/general_collections.jpeg" alt='""'>
-                                                                        <div class="card__body">
-                                                                        <a class="card-target" href="/"><h3>San Diego Technology History</h3></a>
+                                                                        <div class="card__body card--featured__body">
+                                                                        <a class="card__link-target" href="/">
+                                                                                <span>San Diego Technology History</span>
+                                                                        </a>
                                                                         <p>To develop an archive of oral histories of science and technology leaders in San Diego.</p>
                                                                         </div>
                                                                 </li>
                                                                 <li class="card card--featured">
                                                                         <img class="" aria-hidden="true" src="./resources/image.png" alt='""'>
-                                                                        <div class="card__body">
-                                                                                <a class="card-target" href="/"><h3>Melanesian Studies</h3></a>
+                                                                        <div class="card__body card--featured__body">
+                                                                                <a class="card__link-target" href="/"
+                                                                                ><span>Melanesian Studies</span>
+                                                                                </a>
                                                                                 <p>Supporting the UC San Diego Library’s efforts to enhance, preserve, and digitize their Melanesian collections for broader, long-term access.</p>
                                                                         </div>
                                                                         
@@ -761,8 +774,10 @@
                                                                 </li>
                                                                 <li class="card card--featured">
                                                                         <img class="" aria-hidden="true" src="./resources/image copy.png" alt='""'>
-                                                                        <div class="card__body">
-                                                                                <a class="card-target" href="/"><h3>NEH Challenge Grant Endowment</h3></a>
+                                                                        <div class="card__body card--featured__body">
+                                                                                <a class="card__link-target" href="/">
+                                                                                        <span>NEH Challenge Grant Endowment</span>
+                                                                                </a>
                                                                                 <p>For the acquisition of books and library materials for the UC San Diego Library.<p>
                                                                         </div>
                                                                 </li>
@@ -771,8 +786,8 @@
                                                 <h2>All Endowments</h2>
                                                 <ul class="listing-page__card-list">
                                                         <li class="card card--listed">
-                                                                <div class="card--listed__body">
-                                                                        <a class="card-target" href="/">
+                                                                <div class=" card__body card--listed__body">
+                                                                        <a class="card__link-target" href="/">
                                                                         <span>25th Anniversary-Library Special Collections</span></a>
                                                                         <p>For the acquisition and processing of library materials in the humanities fields.</p>
                                                                 </div>
