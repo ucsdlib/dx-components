@@ -53,6 +53,131 @@
                 }
 
                 /*END ENDOWMENT*/
+
+                /*styling first CTA*/
+                .bubbles--background {
+                        background: url('https://library.ucsd.edu/_files/research-and-collections/images/Custom-CTA-Inset-Background-Sand-1.png');
+                }
+                .col-md-6 {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        max-width: 70%;
+                }
+                .col-md-6 p{
+                        color: black;
+                        font-style: normal;
+                        font-weight: 400;
+                }
+                .btn-primary{
+                        display: flex;
+                        width: fit-content;
+                        min-width: 100px !important;
+                        padding: 12px 24px;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                }
+                
+                /*search bar styling for explore cta */
+                :root{
+                        --color-brand-accent-magenta: #D462AD;
+                        --color-brand-accent-magenta-hover: #CA3F9B;
+                        --color-brand-accent-turqoise: #00C6D7;
+                        --color-brand-core-blue: #00629B;
+                        --color-brand-core-navy: #182B49;
+                        --corner-radius-brand: 8px;
+                        --brand-border: solid 1px var(--color-brand-core-navy);
+                        --brand-heading3-font: 400 1.5rem/1.5 "Roboto";
+                }
+                .btn.bttn--search{
+                        flex:0 0 min(20%, 90px);
+                        padding: 1rem;
+                        display: flex;
+                        align-content: center;
+                        justify-content: center;
+                        font-size: 1.75rem;
+                        color: #fff;
+                        border-top-left-radius: 0px;
+                        border-bottom-left-radius: 0px;
+                        background-color: var(--color-brand-accent-magenta);
+                        &:hover{
+                                background-color: var(--color-brand-accent-magenta-hover);
+                        }
+                }
+                .search-bar--select{
+                        display: flex;
+                        border: solid 1px #000;
+                        border-radius: 15px;
+                        overflow: clip;
+                        container: select-layout / inline-size;
+                        width: 90%;
+                        /* min-width: fit-content; */
+
+                        input{
+                                border: none;
+                                flex: 1;
+                                &::placeholder{color:#000 !important;}
+                        }
+                        select{
+                                /* Having trouble controlling sixe through flex. I think because of its placement, it won't shrink to help with responsiveness. I'll need to rethink this more when we get to resposniveness. Setting position to absolute will be a start as well as using container queries */
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
+                                border: none;
+                                border-radius: 0;
+                                background-color: var(--color-brand-core-blue);
+                                color: #fff;
+                                padding-inline-start: 1rem;
+                                flex: 0 1 min(20%, 150px) ;
+                                width: fit-content;
+                                background-image: url('data:image/svg+xml;utf8,<svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5"/> </svg>');
+                                background-repeat: no-repeat;
+                                background-position: right 1rem center;
+                        }
+                        @container select-layout (width <= 450px){
+                                select{
+                                        position: absolute;
+                                        bottom: 0;
+                                        left: calc(100cqw/2 - 125px);
+                                        min-width: 50cqw;
+                                        padding: .6rem;
+                                }
+                        }
+                }
+
+                /* styling rest of explore cta */
+                .cta {
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: 50%;
+                        color: inherit;
+                        padding: 30px;
+                }
+
+                .cta--explore{
+                        display: flex;
+                        align-items: flex-start;
+                        .container {
+                                background-color: white;
+                                border-radius: 5px;
+                                padding: 30px;
+                                margin: 0;  
+                                width: 90%;
+                        }
+                }
+                .cta--explore__link{
+                        font-weight: bold;
+                }
+
+                .bubbles--blue-grit {
+                        background: url('./resources/grit_texture.png');
+                }
+                .col-md-6--content__explore {
+                        display: flex;
+                        flex-direction: column;
+                }
+
         </style>
 </head>
 
@@ -549,7 +674,7 @@
                                 <section aria-label="Main Content" class="col-xs-12 col-md-9 main-section pull-right">
                                         <div class="row">
                                                 <div class="col-md-12">
-                                                        <h1>General Collections</h1>
+                                                        <h1>Ann & Christopher Reedy Computer Science and Mathematics Collection Endowment</h1>
                                                         <div class="endowment">
                                                                 <div class="endowment__text-body">
                                                                         <p class="text-body__donor-rec"> Established
@@ -622,11 +747,11 @@
                                                                 </div>
                                                                 <figure class="endowment__figure">
                                                                         <img alt="General Collections"
-                                                                                src="./general_collections.jpeg">
+                                                                                src="./resources/general_collections.jpeg">
                                                                 </figure>
                                                         </div>
                                                         <div
-                                                                class="jumbotron jumbotron-full-width side-image-white bubbles ">
+                                                                class="jumbotron jumbotron-full-width side-image-white bubbles--background">
                                                                 <div class="container">
                                                                         <div class="row">
                                                                                 <div class="col-md-6">
@@ -649,6 +774,30 @@
                                                                                         </p>
                                                                                 </div>
                                                                         </div>
+                                                                </div>
+                                                        </div>
+                                                        <div
+                                                                class="cta cta--explore bubbles--blue-grit">
+                                                                <div class="container">
+                                                                        <div class="col-md-6--content__explore">
+                                                                                <h2>Explore Endowments
+                                                                                </h2>
+                                                                                <p>Search for another endowment.</p>
+                                                                                <search>
+                                                                                        <form class="listing-page__search">
+                                                                                          <div class="search-bar--select">
+                                                                                            <input aria-label="Search our {Library Endowments}" type="text" name="query" id="query" placeholder="Enter text here...">
+                                                                                            <select name="filter-one" aria-label="filter-one">
+                                                                                              <option value="one">one</option>
+                                                                                              <option value="two">two</option>
+                                                                                              <option value="three">three</option>
+                                                                                            </select>
+                                                                                            <button class=" btn bttn--search" type="submit" aria-label="submit your search"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
+                                                                                          </div>
+                                                                                        </form>
+                                                                                </search> 
+                                                                                <a href="./all-endowments.html"><span class="cta--explore__link">View All Endowments</span></a>
+                                                                        </div> 
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -766,7 +915,6 @@
                 <script src="https://www.ucsd.edu/common/_emergency-broadcast/message.js"></script>
                 <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/vendor.min.js"></script>
                 <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/base.min.js"></script>
-                </script>
 
                 <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/decorator.js" type="text/javascript"></script>
 
@@ -774,5 +922,6 @@
 </body>
 <div id="s-lch-widget-21011" role="region" aria-label="Chat Widget" class="s-lch-widget-float">
         <div class="tab_overlay"></div>
+        </div>
 
 </html>
