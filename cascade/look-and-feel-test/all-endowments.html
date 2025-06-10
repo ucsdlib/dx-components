@@ -744,16 +744,19 @@
                                 </div>
                         </div>
                         <div class="container">
-                                <!-- display the main content -->
+                                <!-- ADD YOUR MAIN CONTENT HERE.
+                                - Content encased in {} indicates that the content will dynamically rendered server side by a veleocity script
+                                -->
                                         <section aria-label="Main Content" class="col-xs-12 col-md-9 main-section pull-right listing-page">
-                                                <h1>Library Endowments</h1>
-                                                <p>Endowments empower the UC San Diego Library to enhance collections, improve student experiences, and maintain academic excellence. Search or browse our Library Endowments to learn more about the groundbreaking discoveries, treatments, and intellectual achievements they have generated.</p>
+                                                <h1>{Library Endowments}</h1>
+                                                <p>{Endowments empower the UC San Diego Library to enhance collections, improve student experiences, and maintain academic excellence. Search or browse our Library Endowments to learn more about the groundbreaking discoveries, treatments, and intellectual achievements they have generated.}</p>
                                                 <search>
                                                         <form class="listing-page__search">
-                                                                <h2 id="search-label">Search Endowments</h2>
+                                                                <h2 id="search-label">{Search Endowments}</h2>
                                                                 <div class="search-bar--select">
                                                                         <input aria-label="Search our {Library Endowments}" type="text" name="query" id="query" placeholder="Enter text here...">
-                                                                        <select name="filter-by-{}" aria-label="Filter by Subject">
+                                                                        <select name="filter-by-{Subjects}" aria-label="Filter by {Subject}">
+                                                                                <!-- Option elements(and the attribute values therein) will be dyanmically built based on data definition drop-down or checkbox options-->
                                                                                 <option aria-hidden="true">Filter by Subject</option>
                                                                                 <option value="Anthropology">Anthropology</option>
                                                                                 <option value="Arts">Arts</option>
@@ -779,7 +782,7 @@
                                                                 <img aria-hidden="true" class=" gradient-sphere blue-turq" src="./resources/blue-turq.svg" alt="''">
                                                         </form>
                                                 </search>
-                                                <h2>Featured Endowments</h2>
+                                                <h2>Featured {Endowments}</h2>
                                                         <ul class="listing-page__featured">
                                                                 <li class="card card--featured">
                                                                         
@@ -813,7 +816,7 @@
                                                                 </li>
                                                                 
                                                         </ul>
-                                                <h2>All Endowments</h2>
+                                                <h2>All {Endowments}</h2>
                                                 <ul class="listing-page__card-list">
                                                         <li class="card card--listed">
                                                                 <div class=" card__body card--listed__body">
@@ -823,7 +826,7 @@
                                                                 </div>
                                                                 
                                                                 <div class="card--listed__tag-strip">
-                                                                        <a class="pill--magenta" href="/list"><span class="visually-hidden">Search all endowments tagged as</span>Art</a>
+                                                                        <a class="pill--magenta" href="/list"><span class="visually-hidden">Search all {endowments} tagged as</span>Art</a>
                                                                 </div>
                                                         </li>
                                                         
