@@ -1,927 +1,1448 @@
 <!DOCTYPE html>
 <html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+    <title>Two Column Template</title>
+    <!--Campus & Library CSS Relatively Called-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./campus-2024-07-style.css" />
+    <link rel="stylesheet" type="text/css" href="./campus-base-min.css" />
+    <link rel="stylesheet" type="text/css" href="./site-specific.css" />
+    <!--Campus & Library CSS Relatively Called/-->
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <style>
+      /*FULL PAGE*/
+      .endowment-page {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        h1 {
+          width: 90%;
+        }
+      }
+      /*START ENDOWMENT*/
+      .endowment {
+        display: flex;
+        gap: 2.5rem;
+        .endowment__text-body {
+          flex: 1;
+        }
 
-<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
-        <title>Two Column Template</title>
-        <!--Campus & Library CSS Relatively Called-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-                integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-                crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="./campus-2024-07-style.css">
-        <link rel="stylesheet" type="text/css" href="./campus-base-min.css">
-        <link rel="stylesheet" type="text/css" href="./site-specific.css">
-        <!--Campus & Library CSS Relatively Called/-->
-        <link rel="stylesheet" type="text/css" href="./style.css">
-        <style>
-                /*START ENDOWMENT*/
-                .endowment {
-                        display: flex;
-                        /* flex-wrap: wrap; */
-                        gap: 2.5rem;
+        .text-body__donor-rec {
+          font-size: 1.4rem;
+        }
 
-                        /*justify-content: space-between;
-	*/
-                        .endowment__text-body {
-                                flex: 1;
-                        }
+        .text-body__link {
+          font-size: 1.4rem;
+          display: inline-block;
+          margin-block: 0.5rem 1rem;
+          color: #000;
+          text-decoration: underline;
+        }
 
-                        .text-body__donor-rec {
-                                font-size: 1.4rem;
-                        }
+        .endowment__figure {
+          width: clamp(15rem, 20vw, 20rem);
+          img {
+            width: inherit;
+          }
+        }
+      }
 
-                        .text-body__link {
-                                font-size: 1.4rem;
-                                display: inline-block;
-                                margin-block: .5rem 1rem;
-                                color: #000;
-                                text-decoration: underline;
-                        }
+      /*END ENDOWMENT*/
 
-                        .endowment__figure {
-                                /*width: 21.3rem;
-		*/
-                                width: clamp(15rem, 20vw, 20rem);
+      /*styling CTAs*/
+      .cta {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        color: inherit;
+        padding: 30px;
+      }
 
-                                img {
-                                        /*height: inherit;
-			*/
-                                        width: inherit;
-                                }
-                        }
-                }
+      .cta--standard {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        background-image: url("https://library.ucsd.edu/_files/research-and-collections/images/Custom-CTA-Inset-Background-Sand-1.png");
+      }
 
-                /*END ENDOWMENT*/
+      .cta--standard__content {
+        display: flex;
+        width: 60%;
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        align-self: stretch;
+      }
 
-                /*styling first CTA*/
-                .bubbles--background {
-                        background: url('https://library.ucsd.edu/_files/research-and-collections/images/Custom-CTA-Inset-Background-Sand-1.png');
-                }
-                .col-md-6 {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        max-width: 70%;
-                }
-                .col-md-6 p{
-                        color: black;
-                        font-style: normal;
-                        font-weight: 400;
-                }
-                .btn-primary{
-                        display: flex;
-                        width: fit-content;
-                        min-width: 100px !important;
-                        padding: 12px 24px;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                }
-                
-                /*search bar styling for explore cta */
-                :root{
-                        --color-brand-accent-magenta: #D462AD;
-                        --color-brand-accent-magenta-hover: #CA3F9B;
-                        --color-brand-accent-turqoise: #00C6D7;
-                        --color-brand-core-blue: #00629B;
-                        --color-brand-core-navy: #182B49;
-                        --corner-radius-brand: 8px;
-                        --brand-border: solid 1px var(--color-brand-core-navy);
-                        --brand-heading3-font: 400 1.5rem/1.5 "Roboto";
-                }
-                .btn.bttn--search{
-                        flex:0 0 min(20%, 90px);
-                        padding: 1rem;
-                        display: flex;
-                        align-content: center;
-                        justify-content: center;
-                        font-size: 1.75rem;
-                        color: #fff;
-                        border-top-left-radius: 0px;
-                        border-bottom-left-radius: 0px;
-                        background-color: var(--color-brand-accent-magenta);
-                        &:hover{
-                                background-color: var(--color-brand-accent-magenta-hover);
-                        }
-                }
-                .search-bar--select{
-                        display: flex;
-                        border: solid 1px #000;
-                        border-radius: 15px;
-                        overflow: clip;
-                        container: select-layout / inline-size;
-                        width: 90%;
-                        /* min-width: fit-content; */
+      .cta--standard__multiple-buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        column-gap: 1rem;
+        width: 100%;
+        .btn-primary {
+          display: flex;
+          width: fit-content;
+          min-width: 100px !important;
+          padding: 12px 24px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+      }
 
-                        input{
-                                border: none;
-                                flex: 1;
-                                &::placeholder{color:#000 !important;}
-                        }
-                        select{
-                                /* Having trouble controlling sixe through flex. I think because of its placement, it won't shrink to help with responsiveness. I'll need to rethink this more when we get to resposniveness. Setting position to absolute will be a start as well as using container queries */
-                                -webkit-appearance: none;
-                                -moz-appearance: none;
-                                appearance: none;
-                                border: none;
-                                border-radius: 0;
-                                background-color: var(--color-brand-core-blue);
-                                color: #fff;
-                                padding-inline-start: 1rem;
-                                flex: 0 1 min(20%, 150px) ;
-                                width: fit-content;
-                                background-image: url('data:image/svg+xml;utf8,<svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5"/> </svg>');
-                                background-repeat: no-repeat;
-                                background-position: right 1rem center;
-                        }
-                        @container select-layout (width <= 450px){
-                                select{
-                                        position: absolute;
-                                        bottom: 0;
-                                        left: calc(100cqw/2 - 125px);
-                                        min-width: 50cqw;
-                                        padding: .6rem;
-                                }
-                        }
-                }
+      /*search bar styling for explore cta */
+      :root {
+        --color-brand-accent-magenta: #d462ad;
+        --color-brand-accent-magenta-hover: #ca3f9b;
+        --color-brand-accent-turqoise: #00c6d7;
+        --color-brand-core-blue: #00629b;
+        --color-brand-core-navy: #182b49;
+        --corner-radius-brand: 8px;
+        --brand-border: solid 1px var(--color-brand-core-navy);
+        --brand-heading3-font: 400 1.5rem/1.5 "Roboto";
+      }
+      .btn.bttn--search {
+        flex: 0 0 min(20%, 90px);
+        padding: 1rem;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        color: #fff;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        background-color: var(--color-brand-accent-magenta);
+        &:hover {
+          background-color: var(--color-brand-accent-magenta-hover);
+        }
+      }
+      search {
+        container: search-layout / inline-size;
+      }
+      .search-bar--select {
+        display: flex;
+        border: solid 1px #000;
+        border-radius: 15px;
+        overflow: clip;
+        container: select-layout / inline-size;
+        width: 90%;
+        /* min-width: fit-content; */
 
-                /* styling rest of explore cta */
-                .cta {
-                        background-size: cover;
-                        background-repeat: no-repeat;
-                        background-position: 50%;
-                        color: inherit;
-                        padding: 30px;
-                }
+        input {
+          border: none;
+          flex: 1;
+          &::placeholder {
+            color: #000 !important;
+          }
+        }
+        select {
+          /* Having trouble controlling sixe through flex. I think because of its placement, it won't shrink to help with responsiveness. I'll need to rethink this more when we get to resposniveness. Setting position to absolute will be a start as well as using container queries */
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          border: none;
+          border-radius: 0;
+          background-color: var(--color-brand-core-blue);
+          color: #fff;
+          padding-inline-start: 1rem;
+          flex: 0 1 min(20%, 150px);
+          width: fit-content;
+          background-image: url('data:image/svg+xml;utf8,<svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5"/> </svg>');
+          background-repeat: no-repeat;
+          background-position: right 1rem center;
+        }
+        @container search-layout ( width <= 500px) {
+          .search-bar--select {
+            flex-direction: column;
+            border: none;
+            border-radius: 0;
+            & input {
+              padding-block: 1.12rem;
+              border-radius: 15px;
+              border: black 1px solid;
+            }
+          }
+          .btn.bttn--search {
+            position: absolute;
+            right: 25cqw;
+            border: black 1px solid;
+            border-left: none;
+            border-start-end-radius: 15px;
+            border-end-end-radius: 15px;
+            padding-inline: 2rem;
+            padding-block-end: 15px;
+          }
+          .search-bar--select select {
+            order: 3;
+            margin-block-start: 2rem;
+            padding: 1rem;
+            width: 90%;
+            align-self: center;
+            border-radius: 0;
+          }
+        }
+      }
 
-                .cta--explore{
-                        display: flex;
-                        align-items: flex-start;
-                        .container {
-                                background-color: white;
-                                border-radius: 5px;
-                                padding: 30px;
-                                margin: 0;  
-                                width: 90%;
-                        }
-                }
-                .cta--explore__link{
-                        font-weight: bold;
-                }
+      /* styling rest of explore cta */
+      .cta--explore {
+        display: flex;
+        align-items: flex-start;
+        background: url("./resources/grit_texture.png");
+      }
+      .cta--explore__content {
+        background-color: white;
+        border-radius: 5px;
+        padding: 30px;
+        margin: 0;
+        width: 90%;
+      }
+      .cta--explore__link {
+        font-weight: bold;
+      }
 
-                .bubbles--blue-grit {
-                        background: url('./resources/grit_texture.png');
-                }
-                .col-md-6--content__explore {
-                        display: flex;
-                        flex-direction: column;
-                }
+      /* plan for side nav styling */
+      /*
+          1. rename side nav components: don't need some of the class names, just need single div around title and list
+          following BEM, make outside container "sidenav"
+          - page section (in list form) would be ul "sidenav__pages"
+          - each page would be sidenav__sibling
+             - follow standard styling
+          - selected one (current page) would be "sidenav_current"
+              - follow "expand" styling
+          2. make sidenav fixed height, width 25% as is the case currently
+          - set overflow-y to auto for built in scrolling feature
+          3. maybe play around with script to keep current page up top! ask Chris if I can do this (only if time allows)
+      */
+    </style>
+  </head>
 
-        </style>
-</head>
+  <body>
+    <header>
+      <a class="sr-only skip-to-main" href="#main-content"
+        >Skip to main content</a
+      >
+      <div id="uc-emergency"></div>
+      <!-- title section -->
+      <section aria-label="Site Name" class="layout-title">
+        <div class="layout-container container">
+          <a class="title-header title-header-large" href="/"> The Library </a>
 
-<body>
+          <a class="title-header title-header-short" href="/"> The Library </a>
 
-        <header>
-                <a class="sr-only skip-to-main" href="#main-content">Skip to main content</a>
-                <div id="uc-emergency"></div>
-                <!-- title section -->
-                <section aria-label="Site Name" class="layout-title">
-                        <div class="layout-container container"> <a class="title-header title-header-large" href="/">
-                                        The Library
-                                </a>
+          <a class="title-logo" href="http://www.ucsd.edu">UC San Diego</a>
+        </div>
+      </section>
+    </header>
 
-                                <a class="title-header title-header-short" href="/">
-                                        The Library
-                                </a>
+    <div class="navmenu navmenu-default navmenu-fixed-left offcanvas">
+      <ul class="nav navbar-nav navbar-right msearch">
+        <li>
+          <div class="search">
+            <button aria-label="search" class="search-toggle btn-default">
+              <span class="glyphicon glyphicon-search"></span>
+              <span class="caret"></span>
+            </button>
 
-                                <a class="title-logo" href="http://www.ucsd.edu">UC San Diego</a>
+            <div class="search-content" id="search-m">
+              <form action="/search/index.html" method="get">
+                <label for="search-scope" style="display: none">Search</label>
+                <select
+                  class="search-scope"
+                  id="search-scope-m"
+                  name="search-scope"
+                >
+                  <option selected="selected" value="cascade-lib">
+                    This Site
+                  </option>
+                  <option value="default_collection">All UCSD Sites</option>
+                  <option value="faculty-staff">Faculty/Staff</option>
+                </select>
 
+                <div class="input-group">
+                  <label for="q-m" style="display: none">Search Term</label>
+                  <input
+                    autofocus="autofocus"
+                    class="form-control search-term-m"
+                    id="q-m"
+                    name="search-term-m"
+                    placeholder="Search..."
+                    type="search"
+                  />
+                </div>
+                <input class="sr-only" type="submit" value="Submit" />
+              </form>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <button
+        aria-controls="navbar"
+        class="navbar-toggle sr-only"
+        data-canvas="body"
+        data-target=".navmenu"
+        data-toggle="offcanvas"
+        type="button"
+      >
+        Close Nav
+      </button>
 
+      <ul class="nav navmenu-nav">
+        <li class="dropdown open">
+          <a
+            href="/entity/open.act?type=page&amp;id=baff3ffaac1a02083193cedd15aa0bff&amp;confId=bb08574eac1a02083193cedd58bed34a"
+            target="_parent"
+            >Research &amp; Collections <span class="caret"></span>
+          </a>
 
-                        </div>
-                </section>
-        </header>
+          <ul class="dropdown-menu navmenu-nav">
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=a5ea7e5a0aaf6b3a49d3f1548602d0b8&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Find Books, Articles &amp; More</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=a6687f520aaf69f57945f7ba738eddba&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >About the Collections</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=bafe0a51ac1a02083193cedd3f34f89c&amp;confId=576e5913ac1a020868e684eec1bc7257"
+                target="_parent"
+                >Special Collections &amp; Archives</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=3b2740070aaf6b3a4102e87acee55baa&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Scholarly Communication</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=bafdddceac1a02083193cedd274e5119&amp;confId=caeb92e5ac1a010c109865084b39f36b"
+                target="_parent"
+                >Research Data</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=bafe0326ac1a02083193ceddc7475595&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Digital Collections</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=bb042914ac1a02083193cedd52bdfa13&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                target="_parent"
+                >Undergraduate Library Research Prize</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff3e0cac1a02083193ceddcae00e32&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Help Build Our Collections</a
+              >
+            </li>
+          </ul>
+        </li>
 
-        <div class="navmenu navmenu-default navmenu-fixed-left offcanvas">
+        <li class="dropdown open">
+          <a
+            href="/entity/open.act?type=page&amp;id=baff4c94ac1a02083193cedd53ef3ee0&amp;confId=bb08574eac1a02083193cedd58bed34a"
+            target="_parent"
+            >Borrow &amp; Request <span class="caret"></span>
+          </a>
 
-                <ul class="nav navbar-nav navbar-right msearch">
-                        <li>
-                                <div class="search">
-                                        <button aria-label="search" class="search-toggle btn-default">
-                                                <span class="glyphicon glyphicon-search"></span> <span
-                                                        class="caret"></span>
-                                        </button>
+          <ul class="dropdown-menu navmenu-nav">
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff41d0ac1a02083193cedd4c401311&amp;confId=bb0858a8ac1a02083193cedd5385a714"
+                target="_parent"
+                >Borrowing</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff42b0ac1a02083193cedd0a366841&amp;confId=13a48aa60aaf69f53a0fe5ca3b2ccc64"
+                target="_parent"
+                >Library Cards &amp; Checkout Periods</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff45a9ac1a02083193ceddd71f2782&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                target="_parent"
+                >Course Reserves</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff4663ac1a02083193cedd36760e03&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Interlibrary Loan</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff4a4aac1a02083193cedd81056535&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >My Library Account</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff4b10ac1a02083193cedd5f41f8ef&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Fines &amp; Fees</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff4b78ac1a02083193cedd26454075&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Billing Appeal Form</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown open">
+          <a
+            href="/entity/open.act?type=page&amp;id=baff5227ac1a02083193ceddd94067a0&amp;confId=bb08574eac1a02083193cedd58bed34a"
+            target="_parent"
+            >Computing &amp; Technology <span class="caret"></span>
+          </a>
 
-                                        <div class="search-content" id="search-m">
+          <ul class="dropdown-menu navmenu-nav">
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff5df3ac1a02083193cedd6ffe372d&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                target="_parent"
+                >Print &amp; Scan</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff6743ac1a02083193cedd6b208a84&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Connect to Library Resources</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff595eac1a02083193cedd06f3560a&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Computing</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff6176ac1a02083193ceddb35e189d&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Tech Lending</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff53afac1a02083193ceddd062cbd1&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Data &amp; GIS Lab</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff54c1ac1a02083193cedddfd3b7e7&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Digital Media Lab</a
+              >
+            </li>
+          </ul>
+        </li>
 
-                                                <form action="/search/index.html" method="get">
-                                                        <label for="search-scope" style="display:none;">Search</label>
-                                                        <select class="search-scope" id="search-scope-m"
-                                                                name="search-scope">
-                                                                <option selected="selected" value="cascade-lib">This
-                                                                        Site</option>
-                                                                <option value="default_collection">All UCSD Sites
-                                                                </option>
-                                                                <option value="faculty-staff">Faculty/Staff</option>
-                                                        </select>
+        <li class="dropdown open">
+          <a
+            href="/entity/open.act?type=page&amp;id=baffbe91ac1a02083193cedd06d17988&amp;confId=bb08574eac1a02083193cedd58bed34a"
+            target="_parent"
+            >Visit <span class="caret"></span>
+          </a>
 
-                                                        <div class="input-group">
-                                                                <label for="q-m" style="display:none;">Search
-                                                                        Term</label>
-                                                                <input autofocus="autofocus"
-                                                                        class="form-control search-term-m" id="q-m"
-                                                                        name="search-term-m" placeholder="Search..."
-                                                                        type="search">
-                                                        </div>
-                                                        <input class="sr-only" type="submit" value="Submit">
-                                                </form>
+          <ul class="dropdown-menu navmenu-nav">
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baff862aac1a02083193cedda7c17c54&amp;confId=bb085a4dac1a02083193cedd065cc3bb"
+                target="_parent"
+                >Study Spaces</a
+              >
+            </li>
+            <li>
+              <a href="https://ucsd.libcal.com/reserve">Reserve a Space</a>
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=10f4b3910aaf6b3a3a5f74af61a1bca4&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Geisel Library HVAC Renewal</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baffa3b9ac1a02083193cedd246df509&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Library Workshops</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baffacf6ac1a02083193ceddf69fcf07&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Library Maps</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baffb4b2ac1a02083193ceddf9412cea&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Library Tours</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baffbc5fac1a02083193ceddb69107c9&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                target="_parent"
+                >Library De-Stress Activities</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown open">
+          <a
+            href="/entity/open.act?type=page&amp;id=baffcf01ac1a02083193cedd9f5d38e4&amp;confId=e3054488ac1a02085e6a2e9d7ded8c34"
+            target="_parent"
+            >Get Help <span class="caret"></span>
+          </a>
 
-                                        </div>
-                                </div>
-                        </li>
-                </ul> <button aria-controls="navbar" class="navbar-toggle sr-only" data-canvas="body"
-                        data-target=".navmenu" data-toggle="offcanvas" type="button">Close Nav</button>
+          <ul class="dropdown-menu navmenu-nav">
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baffd50dac1a02083193cedd8c6b4fb7&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Getting Started</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=c48099460aaf6b3a2f72a8b3db05aa84&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                target="_parent"
+                >Email a Subject Specialist</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=7d617c210aaf69f52980020a2c5b24c5&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                target="_parent"
+                >24/7 Chat with a Librarian</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=6f1867030aaf6b3a16b87759646cf169&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Request Library Instruction</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=baffdb3aac1a02083193ceddb8258a08&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                target="_parent"
+                >Library Suggestions</a
+              >
+            </li>
+          </ul>
+        </li>
 
-                <ul class="nav navmenu-nav">
+        <li class="dropdown open">
+          <a
+            href="/entity/open.act?type=page&amp;id=bb0425aeac1a02083193ceddf74feed3&amp;confId=bb08574eac1a02083193cedd58bed34a"
+            target="_parent"
+            >About <span class="caret"></span>
+          </a>
 
+          <ul class="dropdown-menu navmenu-nav">
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=376016e20aaf69f52cb76e5dbe479b00&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >News &amp; Events</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=bb007548ac1a02083193cedde80a689f&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Contact Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=2b7227990aaf69f52cb76e5d1b40955c&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Geisel Library &amp; Sally T. WongAvery Library</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=1c400a2c0aaf69f52cb76e5de1b26318&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Strategy &amp; Partnerships</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=bb00d798ac1a02083193ceddcfb28042&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Library Jobs</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=bb00c3c3ac1a02083193cedd5d329eaa&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Library Policies</a
+              >
+            </li>
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=bb00be72ac1a02083193ceddfe44aa7f&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Support the Library</a
+              >
+            </li>
+          </ul>
+        </li>
 
-                        <li class="dropdown open "><a
-                                        href="/entity/open.act?type=page&amp;id=baff3ffaac1a02083193cedd15aa0bff&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                        target="_parent">Research &amp; Collections <span class="caret"></span> </a>
+        <li class="dropdown open">
+          <a
+            href="/entity/open.act?type=page&amp;id=bb0448a3ac1a02083193cedd7aa6614e&amp;confId=d995b3db0aaf6b3a5aa98f1684d6da0f"
+            target="_parent"
+            >Hours <span class="caret"></span>
+          </a>
 
-                                <ul class="dropdown-menu navmenu-nav">
-                                        <li><a href="/entity/open.act?type=page&amp;id=a5ea7e5a0aaf6b3a49d3f1548602d0b8&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Find Books, Articles &amp; More</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=a6687f520aaf69f57945f7ba738eddba&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">About the Collections</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=bafe0a51ac1a02083193cedd3f34f89c&amp;confId=576e5913ac1a020868e684eec1bc7257"
-                                                        target="_parent">Special Collections &amp; Archives</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=3b2740070aaf6b3a4102e87acee55baa&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Scholarly Communication</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=bafdddceac1a02083193cedd274e5119&amp;confId=caeb92e5ac1a010c109865084b39f36b"
-                                                        target="_parent">Research Data</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=bafe0326ac1a02083193ceddc7475595&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Digital Collections</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=bb042914ac1a02083193cedd52bdfa13&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                        target="_parent">Undergraduate Library Research Prize</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff3e0cac1a02083193ceddcae00e32&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Help Build Our Collections</a></li>
-                                </ul>
+          <ul class="dropdown-menu navmenu-nav">
+            <li>
+              <a
+                href="/entity/open.act?type=page&amp;id=bb04493cac1a02083193cedd3b6ef4f2&amp;confId=ae9357310aaf69f504c1802ee58fc7b6"
+                target="_parent"
+                >Service Desk Hours</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
 
-                        </li>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            aria-controls="navbar"
+            aria-expanded="false"
+            class="navbar-toggle"
+            data-canvas="body"
+            data-target=".navmenu"
+            data-toggle="offcanvas"
+            type="button"
+          >
+            <span class="sr-only">Toggle navigation</span>
 
-                        <li class="dropdown open "><a
-                                        href="/entity/open.act?type=page&amp;id=baff4c94ac1a02083193cedd53ef3ee0&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                        target="_parent">Borrow &amp; Request <span class="caret"></span> </a>
+            <div class="col-sm-1 mobile-nav-bars">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </div>
+            <div class="col-sm-1 mobile-nav-icon">MENU</div>
+          </button>
 
-                                <ul class="dropdown-menu navmenu-nav">
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff41d0ac1a02083193cedd4c401311&amp;confId=bb0858a8ac1a02083193cedd5385a714"
-                                                        target="_parent">Borrowing</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff42b0ac1a02083193cedd0a366841&amp;confId=13a48aa60aaf69f53a0fe5ca3b2ccc64"
-                                                        target="_parent">Library Cards &amp; Checkout Periods</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff45a9ac1a02083193ceddd71f2782&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                        target="_parent">Course Reserves</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff4663ac1a02083193cedd36760e03&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Interlibrary Loan</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff4a4aac1a02083193cedd81056535&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">My Library Account</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff4b10ac1a02083193cedd5f41f8ef&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Fines &amp; Fees</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff4b78ac1a02083193cedd26454075&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Billing Appeal Form</a></li>
-                                </ul>
-
-                        </li>
-                        <li class="dropdown open "><a
-                                        href="/entity/open.act?type=page&amp;id=baff5227ac1a02083193ceddd94067a0&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                        target="_parent">Computing &amp; Technology <span class="caret"></span> </a>
-
-                                <ul class="dropdown-menu navmenu-nav">
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff5df3ac1a02083193cedd6ffe372d&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                        target="_parent">Print &amp; Scan</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff6743ac1a02083193cedd6b208a84&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Connect to Library Resources</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff595eac1a02083193cedd06f3560a&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Computing</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff6176ac1a02083193ceddb35e189d&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Tech Lending</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff53afac1a02083193ceddd062cbd1&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Data &amp; GIS Lab</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff54c1ac1a02083193cedddfd3b7e7&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Digital Media Lab</a></li>
-                                </ul>
-
-                        </li>
-
-                        <li class="dropdown open "><a
-                                        href="/entity/open.act?type=page&amp;id=baffbe91ac1a02083193cedd06d17988&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                        target="_parent">Visit <span class="caret"></span> </a>
-
-                                <ul class="dropdown-menu navmenu-nav">
-                                        <li><a href="/entity/open.act?type=page&amp;id=baff862aac1a02083193cedda7c17c54&amp;confId=bb085a4dac1a02083193cedd065cc3bb"
-                                                        target="_parent">Study Spaces</a></li>
-                                        <li><a href="https://ucsd.libcal.com/reserve">Reserve a Space</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=10f4b3910aaf6b3a3a5f74af61a1bca4&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Geisel Library HVAC Renewal</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baffa3b9ac1a02083193cedd246df509&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Library Workshops</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baffacf6ac1a02083193ceddf69fcf07&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Library Maps</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baffb4b2ac1a02083193ceddf9412cea&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Library Tours</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baffbc5fac1a02083193ceddb69107c9&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                        target="_parent">Library De-Stress Activities</a></li>
-                                </ul>
-
-                        </li>
-                        <li class="dropdown open "><a
-                                        href="/entity/open.act?type=page&amp;id=baffcf01ac1a02083193cedd9f5d38e4&amp;confId=e3054488ac1a02085e6a2e9d7ded8c34"
-                                        target="_parent">Get Help <span class="caret"></span> </a>
-
-                                <ul class="dropdown-menu navmenu-nav">
-                                        <li><a href="/entity/open.act?type=page&amp;id=baffd50dac1a02083193cedd8c6b4fb7&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Getting Started</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=c48099460aaf6b3a2f72a8b3db05aa84&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                        target="_parent">Email a Subject Specialist</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=7d617c210aaf69f52980020a2c5b24c5&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                        target="_parent">24/7 Chat with a Librarian</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=6f1867030aaf6b3a16b87759646cf169&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Request Library Instruction</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=baffdb3aac1a02083193ceddb8258a08&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                        target="_parent">Library Suggestions</a></li>
-                                </ul>
-
-                        </li>
-
-                        <li class="dropdown open "><a
-                                        href="/entity/open.act?type=page&amp;id=bb0425aeac1a02083193ceddf74feed3&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                        target="_parent">About <span class="caret"></span> </a>
-
-                                <ul class="dropdown-menu navmenu-nav">
-                                        <li><a href="/entity/open.act?type=page&amp;id=376016e20aaf69f52cb76e5dbe479b00&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">News &amp; Events</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=bb007548ac1a02083193cedde80a689f&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Contact Us</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=2b7227990aaf69f52cb76e5d1b40955c&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Geisel Library &amp; Sally T. WongAvery
-                                                        Library</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=1c400a2c0aaf69f52cb76e5de1b26318&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Strategy &amp; Partnerships</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=bb00d798ac1a02083193ceddcfb28042&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Library Jobs</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=bb00c3c3ac1a02083193cedd5d329eaa&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Library Policies</a></li>
-                                        <li><a href="/entity/open.act?type=page&amp;id=bb00be72ac1a02083193ceddfe44aa7f&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Support the Library</a></li>
-                                </ul>
-
-                        </li>
-
-                        <li class="dropdown open "><a
-                                        href="/entity/open.act?type=page&amp;id=bb0448a3ac1a02083193cedd7aa6614e&amp;confId=d995b3db0aaf6b3a5aa98f1684d6da0f"
-                                        target="_parent">Hours <span class="caret"></span> </a>
-
-                                <ul class="dropdown-menu navmenu-nav">
-                                        <li><a href="/entity/open.act?type=page&amp;id=bb04493cac1a02083193cedd3b6ef4f2&amp;confId=ae9357310aaf69f504c1802ee58fc7b6"
-                                                        target="_parent">Service Desk Hours</a></li>
-                                </ul>
-
-                        </li>
-                </ul>
-
+          <div class="col-sm-4 pull-right visible-xs-block">
+            <img
+              alt="UC San Diego Logo"
+              class="img-responsive header-logo"
+              src="https://cdn.ucsd.edu/cms/decorator-5/styles/img/ucsd-footer-logo-white.png"
+            />
+          </div>
         </div>
 
-        <nav class="navbar navbar-default navbar-static-top">
-                <div class="container">
+        <div class="navbar-collapse collapse" id="navbar">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a
+                aria-expanded="false"
+                class="dropdown-toggle"
+                data-close-others="true"
+                data-hover="dropdown"
+                href="/entity/open.act?type=page&amp;id=baff3ffaac1a02083193cedd15aa0bff&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Research &amp; Collections <span class="caret"></span>
+              </a>
 
-                        <div class="navbar-header">
-                                <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle"
-                                        data-canvas="body" data-target=".navmenu" data-toggle="offcanvas" type="button">
-                                        <span class="sr-only">Toggle navigation</span>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=a5ea7e5a0aaf6b3a49d3f1548602d0b8&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Find Books, Articles &amp; More</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=a6687f520aaf69f57945f7ba738eddba&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >About the Collections</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bafe0a51ac1a02083193cedd3f34f89c&amp;confId=576e5913ac1a020868e684eec1bc7257"
+                    target="_parent"
+                    >Special Collections &amp; Archives</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=3b2740070aaf6b3a4102e87acee55baa&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Scholarly Communication</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bafdddceac1a02083193cedd274e5119&amp;confId=caeb92e5ac1a010c109865084b39f36b"
+                    target="_parent"
+                    >Research Data</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bafe0326ac1a02083193ceddc7475595&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Digital Collections</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bb042914ac1a02083193cedd52bdfa13&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                    target="_parent"
+                    >Undergraduate Library Research Prize</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff3e0cac1a02083193ceddcae00e32&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Help Build Our Collections</a
+                  >
+                </li>
+              </ul>
+            </li>
 
-                                        <div class="col-sm-1 mobile-nav-bars">
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                        </div>
-                                        <div class="col-sm-1 mobile-nav-icon">
-                                                MENU
-                                        </div>
+            <li class="dropdown">
+              <a
+                aria-expanded="false"
+                class="dropdown-toggle"
+                data-close-others="true"
+                data-hover="dropdown"
+                href="/entity/open.act?type=page&amp;id=baff4c94ac1a02083193cedd53ef3ee0&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Borrow &amp; Request <span class="caret"></span>
+              </a>
 
-                                </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff41d0ac1a02083193cedd4c401311&amp;confId=bb0858a8ac1a02083193cedd5385a714"
+                    target="_parent"
+                    >Borrowing</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff42b0ac1a02083193cedd0a366841&amp;confId=13a48aa60aaf69f53a0fe5ca3b2ccc64"
+                    target="_parent"
+                    >Library Cards &amp; Checkout Periods</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff45a9ac1a02083193ceddd71f2782&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                    target="_parent"
+                    >Course Reserves</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff4663ac1a02083193cedd36760e03&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Interlibrary Loan</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff4a4aac1a02083193cedd81056535&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >My Library Account</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff4b10ac1a02083193cedd5f41f8ef&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Fines &amp; Fees</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff4b78ac1a02083193cedd26454075&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Billing Appeal Form</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a
+                aria-expanded="false"
+                class="dropdown-toggle"
+                data-close-others="true"
+                data-hover="dropdown"
+                href="/entity/open.act?type=page&amp;id=baff5227ac1a02083193ceddd94067a0&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Computing &amp; Technology <span class="caret"></span>
+              </a>
 
-                                <div class="col-sm-4 pull-right visible-xs-block">
-                                        <img alt="UC San Diego Logo" class="img-responsive header-logo"
-                                                src="https://cdn.ucsd.edu/cms/decorator-5/styles/img/ucsd-footer-logo-white.png">
-                                </div>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff5df3ac1a02083193cedd6ffe372d&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                    target="_parent"
+                    >Print &amp; Scan</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff6743ac1a02083193cedd6b208a84&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Connect to Library Resources</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff595eac1a02083193cedd06f3560a&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Computing</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff6176ac1a02083193ceddb35e189d&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Tech Lending</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff53afac1a02083193ceddd062cbd1&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Data &amp; GIS Lab</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff54c1ac1a02083193cedddfd3b7e7&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Digital Media Lab</a
+                  >
+                </li>
+              </ul>
+            </li>
 
-                        </div>
+            <li class="dropdown">
+              <a
+                aria-expanded="false"
+                class="dropdown-toggle"
+                data-close-others="true"
+                data-hover="dropdown"
+                href="/entity/open.act?type=page&amp;id=baffbe91ac1a02083193cedd06d17988&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >Visit <span class="caret"></span>
+              </a>
 
-                        <div class="navbar-collapse collapse" id="navbar">
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baff862aac1a02083193cedda7c17c54&amp;confId=bb085a4dac1a02083193cedd065cc3bb"
+                    target="_parent"
+                    >Study Spaces</a
+                  >
+                </li>
+                <li>
+                  <a href="https://ucsd.libcal.com/reserve">Reserve a Space</a>
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=10f4b3910aaf6b3a3a5f74af61a1bca4&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Geisel Library HVAC Renewal</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baffa3b9ac1a02083193cedd246df509&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Library Workshops</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baffacf6ac1a02083193ceddf69fcf07&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Library Maps</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baffb4b2ac1a02083193ceddf9412cea&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Library Tours</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baffbc5fac1a02083193ceddb69107c9&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                    target="_parent"
+                    >Library De-Stress Activities</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a
+                aria-expanded="false"
+                class="dropdown-toggle"
+                data-close-others="true"
+                data-hover="dropdown"
+                href="/entity/open.act?type=page&amp;id=baffcf01ac1a02083193cedd9f5d38e4&amp;confId=e3054488ac1a02085e6a2e9d7ded8c34"
+                target="_parent"
+                >Get Help <span class="caret"></span>
+              </a>
 
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baffd50dac1a02083193cedd8c6b4fb7&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Getting Started</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=c48099460aaf6b3a2f72a8b3db05aa84&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                    target="_parent"
+                    >Email a Subject Specialist</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=7d617c210aaf69f52980020a2c5b24c5&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                    target="_parent"
+                    >24/7 Chat with a Librarian</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=6f1867030aaf6b3a16b87759646cf169&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Request Library Instruction</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=baffdb3aac1a02083193ceddb8258a08&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
+                    target="_parent"
+                    >Library Suggestions</a
+                  >
+                </li>
+              </ul>
+            </li>
 
+            <li class="dropdown">
+              <a
+                aria-expanded="false"
+                class="dropdown-toggle"
+                data-close-others="true"
+                data-hover="dropdown"
+                href="/entity/open.act?type=page&amp;id=bb0425aeac1a02083193ceddf74feed3&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                target="_parent"
+                >About <span class="caret"></span>
+              </a>
 
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=376016e20aaf69f52cb76e5dbe479b00&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >News &amp; Events</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bb007548ac1a02083193cedde80a689f&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Contact Us</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=2b7227990aaf69f52cb76e5d1b40955c&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Geisel Library &amp; Sally T. WongAvery Library</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=1c400a2c0aaf69f52cb76e5de1b26318&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Strategy &amp; Partnerships</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bb00d798ac1a02083193ceddcfb28042&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Library Jobs</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bb00c3c3ac1a02083193cedd5d329eaa&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Library Policies</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bb00be72ac1a02083193ceddfe44aa7f&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Support the Library</a
+                  >
+                </li>
+              </ul>
+            </li>
 
-                                <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a
+                aria-expanded="false"
+                class="dropdown-toggle"
+                data-close-others="true"
+                data-hover="dropdown"
+                href="/entity/open.act?type=page&amp;id=bb0448a3ac1a02083193cedd7aa6614e&amp;confId=d995b3db0aaf6b3a5aa98f1684d6da0f"
+                target="_parent"
+                >Hours <span class="caret"></span>
+              </a>
 
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bb04493cac1a02083193cedd3b6ef4f2&amp;confId=ae9357310aaf69f504c1802ee58fc7b6"
+                    target="_parent"
+                    >Service Desk Hours</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
 
-                                        <li class="dropdown"><a aria-expanded="false" class="dropdown-toggle"
-                                                        data-close-others="true" data-hover="dropdown"
-                                                        href="/entity/open.act?type=page&amp;id=baff3ffaac1a02083193cedd15aa0bff&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Research &amp; Collections <span
-                                                                class="caret"></span> </a>
+          <div class="btn-nav"></div>
 
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="/entity/open.act?type=page&amp;id=a5ea7e5a0aaf6b3a49d3f1548602d0b8&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Find Books, Articles &amp;
-                                                                        More</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=a6687f520aaf69f57945f7ba738eddba&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">About the Collections</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bafe0a51ac1a02083193cedd3f34f89c&amp;confId=576e5913ac1a020868e684eec1bc7257"
-                                                                        target="_parent">Special Collections &amp;
-                                                                        Archives</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=3b2740070aaf6b3a4102e87acee55baa&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Scholarly Communication</a>
-                                                        </li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bafdddceac1a02083193cedd274e5119&amp;confId=caeb92e5ac1a010c109865084b39f36b"
-                                                                        target="_parent">Research Data</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bafe0326ac1a02083193ceddc7475595&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Digital Collections</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bb042914ac1a02083193cedd52bdfa13&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                                        target="_parent">Undergraduate Library Research
-                                                                        Prize</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff3e0cac1a02083193ceddcae00e32&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Help Build Our Collections</a>
-                                                        </li>
-                                                </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <div class="search">
+                <button aria-label="search" class="search-toggle btn-default">
+                  <span class="glyphicon glyphicon-search"></span>
+                  <span class="caret"></span>
+                </button>
 
-                                        </li>
+                <div class="search-content" id="search">
+                  <form
+                    action="/search/index.html"
+                    id="cse-search-box"
+                    method="get"
+                  >
+                    <label class="sr-only" for="search-scope"
+                      >Search Scope</label
+                    >
+                    <select
+                      class="search-scope"
+                      id="search-scope"
+                      name="search-scope"
+                    >
+                      <option selected="selected" value="cascade-lib">
+                        This Site
+                      </option>
+                      <option value="default_collection">All UCSD Sites</option>
+                      <option value="faculty-staff">Faculty/Staff</option>
+                    </select>
 
-                                        <li class="dropdown"><a aria-expanded="false" class="dropdown-toggle"
-                                                        data-close-others="true" data-hover="dropdown"
-                                                        href="/entity/open.act?type=page&amp;id=baff4c94ac1a02083193cedd53ef3ee0&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Borrow &amp; Request <span
-                                                                class="caret"></span> </a>
-
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff41d0ac1a02083193cedd4c401311&amp;confId=bb0858a8ac1a02083193cedd5385a714"
-                                                                        target="_parent">Borrowing</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff42b0ac1a02083193cedd0a366841&amp;confId=13a48aa60aaf69f53a0fe5ca3b2ccc64"
-                                                                        target="_parent">Library Cards &amp; Checkout
-                                                                        Periods</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff45a9ac1a02083193ceddd71f2782&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                                        target="_parent">Course Reserves</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff4663ac1a02083193cedd36760e03&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Interlibrary Loan</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff4a4aac1a02083193cedd81056535&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">My Library Account</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff4b10ac1a02083193cedd5f41f8ef&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Fines &amp; Fees</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff4b78ac1a02083193cedd26454075&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Billing Appeal Form</a></li>
-                                                </ul>
-
-                                        </li>
-                                        <li class="dropdown"><a aria-expanded="false" class="dropdown-toggle"
-                                                        data-close-others="true" data-hover="dropdown"
-                                                        href="/entity/open.act?type=page&amp;id=baff5227ac1a02083193ceddd94067a0&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Computing &amp; Technology <span
-                                                                class="caret"></span> </a>
-
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff5df3ac1a02083193cedd6ffe372d&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                                        target="_parent">Print &amp; Scan</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff6743ac1a02083193cedd6b208a84&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Connect to Library
-                                                                        Resources</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff595eac1a02083193cedd06f3560a&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Computing</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff6176ac1a02083193ceddb35e189d&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Tech Lending</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff53afac1a02083193ceddd062cbd1&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Data &amp; GIS Lab</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff54c1ac1a02083193cedddfd3b7e7&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Digital Media Lab</a></li>
-                                                </ul>
-
-                                        </li>
-
-                                        <li class="dropdown"><a aria-expanded="false" class="dropdown-toggle"
-                                                        data-close-others="true" data-hover="dropdown"
-                                                        href="/entity/open.act?type=page&amp;id=baffbe91ac1a02083193cedd06d17988&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">Visit <span class="caret"></span> </a>
-
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baff862aac1a02083193cedda7c17c54&amp;confId=bb085a4dac1a02083193cedd065cc3bb"
-                                                                        target="_parent">Study Spaces</a></li>
-                                                        <li><a href="https://ucsd.libcal.com/reserve">Reserve a
-                                                                        Space</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=10f4b3910aaf6b3a3a5f74af61a1bca4&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Geisel Library HVAC Renewal</a>
-                                                        </li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baffa3b9ac1a02083193cedd246df509&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Library Workshops</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baffacf6ac1a02083193ceddf69fcf07&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Library Maps</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baffb4b2ac1a02083193ceddf9412cea&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Library Tours</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baffbc5fac1a02083193ceddb69107c9&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                                        target="_parent">Library De-Stress
-                                                                        Activities</a></li>
-                                                </ul>
-
-                                        </li>
-                                        <li class="dropdown"><a aria-expanded="false" class="dropdown-toggle"
-                                                        data-close-others="true" data-hover="dropdown"
-                                                        href="/entity/open.act?type=page&amp;id=baffcf01ac1a02083193cedd9f5d38e4&amp;confId=e3054488ac1a02085e6a2e9d7ded8c34"
-                                                        target="_parent">Get Help <span class="caret"></span> </a>
-
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baffd50dac1a02083193cedd8c6b4fb7&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Getting Started</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=c48099460aaf6b3a2f72a8b3db05aa84&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                                        target="_parent">Email a Subject Specialist</a>
-                                                        </li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=7d617c210aaf69f52980020a2c5b24c5&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                                        target="_parent">24/7 Chat with a Librarian</a>
-                                                        </li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=6f1867030aaf6b3a16b87759646cf169&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Request Library Instruction</a>
-                                                        </li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=baffdb3aac1a02083193ceddb8258a08&amp;confId=bb085a23ac1a02083193cedd5b0e1e33"
-                                                                        target="_parent">Library Suggestions</a></li>
-                                                </ul>
-
-                                        </li>
-
-                                        <li class="dropdown"><a aria-expanded="false" class="dropdown-toggle"
-                                                        data-close-others="true" data-hover="dropdown"
-                                                        href="/entity/open.act?type=page&amp;id=bb0425aeac1a02083193ceddf74feed3&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                        target="_parent">About <span class="caret"></span> </a>
-
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="/entity/open.act?type=page&amp;id=376016e20aaf69f52cb76e5dbe479b00&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">News &amp; Events</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bb007548ac1a02083193cedde80a689f&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Contact Us</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=2b7227990aaf69f52cb76e5d1b40955c&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Geisel Library &amp; Sally T.
-                                                                        WongAvery Library</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=1c400a2c0aaf69f52cb76e5de1b26318&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Strategy &amp; Partnerships</a>
-                                                        </li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bb00d798ac1a02083193ceddcfb28042&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Library Jobs</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bb00c3c3ac1a02083193cedd5d329eaa&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Library Policies</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bb00be72ac1a02083193ceddfe44aa7f&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Support the Library</a></li>
-                                                </ul>
-
-                                        </li>
-
-                                        <li class="dropdown"><a aria-expanded="false" class="dropdown-toggle"
-                                                        data-close-others="true" data-hover="dropdown"
-                                                        href="/entity/open.act?type=page&amp;id=bb0448a3ac1a02083193cedd7aa6614e&amp;confId=d995b3db0aaf6b3a5aa98f1684d6da0f"
-                                                        target="_parent">Hours <span class="caret"></span> </a>
-
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bb04493cac1a02083193cedd3b6ef4f2&amp;confId=ae9357310aaf69f504c1802ee58fc7b6"
-                                                                        target="_parent">Service Desk Hours</a></li>
-                                                </ul>
-
-                                        </li>
-                                </ul>
-
-
-                                <div class="btn-nav"></div>
-
-                                <ul class="nav navbar-nav navbar-right">
-                                        <li>
-                                                <div class="search">
-                                                        <button aria-label="search" class="search-toggle btn-default">
-                                                                <span class="glyphicon glyphicon-search"></span> <span
-                                                                        class="caret"></span>
-                                                        </button>
-
-                                                        <div class="search-content" id="search">
-
-                                                                <form action="/search/index.html" id="cse-search-box"
-                                                                        method="get">
-                                                                        <label class="sr-only" for="search-scope">Search
-                                                                                Scope</label>
-                                                                        <select class="search-scope" id="search-scope"
-                                                                                name="search-scope">
-                                                                                <option selected="selected"
-                                                                                        value="cascade-lib">This Site
-                                                                                </option>
-                                                                                <option value="default_collection">All
-                                                                                        UCSD Sites</option>
-                                                                                <option value="faculty-staff">
-                                                                                        Faculty/Staff</option>
-                                                                        </select>
-
-                                                                        <div class="input-group">
-                                                                                <label for="q" id="search-term-label"
-                                                                                        style="display:none;">Search
-                                                                                        Term</label>
-                                                                                <input autofocus="autofocus"
-                                                                                        class="form-control search-term"
-                                                                                        id="q" name="search-term"
-                                                                                        placeholder="Search..."
-                                                                                        type="search">
-                                                                        </div>
-                                                                        <input class="sr-only" type="submit"
-                                                                                value="Submit">
-                                                                </form>
-
-                                                        </div>
-                                                </div>
-                                        </li>
-                                </ul>
-
-
-
-
-                        </div><!--end nav collapse -->
-
+                    <div class="input-group">
+                      <label
+                        for="q"
+                        id="search-term-label"
+                        style="display: none"
+                        >Search Term</label
+                      >
+                      <input
+                        autofocus="autofocus"
+                        class="form-control search-term"
+                        id="q"
+                        name="search-term"
+                        placeholder="Search..."
+                        type="search"
+                      />
+                    </div>
+                    <input class="sr-only" type="submit" value="Submit" />
+                  </form>
                 </div>
-        </nav>
-        <main class="layout-main" id="main-content">
-                <div class="container">
-                        <div class="row">
-                                <div class="container">
-                                        <div class="row">
-                                                <ol aria-label="Breadcrumb" class="breadcrumb breadcrumbs-list">
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bb05c156ac1a02083193cedd02b36973&amp;confId=8bea7f7f0aaf69f508f14e7e90004bac"
-                                                                        target="_parent">HOME</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bb0425aeac1a02083193ceddf74feed3&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">About</a></li>
-                                                        <li><a href="/entity/open.act?type=page&amp;id=bb00be72ac1a02083193ceddfe44aa7f&amp;confId=bb08574eac1a02083193cedd58bed34a"
-                                                                        target="_parent">Support the Library</a></li>
-                                                        <li aria-current="page">Collection Endowments</li>
-
-
-                                                </ol>
-                                        </div>
-                                </div>
-                        </div>
-                </div>
-                <div class="container">
-                        <div class="row"> <!-- display the main content -->
-                                <section aria-label="Main Content" class="col-xs-12 col-md-9 main-section pull-right">
-                                        <div class="row">
-                                                <div class="col-md-12">
-                                                        <h1>Ann & Christopher Reedy Computer Science and Mathematics Collection Endowment</h1>
-                                                        <div class="endowment">
-                                                                <div class="endowment__text-body">
-                                                                        <p class="text-body__donor-rec"> Established
-                                                                                1992 through the
-                                                                                generous gift of Chris Lopez.</p>
-                                                                        <a class="text-body__link"
-                                                                                href="https://s3-alpha-sig.figma.com/img/1515/997a/ef0fc4691dc9f6ab2a679ce3acc239d1?Expires=1731888000&amp;Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&amp;Signature=gZnAUnPwP8QY2PwBUiv6op0dZ0XGLwqkdJ-DG6woaSZ7PwZkatnV8Aea2Bp8MQjXGY8XbxDyI0PB2QdyR0eDVg83NqT5bqImTwouHFoGog35optm2JmTEhAtO69BjMOx2brWxnrJ35l5U22SDLujIGQG85jxl0nqxdQ-h4dDa~eo2zl3ooOCw4CnPjL4QTyCosYe2VoQds6TYX7C4VqgqaZXCY8jt-L72682gMdmd2dMqCIClyVfjfIujsRw-pXW-ZvgoZUAt2~gaNK6heeslDX1dL4PZYchk7keNQp4VygtPKq1XBu0NqXahJo7AC7pSQXO6D7NkrLnKaxsLoHsgw__">See
-                                                                                all items purchased through this
-                                                                                endowment.</a>
-                                                                        <p class="p1"><span class="s1">Endowment Purpose
-                                                                                        Lorem ipsum
-                                                                                        dolor sit amet scelerisque
-                                                                                        faucibus convallis
-                                                                                        vel nisi pulvinar in netus. Nisi
-                                                                                        phasellus
-                                                                                        lacinia erat dapibus bibendum
-                                                                                        ornare incididunt
-                                                                                        bibendum.  </span>
-                                                                        </p>
-                                                                        <ul>
-                                                                                <li class="p1"><span class="s1">Porta scelerisque
-                                                                                                consectetur et
-                                                                                                nullam tincidunt nisl dapibus
-                                                                                                consequat dolore
-                                                                                                donec libero dictumst.
-                                                                                         </span></li>
-                                                                                <li class="p1"><span class="s1">Eu netus
-                                                                                                mollis
-                                                                                                suspendisse vestibulum
-                                                                                                quisque bibendum
-                                                                                                nec pellentesque
-                                                                                                ullamcorper nibh diam
-                                                                                                lectus dolore. Fusce
-                                                                                                porta egestas augue
-                                                                                                molestie aliquam
-                                                                                                incididunt iaculis do
-                                                                                                mauris facilisi
-                                                                                                consequat tincidunt
-                                                                                                incididunt eros.
-                                                                                        </span></li>
-                                                                        </ul>
-                                                                        <span class="s1">Malesuada suspendisse
-                                                                                phasellus rhoncus nullam
-                                                                                ornare neque ut
-                                                                                labore sodales praesent
-                                                                                pellentesque
-                                                                                euismod. Velit
-                                                                                fames purus non
-                                                                                sollicitudin turpis
-                                                                                praesent maecenas
-                                                                                ultrices iaculis.
-                                                                                Gravida nisl volutpat
-                                                                                aenean enim ultricies
-                                                                                aenean malesuada
-                                                                                egestas nec eiusmod.
-                                                                                Semper nibh
-                                                                                bibendum eget orci
-                                                                                semper pellentesque
-                                                                                suspendisse fermentum. Libero hendrerit 
-                                                                                nibh feugiat vel lacinia
-                                                                                viverra leo condimentum libero massa hac
-                                                                                do mi aliquet. <br><br>
-                                                                                Lorem ipsum dolor sit amet scelerisque
-                                                                                faucibus
-                                                                                convallis vel nisi pulvinar in netus.
-                                                                                Nisi phasellus
-                                                                                lacinia erat dapibus bibendum ornare
-                                                                                incididunt
-                                                                                bibendum.</span>
-                                                                </div>
-                                                                <figure class="endowment__figure">
-                                                                        <img alt="General Collections"
-                                                                                src="./resources/general_collections.jpeg">
-                                                                </figure>
-                                                        </div>
-                                                        <div
-                                                                class="jumbotron jumbotron-full-width side-image-white bubbles--background">
-                                                                <div class="container">
-                                                                        <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                        <h2>Help build this endowment
-                                                                                        </h2>
-                                                                                        <p>Your contributions play a
-                                                                                                vital role in enhancing
-                                                                                                our collections,
-                                                                                                enriching student experiences,
-                                                                                                and sustaining academic
-                                                                                                excellence.</p>
-                                                                                        <p><a class="btn btn-primary"
-                                                                                                        href="https://blink.ucsd.edu/technology/websites/training/new-page/templates/general-cms/v5/modules/call-to-action.html">
-                                                                                                        Give Now!
-                                                                                                        </a>
-                                                                                           <a class="btn btn-primary"
-                                                                                                        href="https://blink.ucsd.edu/technology/websites/training/new-page/templates/general-cms/v5/modules/call-to-action.html">
-                                                                                                        Connect With Fundraising
-                                                                                                        </a>
-                                                                                        </p>
-                                                                                </div>
-                                                                        </div>
-                                                                </div>
-                                                        </div>
-                                                        <div
-                                                                class="cta cta--explore bubbles--blue-grit">
-                                                                <div class="container">
-                                                                        <div class="col-md-6--content__explore">
-                                                                                <h2>Explore Endowments
-                                                                                </h2>
-                                                                                <p>Search for another endowment.</p>
-                                                                                <search>
-                                                                                        <form class="listing-page__search">
-                                                                                          <div class="search-bar--select">
-                                                                                            <input aria-label="Search our {Library Endowments}" type="text" name="query" id="query" placeholder="Enter text here...">
-                                                                                            <select name="filter-one" aria-label="filter-one">
-                                                                                              <option value="one">one</option>
-                                                                                              <option value="two">two</option>
-                                                                                              <option value="three">three</option>
-                                                                                            </select>
-                                                                                            <button class=" btn bttn--search" type="submit" aria-label="submit your search"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
-                                                                                          </div>
-                                                                                        </form>
-                                                                                </search> 
-                                                                                <a href="./all-endowments.html"><span class="cta--explore__link">View All Endowments</span></a>
-                                                                        </div> 
-                                                                </div>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                </section>
-
-                                <section aria-label="Sidebar" class="col-xs-12 col-md-3 sidebar-section"
-                                        role="complementary">
-                                        <figure aria-label="Logo" id="site-logo" role="complementary">
-                                                <logo>
-                                                </logo>
-                                        </figure>
-
-                                        <article aria-label="Sidebar Nav" class="main-content-nav" role="navigation">
-                                                <h2>Navigation</h2>
-                                                <ul class="navbar-list">
-                                                        <li class="collapsed">
-                                                                <a href="../research-and-collections/index.html">Research
-                                                                        &amp; Collections</a>
-                                                        </li>
-                                                        <li class="expanded active">
-                                                                Borrow &amp; Request
-                                                                <ul>
-                                                                        <li class="">
-                                                                                <a href="borrowing.html">Borrowing</a>
-                                                                        </li>
-                                                                        <li class="">
-                                                                                <a href="loan-periods.html">Library
-                                                                                        Cards &amp; Checkout Periods</a>
-                                                                        </li>
-                                                                        <li class="">
-                                                                                <a href="course-reserves/index.html">Course
-                                                                                        Reserves</a>
-                                                                        </li>
-                                                                        <li class="">
-                                                                                <a href="interlibrary-loan/index.html">Interlibrary
-                                                                                        Loan</a>
-                                                                        </li>
-                                                                        <li class="">
-                                                                                <a href="my-library-account/index.html">My
-                                                                                        Library Account</a>
-                                                                        </li>
-                                                                        <li class="">
-                                                                                <a href="fines-and-fees.html">Fines
-                                                                                        &amp; Fees</a>
-                                                                        </li>
-                                                                        <li class="">
-                                                                                <a href="billing-appeal-form.html">Billing
-                                                                                        Appeal Form</a>
-                                                                        </li>
-                                                                </ul>
-                                                        </li>
-                                                        <li class="collapsed">
-                                                                <a href="../computing-and-technology/index.html">Computing
-                                                                        &amp; Technology</a>
-                                                        </li>
-                                                        <li class="collapsed">
-                                                                <a href="../visit/index.html">Visit</a>
-                                                        </li>
-                                                        <li class="collapsed">
-                                                                <a href="../ask-us/index.html">Get Help</a>
-                                                        </li>
-                                                        <li class="collapsed">
-                                                                <a href="../about/index.html">About</a>
-                                                        </li>
-                                                        <li class="collapsed">
-                                                                <a href="../hours/index.html">Hours</a>
-                                                        </li>
-                                                </ul>
-                                        </article>
-
-                                </section>
-                        </div>
-                </div>
-        </main>
-        <footer class="footer">
-
-                <div class="container">
-                        <div class="row">
-                                <div class="col-sm-8">
-                                        <p>
-                                                <span>UC San Diego 9500 Gilman Dr. La Jolla, CA 92093 (858)
-                                                        534-2230</span>
-                                                <br>
-                                                <span>
-                                                        Copyright © <span class="footer-copyright-year">2024</span>
-                                                        Regents of the University of
-                                                        California.
-                                                        All rights reserved.
-                                                </span>
-                                        </p>
-                                        <ul class="footer-links">
-                                                <li><a href="https://accessibility.ucsd.edu/report-a-concern/index.html">Accessibility</a>
-                                                </li>
-                                                <li><a href="https://ucsd.edu/about/privacy-policy.html">Privacy
-                                                                Policy</a></li>
-                                                <li><a href="https://ucsd.edu/about/terms-of-use.html">Terms of Use</a>
-                                                </li>
-                                                <li>
-                                                        <a
-                                                                href="https://library.ucsd.edu/ask-us/library-suggestions.html">Feedback</a>
-                                                </li>
-                                        </ul>
-                                </div>
-
-                                <div class="col-sm-4">
-                                        <a href="https://ucsd.edu/"><img alt="UCSD homepage"
-                                                        class="img-responsive footer-logo"
-                                                        src="https://cdn.ucsd.edu/developer/decorator/5.0.2/img/ucsd-footer-logo-white.png"></a>
-                                </div>
-                        </div>
-                </div>
-                <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/jquery.min.js"></script>
-                <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/bootstrap.min.js"></script>
-                <script src="https://www.ucsd.edu/common/_emergency-broadcast/message.js"></script>
-                <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/vendor.min.js"></script>
-                <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/base.min.js"></script>
-
-                <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/decorator.js" type="text/javascript"></script>
-
-        </footer>
-</body>
-<div id="s-lch-widget-21011" role="region" aria-label="Chat Widget" class="s-lch-widget-float">
-        <div class="tab_overlay"></div>
+              </div>
+            </li>
+          </ul>
         </div>
+        <!--end nav collapse -->
+      </div>
+    </nav>
+    <main class="layout-main" id="main-content">
+      <div class="container">
+        <div class="row">
+          <div class="container">
+            <div class="row">
+              <ol aria-label="Breadcrumb" class="breadcrumb breadcrumbs-list">
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bb05c156ac1a02083193cedd02b36973&amp;confId=8bea7f7f0aaf69f508f14e7e90004bac"
+                    target="_parent"
+                    >HOME</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bb0425aeac1a02083193ceddf74feed3&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/entity/open.act?type=page&amp;id=bb00be72ac1a02083193ceddfe44aa7f&amp;confId=bb08574eac1a02083193cedd58bed34a"
+                    target="_parent"
+                    >Support the Library</a
+                  >
+                </li>
+                <li aria-current="page">Collection Endowments</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <!-- display the main content -->
+          <!-- see style plan in style section: restructure this tomorrow-->
+          <section
+            aria-label="Main Content"
+            class="col-xs-12 col-md-9 main-section pull-right"
+          >
+            <div class="row">
+              <div class="endowment-page">
+                <h1>
+                  Ann & Christopher Reedy Computer Science and Mathematics
+                  Collection Endowment
+                </h1>
+                <div class="endowment">
+                  <div class="endowment__text-body">
+                    <p class="text-body__donor-rec">
+                      Established 1992 through the generous gift of Chris Lopez.
+                    </p>
+                    <a
+                      class="text-body__link"
+                      href="https://s3-alpha-sig.figma.com/img/1515/997a/ef0fc4691dc9f6ab2a679ce3acc239d1?Expires=1731888000&amp;Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&amp;Signature=gZnAUnPwP8QY2PwBUiv6op0dZ0XGLwqkdJ-DG6woaSZ7PwZkatnV8Aea2Bp8MQjXGY8XbxDyI0PB2QdyR0eDVg83NqT5bqImTwouHFoGog35optm2JmTEhAtO69BjMOx2brWxnrJ35l5U22SDLujIGQG85jxl0nqxdQ-h4dDa~eo2zl3ooOCw4CnPjL4QTyCosYe2VoQds6TYX7C4VqgqaZXCY8jt-L72682gMdmd2dMqCIClyVfjfIujsRw-pXW-ZvgoZUAt2~gaNK6heeslDX1dL4PZYchk7keNQp4VygtPKq1XBu0NqXahJo7AC7pSQXO6D7NkrLnKaxsLoHsgw__"
+                      >See all items purchased through this endowment.</a
+                    >
+                    <p class="p1">
+                      <span class="s1"
+                        >Endowment Purpose Lorem ipsum dolor sit amet
+                        scelerisque faucibus convallis vel nisi pulvinar in
+                        netus. Nisi phasellus lacinia erat dapibus bibendum
+                        ornare incididunt bibendum.
+                      </span>
+                    </p>
+                    <ul>
+                      <li class="p1">
+                        <span class="s1"
+                          >Porta scelerisque consectetur et nullam tincidunt
+                          nisl dapibus consequat dolore donec libero dictumst.
+                        </span>
+                      </li>
+                      <li class="p1">
+                        <span class="s1"
+                          >Eu netus mollis suspendisse vestibulum quisque
+                          bibendum nec pellentesque ullamcorper nibh diam lectus
+                          dolore. Fusce porta egestas augue molestie aliquam
+                          incididunt iaculis do mauris facilisi consequat
+                          tincidunt incididunt eros.
+                        </span>
+                      </li>
+                    </ul>
+                    <span class="s1"
+                      >Malesuada suspendisse phasellus rhoncus nullam ornare
+                      neque ut labore sodales praesent pellentesque euismod.
+                      Velit fames purus non sollicitudin turpis praesent
+                      maecenas ultrices iaculis. Gravida nisl volutpat aenean
+                      enim ultricies aenean malesuada egestas nec eiusmod.
+                      Semper nibh bibendum eget orci semper pellentesque
+                      suspendisse fermentum. Libero hendrerit nibh feugiat vel
+                      lacinia viverra leo condimentum libero massa hac do mi
+                      aliquet. <br /><br />
+                      Lorem ipsum dolor sit amet scelerisque faucibus convallis
+                      vel nisi pulvinar in netus. Nisi phasellus lacinia erat
+                      dapibus bibendum ornare incididunt bibendum.</span
+                    >
+                  </div>
+                  <figure class="endowment__figure">
+                    <img
+                      alt="General Collections"
+                      src="./resources/general_collections.jpeg"
+                    />
+                  </figure>
+                </div>
+                <div class="cta cta--standard">
+                  <div class="cta--standard__content">
+                    <h2>Help build this endowment</h2>
+                    <p>
+                      Your contributions play a vital role in enhancing our
+                      collections, enriching student experiences, and sustaining
+                      academic excellence.
+                    </p>
+                    <p class="cta--standard__multiple-buttons">
+                      <a
+                        class="btn btn-primary"
+                        href="https://blink.ucsd.edu/technology/websites/training/new-page/templates/general-cms/v5/modules/call-to-action.html"
+                      >
+                        Give Now!
+                      </a>
+                      <a
+                        class="btn btn-primary"
+                        href="https://blink.ucsd.edu/technology/websites/training/new-page/templates/general-cms/v5/modules/call-to-action.html"
+                      >
+                        Connect With Fundraising
+                      </a>
+                    </p>
+                  </div>
+                </div>
+                <div class="cta cta--explore">
+                  <div class="cta--explore__content">
+                    <h2>Explore Endowments</h2>
+                    <p>Search for another endowment.</p>
+                    <search>
+                      <form class="listing-page__search">
+                        <div class="search-bar--select">
+                          <input
+                            aria-label="Search our {Library Endowments}"
+                            type="text"
+                            name="query"
+                            id="query"
+                            placeholder="Enter text here..."
+                          />
+                          <select name="filter-one" aria-label="filter-one">
+                            <option value="one">one</option>
+                            <option value="two">two</option>
+                            <option value="three">three</option>
+                          </select>
+                          <button
+                            class="btn bttn--search"
+                            type="submit"
+                            aria-label="submit your search"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="glyphicon glyphicon-search"
+                            ></span>
+                          </button>
+                        </div>
+                      </form>
+                    </search>
+                    <a href="./all-endowments.html"
+                      ><span class="cta--explore__link"
+                        >View All Endowments</span
+                      ></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
+          <section
+            aria-label="Sidebar"
+            class="col-xs-12 col-md-3 sidebar-section"
+            role="complementary"
+          >
+            <figure aria-label="Logo" id="site-logo" role="complementary">
+              <logo> </logo>
+            </figure>
+
+            <article
+              aria-label="Sidebar Nav"
+              class="main-content-nav"
+              role="navigation"
+            >
+              <h2>Library Endowments</h2>
+              <ul class="navbar-list">
+                <li class="collapsed">
+                  <a href="../research-and-collections/index.html">
+                    Alison and George Gildred Biomedical Library Collection
+                    Endowment
+                  </a>
+                </li>
+                <li class="collapsed">
+                  <a href="../computing-and-technology/index.html">
+                    American Institute of Wine & Food Library Endowment
+                  </a>
+                </li>
+                <li class="collapsed">
+                  <a href="../visit/index.html">
+                    Ann & Christopher Reedy Computer Science and Mathematics
+                    Collection Endowment
+                  </a>
+                </li>
+                <li class="collapsed">
+                  <a href="../ask-us/index.html">
+                    Brian Schottlaender Library Collection Endowment for the
+                    Archive for New Poetry
+                  </a>
+                </li>
+                <li class="collapsed">
+                  <a href="../about/index.html">
+                    Dorothy D. Gregor Collection Endowment
+                  </a>
+                </li>
+                <li class="collapsed">
+                  <a href="../hours/index.html">
+                    Hugh Lawrence and Daina Krigens Collection Endowment for
+                    20th and 21st Century Chinese Studies
+                  </a>
+                </li>
+                <li class="collapsed">
+                  <a href="../hours/index.html">
+                    MaryAnn and Don Lyle Library Collection Endowment for
+                    Engineering
+                  </a>
+                </li>
+                <li class="collapsed">
+                  <a href="../hours/index.html">
+                    Stuart Collection Records in the UC San Diego Library
+                    Special Collection & Archives
+                  </a>
+                </li>
+              </ul>
+            </article>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8">
+            <p>
+              <span
+                >UC San Diego 9500 Gilman Dr. La Jolla, CA 92093 (858)
+                534-2230</span
+              >
+              <br />
+              <span>
+                Copyright © <span class="footer-copyright-year">2024</span>
+                Regents of the University of California. All rights reserved.
+              </span>
+            </p>
+            <ul class="footer-links">
+              <li>
+                <a
+                  href="https://accessibility.ucsd.edu/report-a-concern/index.html"
+                  >Accessibility</a
+                >
+              </li>
+              <li>
+                <a href="https://ucsd.edu/about/privacy-policy.html"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="https://ucsd.edu/about/terms-of-use.html"
+                  >Terms of Use</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://library.ucsd.edu/ask-us/library-suggestions.html"
+                  >Feedback</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-sm-4">
+            <a href="https://ucsd.edu/"
+              ><img
+                alt="UCSD homepage"
+                class="img-responsive footer-logo"
+                src="https://cdn.ucsd.edu/developer/decorator/5.0.2/img/ucsd-footer-logo-white.png"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/jquery.min.js"></script>
+      <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/bootstrap.min.js"></script>
+      <script src="https://www.ucsd.edu/common/_emergency-broadcast/message.js"></script>
+      <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/vendor.min.js"></script>
+      <script src="https://cdn.ucsd.edu/cms/decorator-5/scripts/base.min.js"></script>
+
+      <script
+        src="https://cdn.ucsd.edu/cms/decorator-5/scripts/decorator.js"
+        type="text/javascript"
+      ></script>
+    </footer>
+  </body>
+  <div
+    id="s-lch-widget-21011"
+    role="region"
+    aria-label="Chat Widget"
+    class="s-lch-widget-float"
+  >
+    <div class="tab_overlay"></div>
+  </div>
 </html>
