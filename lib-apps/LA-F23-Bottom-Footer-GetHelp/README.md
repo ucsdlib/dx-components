@@ -1,4 +1,4 @@
-## Intrsuctions for editng mark up onlu in F23-Bottom-Footer box in [Get Help](https://ucsd.libanswers.com/)
+## Intrsuctions for editng mark up only in F23-Bottom-Footer box in [Get Help](https://ucsd.libanswers.com/)
 __If you have a feature branch set up in repo__
 
 1. Make adjustments to the mark up in the respective file on your branch. Be sure to pull/fetch from main branch to ensure you're working with the most up-to-date code for the footer box.
