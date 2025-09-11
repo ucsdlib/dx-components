@@ -14,5 +14,5 @@ __Rest of Steps__
 
    a. **NOTE:** Do not try to further edit in libanswers. If you need to make edits to new code, use code in your editor, repeating steps 2-3.
    
-5. Once Satisfied with mark up changes, push updated mark up to to your repo and start a merge request if you have a feature-branch set up. If you don't ask Chris or one of the other DX memebers to update `F23-Bottom-Footer.html`
+4. Once Satisfied with mark up changes, push updated mark up to to your repo and start a merge request if you have a feature-branch set up. If you don't ask Chris or one of the other DX memebers to update `F23-Bottom-Footer.html`
 
