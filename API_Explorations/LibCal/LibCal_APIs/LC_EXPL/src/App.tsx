@@ -1,45 +1,33 @@
 import './App.css';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import type {StudyRoom} from './types';
+import Form from './components/Form';
 export default function App(){
-  const KEY = import.meta.env.VITE_LIBCAL_KEY;
-  const ID = import.meta.env.VITE_CLIENT_ID;
-  // const [locData, setLocData] = useState({})
+  const [headingMsg, setHeadingMsg] = useState<string>('Not Authenticated');
+  const [spaceData, setSpaceData] = useState<StudyRoom[]>([]);
   useEffect(()=>{
-    fetch(`https://ucsd.libcal.com/api/1.1/oauth/token`, {
-  method: 'POST',
-  headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-  body: new URLSearchParams({
-    'client_id': ID,
-    'client_secret': KEY,
-    'grant_type': 'client_credentials'
-  })
-})
-.then(res => {
-  console.log('Status:', res.status);
-  return res.json(); // Use .text() instead of .json() to see raw response
-})
-.then(data => {
-  console.log('Response:', data);
-  // Try to parse as JSON if it looks like JSON
-  try {
-    const json = data;
-    console.log('Parsed:', json);
-  } catch(e) {
-    console.log('Not JSON, raw text:', data);
-  }
-})
-.catch(err => console.error('Error:', err));
     
-})
+    const authenticate = async ()=>{
+      try{
+        const res = await fetch('http://localhost:8000/api/spaces/authenticate',{method:'GET'});
+        const serverMsg = await res.json()
+        if(!res.ok){
+          throw new Error(serverMsg.errorMsg || `Error: ${res.status}`)
+        }
+      setHeadingMsg(serverMsg.message);
+    }
+    catch(error){
+      const errMsg = error instanceof Error? error.message: 'Unknown Issue Occured';
+      setHeadingMsg(errMsg);
+    }
+    }
+    authenticate()
+},[])
 return(
   <>
     <section>
-      <h1>LibCal Content</h1>
-        <pre>
-          <code>
-            
-          </code>
-        </pre>
+      <h1>{headingMsg}</h1>
+      <Form setSpaceData={setSpaceData}></Form>
     </section>
   </>
 )
