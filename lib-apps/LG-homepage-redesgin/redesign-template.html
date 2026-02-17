@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Space</title>
+</head>
+
+<body class="s-lib-public-body">
+
+    <!-- BEGIN: Page Header -->
+    {{public_header}}
+    <!-- END: Page Header -->
+
+    <!-- BEGIN: Content Header -->
+    <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
+        <div id="s-lib-bc">{{breadcrumbs}}</div>
+        <h1 id="s-lib-public-header-title">{{title}}</h1>
+        <h2>
+            <div id="s-lib-public-header-desc">{{system_intro}}</div>
+        </h2>
+    </div>
+    <!-- END: Content Header -->
+
+    <!-- BEGIN: Nav Bar-->
+    <div id="s-lib-public-nav" class="container s-lib-side-borders">
+        {{page_nav}}
+        <div id="s-lg-guide-header" class="container s-lib-header s-lib-side-borders"></div>
+    </div>
+    <!--END: Nav Bar -->
+
+    <!-- BEGIN: content -->
+
+
+    <!-- START: LIBGUIDES CUSTOM HOME PAGE CONTENT -->
+    <style>
+    </style>
+    <main>
+        <h1 id="s-lib-public-header-title">Reshearch Guides</h1>
+        <section>
+            <!-- Search & explore-->
+        </section>
+        <section>
+            <h2 id="s-lib-public-header-desc">Featured</h2>
+            <!-- Featured -->
+        </section>
+        <section>
+            <h2 id="s-lib-public-header-desc">Research Essentials</h2>
+            <!-- Research Essentials -->
+        </section>
+        <section>
+            <h2 id="s-lib-public-header-desc">Need Assistance?</h2>
+            <!-- Assitance -->
+        </section>
+        <!-- BEGIN: Custom Footer -->
+        {{public_footer}}
+        <!-- END: Custom Footer -->
+
+
+        <!-- LA CHAT WIDGET -->
+        <style>
+            .s-lch-widget-float {
+                -webkit-transform: translate3d(0, 0, 0);
+            }
+
+            /* Fixes Safari icon stuttering */
+            .s-lch-widget-float-btn {
+                box-shadow: 0 0 0 2px #fff !important;
+            }
+
+            .s-lch-widget-float-btn img {
+                border-radius: 5px !important;
+            }
+        </style>
+        <script src="https://ucsd.libanswers.com/load_chat.php?hash=c84cd9a431f84ae111b094a4607c399a"></script>
+
+</body>
+
+</html>
