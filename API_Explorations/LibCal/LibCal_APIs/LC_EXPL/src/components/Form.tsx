@@ -12,6 +12,7 @@ const Form:React.FC<{setSpaceData:Dispatch<SetStateAction<StudyRoom[]>>}> = ({se
             const spaceInfo = await spaceRes.json();
             if(!spaceRes.ok) throw new Error(spaceInfo.errorMsg || `Error status${spaceRes.status}`)
             setSpaceData(spaceInfo);
+        alert(JSON.parse(spaceInfo))
         }catch(error){
             const errorMessage = error instanceof Error? error.message: 'Issue with fetching data';
             alert(errorMessage);
