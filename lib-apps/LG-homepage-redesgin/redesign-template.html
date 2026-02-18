@@ -26,12 +26,28 @@
 
     <!-- START: LIBGUIDES CUSTOM HOME PAGE CONTENT -->
     <style>
-        #s-lib-public-header-title,
+        h1#s-lib-public-header-title,
         section {
             width: 90%;
-            margin: 0, auto;
+            margin: 0 auto;
         }
-        
+
+        form[role="search"] {
+            justify-content: initial !important;
+        }
+
+        form[role="search"] span {
+            position: absolute;
+            clip: rect(0 0 0 0);
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            border: 0;
+            padding: 0;
+            overflow: hidden;
+            white-space: no-wrap;
+        }
+
         .s-lg-public-search-field .input-group button[type="submit"] {
             margin-bottom: 0;
             min-width: 100px;
@@ -39,20 +55,19 @@
             color: #fff;
         }
 
-        .s-lg-public-search-field form[role="search"] {
-            justify-content: initial;
-        }
 
         form[role="search"] .form-group {
-            flex-basis: 55%;
+            flex-basis: 65%;
+            flex-grow: 1;
         }
 
         @media (min-width: 515px) {
-            
+
             form[role="search"] .form-group {
-                flex: 1;
+                flex-grow: 0;
             }
-            .input-group button[type="submit"] {
+
+            .s-lg-public-search-field .input-group button[type="submit"] {
                 min-width: 200px;
             }
         }
