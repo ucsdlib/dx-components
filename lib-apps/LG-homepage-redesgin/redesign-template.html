@@ -26,12 +26,17 @@
 
     <!-- START: LIBGUIDES CUSTOM HOME PAGE CONTENT -->
     <style>
+        body.s-lib-public-body main > *+*{
+            margin-block-end: 3rem;
+        }
         h1#s-lib-public-header-title,
-        section {
+        section, p:first-of-type {
             width: 90%;
             margin: 0 auto;
         }
-
+        section{
+            padding: 2.5rem;
+        }
         form[role="search"] {
             justify-content: initial !important;
         }
@@ -63,7 +68,7 @@
 
         .KAS-tiles-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
             gap: 1em;
         }
 
@@ -74,13 +79,21 @@
             flex: 1 0 45%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             border-radius: 8px;
             text-decoration: none;
             text-align: center;
             transition: background-color .3s linear;
             position: relative;
-
+            &:hover,&:has(a.KAS-tile__target-link:focus) {
+                background-color: #182b49;
+            }
+            &.KAS-tile--white{
+                background-color: #fff;
+                color: #182b49;
+                &:hover,&:has(a.KAS-tile__target-link:focus){
+                    background-color: #FFCD00;
+                }
+            }
             
             & .KAS-tile__body {
                 svg {
@@ -99,7 +112,19 @@
     
             }
         }
-
+        #featured{
+            background-color: #F5f0E6;
+        }
+        #research-essentials{
+            h2{color: #fff !important;}
+            background-image: url('https://cdn.ucsd.edu/cms/decorator-5/img/bg-orbs-1.jpg');
+            background-position: 50%;
+            background-repeat:no-repeat ;
+        }
+        #need-assistance{
+            h2{color: #fff !important;}
+            background-image: url('https://department.ucsd.edu/_images/image-library/cta-inset/ctainset-simple-grit-navy-on-blue.png');
+        }
         @media (min-width: 875px) {
 
             form[role="search"] .form-group {
@@ -117,20 +142,16 @@
             to discover resources and tools that help you learn, explore, and share your work.</p>
         <section>
             <h2 class="visually-hidden">Search our Research Guides</h2>
-            {{search_guides}}
+            <!-- Waiting to explore this after other elements of the redesign are addressed.
+            
+            {{search_guides}} -->
             <div class="KAS-tiles-container">
                 <div class="KAS-tile">
                     <div class="KAS-tile__body">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                            <path
-                                d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z"
-                                fill="currentColor" />
-                        </svg>
-                        <h3 class="KAS-tile__heading">Schedule a Consultation</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z" fill="currentColor"/></svg>
+                        <h3 class="KAS-tile__heading">Subject Guides</h3>
                         <!-- hello -->
-                        <p class="KAS-tile__lead">See availability and book an appointment with the scholarly communications
-                            librarian.</p>
+                        <p class="KAS-tile__lead">Explore organized guides to resources in your field.</p>
                     </div>
                     <a aria-label="Subject Guides" class="KAS-tile__target-link" href="https://ucsd.libguides.com/sb.php">
                     </a>
@@ -157,17 +178,65 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section id="featured">
             <h2 id="s-lib-public-header-desc">Featured</h2>
-            <!-- Featured -->
+            <script>springshare_widget_config_1772472269610 = { path: 'guides', link_text: 'Guides' };</script><div id="s-lg-widget-1772472269610"></div><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://lgapi-us.libapps.com/widgets.php?site_id=55&widget_type=1&search_terms=&search_match=2&sort_by=name&list_format=1&drop_text=Select+a+Guide...&output_format=1&load_type=2&enable_description=0&enable_group_search_limit=0&enable_subject_search_limit=0&group_ids%5B0%5D=34787&widget_title=Guide+List&widget_height=250&widget_width=100%25&widget_link_color=2954d1&widget_embed_type=1&num_results=0&enable_more_results=1&window_target=2&bs5_widget=0&config_id=1772472269610";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","s-lg-widget-script-1772472269610");</script>
         </section>
-        <section>
+        <section id="research-essentials">
             <h2 id="s-lib-public-header-desc">Research Essentials</h2>
-            <!-- Research Essentials -->
+            <div id="tabs-cotnainer">
+                <div id="tabs-list" role="tablist" aria-labelledby="s-lib-public-header-desc">
+                    <button type="button" role="tab" class="tab" id="tab-1" aria-controls="tabpanel-1" aria-selected="true">
+                        <span>Start Research</span>
+                    </button>
+                    <button tabindex="-1" type="button" role="tab" class="tab" id="tab-2" aria-controls="tabpanel-2" aria-selected="false">
+                        <span>Cite Sources</span>
+                    </button>
+                    <button tabindex="-1" type="button" role="tab" class="tab" id="tab-3" aria-controls="tabpanel-3" aria-selected="false">
+                        <span>Share Your Work</span>
+                    </button>
+                    <button tabindex="-1" type="button" role="tab" class="tab" id="tab-4" aria-controls="tabpanel-4" aria-selected="false">
+                        <span>After Publishing</span>
+                    </button>
+                </div>
+                <div id="tab-panel-1" role="tabpanel" aria-labelledby="tab-1">
+                    <p>Content</p>
+                </div>
+                <div id="tab-panel-2" role="tabpanel" aria-labelledby="tab-2" class="hidden">
+                    <p>Content</p>
+                </div>
+                <div id="tab-panel-3" role="tabpanel" aria-labelledby="tab-3">
+                    <p>Content</p>
+                </div>
+                <div id="tab-panel-4" role="tabpanel" aria-labelledby="tab-4">
+                    <p>Content</p>
+                </div>
+            </div>
         </section>
-        <section>
+        <section id="need-assistance">
             <h2 id="s-lib-public-header-desc">Need Assistance?</h2>
-            <!-- Assitance -->
+                        <div class="KAS-tiles-container">
+                <div class="KAS-tile KAS-tile--white">
+                    <div class="KAS-tile__body">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M224 64C241.7 64 256 78.3 256 96L256 128L384 128L384 96C384 78.3 398.3 64 416 64C433.7 64 448 78.3 448 96L448 128L480 128C515.3 128 544 156.7 544 192L544 480C544 515.3 515.3 544 480 544L160 544C124.7 544 96 515.3 96 480L96 192C96 156.7 124.7 128 160 128L192 128L192 96C192 78.3 206.3 64 224 64zM160 304L160 336C160 344.8 167.2 352 176 352L208 352C216.8 352 224 344.8 224 336L224 304C224 295.2 216.8 288 208 288L176 288C167.2 288 160 295.2 160 304zM288 304L288 336C288 344.8 295.2 352 304 352L336 352C344.8 352 352 344.8 352 336L352 304C352 295.2 344.8 288 336 288L304 288C295.2 288 288 295.2 288 304zM432 288C423.2 288 416 295.2 416 304L416 336C416 344.8 423.2 352 432 352L464 352C472.8 352 480 344.8 480 336L480 304C480 295.2 472.8 288 464 288L432 288zM160 432L160 464C160 472.8 167.2 480 176 480L208 480C216.8 480 224 472.8 224 464L224 432C224 423.2 216.8 416 208 416L176 416C167.2 416 160 423.2 160 432zM304 416C295.2 416 288 423.2 288 432L288 464C288 472.8 295.2 480 304 480L336 480C344.8 480 352 472.8 352 464L352 432C352 423.2 344.8 416 336 416L304 416zM416 432L416 464C416 472.8 423.2 480 432 480L464 480C472.8 480 480 472.8 480 464L480 432C480 423.2 472.8 416 464 416L432 416C423.2 416 416 423.2 416 432z" fill="currentColor"/></svg>
+                        <h3 class="KAS-tile__heading">Schedule a Consultation</h3>
+                        <!-- hello -->
+                        <p class="KAS-tile__lead">Get personalized help on any research question.</p>
+                    </div>
+                    <a aria-label="Schedule a Consultation" class="KAS-tile__target-link" href="https://ucsd.libcal.com/appointments?lid=5181">
+                    </a>
+                </div>
+                <div class="KAS-tile KAS-tile--white">
+                    <div class="KAS-tile__body">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M415.9 344L225 344C227.9 408.5 242.2 467.9 262.5 511.4C273.9 535.9 286.2 553.2 297.6 563.8C308.8 574.3 316.5 576 320.5 576C324.5 576 332.2 574.3 343.4 563.8C354.8 553.2 367.1 535.8 378.5 511.4C398.8 467.9 413.1 408.5 416 344zM224.9 296L415.8 296C413 231.5 398.7 172.1 378.4 128.6C367 104.2 354.7 86.8 343.3 76.2C332.1 65.7 324.4 64 320.4 64C316.4 64 308.7 65.7 297.5 76.2C286.1 86.8 273.8 104.2 262.4 128.6C242.1 172.1 227.8 231.5 224.9 296zM176.9 296C180.4 210.4 202.5 130.9 234.8 78.7C142.7 111.3 74.9 195.2 65.5 296L176.9 296zM65.5 344C74.9 444.8 142.7 528.7 234.8 561.3C202.5 509.1 180.4 429.6 176.9 344L65.5 344zM463.9 344C460.4 429.6 438.3 509.1 406 561.3C498.1 528.6 565.9 444.8 575.3 344L463.9 344zM575.3 296C565.9 195.2 498.1 111.3 406 78.7C438.3 130.9 460.4 210.4 463.9 296L575.3 296z" fill="currentColor"/></svg>
+                        <h3 class="KAS-tile__heading" >Connect to Library Resources</h3>
+                        <!-- hello -->
+                        <p class="KAS-tile__lead">Access UC San Diego Library resources from anywhere.</p>
+                    </div>
+                    <a aria-label="Access UC San Diego Library resources" class="KAS-tile__target-link" href="https://library.ucsd.edu/computing-and-technology/connect-to-library-resources.html">
+                    </a>
+                </div>
+            </div>
         </section>
         <!-- BEGIN: Custom Footer -->
         {{public_footer}}
