@@ -357,106 +357,113 @@ a.tag {
         padding-inline-start: 1rem;
         flex: 0 1 min(20%, 150px);
         min-width: min(45%, 250px);
-        background-image: url('data:image/svg+xml;
- utf8, <svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg" > <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5" /> </svg>');
- background-repeat: no-repeat;
-                background-position: right 1rem center;
-
-                select {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                inset: 0;
-                opacity: 0;
-                color: #000;
-            }
-
-            #select-label {
-                max-width: 18ch;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-            }
-        }
-    }
-
-    /*CTA*/
-    /*styling CTAs*/
-    .cta {
-        background-size: cover;
+        background-image: url('data:image/svg+xml; utf8, <svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg" > <path d="M28.4971 1.45319L15.7236 14.7236L1.49979 1.87096" stroke="white" stroke-width="3.5" /> </svg>');
         background-repeat: no-repeat;
-        background-position: 50%;
-        color: inherit;
-        padding: 30px;
-        container: cta-content / inline-size;
-    }
+        background-position: right 1rem center;
 
-    .cta--standard {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 30px;
-        background-image: url("https://library.ucsd.edu/_files/research-and-collections/images/Custom-CTA-Inset-Background-Sand-1.png");
-    }
-
-    .cta--standard__content {
-        display: flex;
-        padding: 30px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-        align-self: stretch;
-
-        p {
-            max-width: 70%;
-        }
-    }
-
-    .cta--standard__button-container {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        column-gap: 1rem;
-        min-width: 110%;
-        margin-right: -10px;
-
-        .btn-primary {
-            display: flex;
-            width: fit-content;
-            min-width: 100px !important;
-            padding: 12px 24px;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-    }
-
-    .cta--explore {
-        display: flex;
-        align-items: flex-start;
-        background: url("https://cdn.ucsd.edu/cms/decorator-5/img/bg-grit-pattern.jpg");
-    }
-
-    .cta--explore__content {
-        background-color: white;
-        border-radius: 5px;
-        padding: 30px;
-        margin: 0;
-        width: 90%;
-    }
-
-    .cta--explore__link {
-        font-weight: bold;
-    }
-
-    @container cta-content (width <=635px) {
-        .cta--standard__content, .cta--explore__content {
+        select {
             width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            color: #000;
+        }
+
+        #select-label {
+            max-width: 18ch;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
         }
     }
+}
 
-    .cta--inset {
+/*CTA*/
+/*styling CTAs*/
+.cta {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    color: inherit;
+    padding: 30px;
+    container: cta-content / inline-size;
+
+    &.one-orb-bg {
+        background-image: url("https://cdn.ucsd.edu/cms/decorator-5/img/bg-grit-orbs-1.jpg");
+        background-position-y: 90%;
+        background-position-x: 55%;
+        background-size: auto;
+    }
+}
+
+.cta--standard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;
+    background-image: url("https://library.ucsd.edu/_files/research-and-collections/images/Custom-CTA-Inset-Background-Sand-1.png");
+}
+
+.cta--standard__content {
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    align-self: stretch;
+
+    p {
+        max-width: 70%;
+    }
+}
+
+.cta--standard__button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    min-width: 110%;
+    margin-right: -10px;
+
+    .btn-primary {
+        display: flex;
+        width: fit-content;
+        min-width: 100px !important;
+        padding: 12px 24px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.cta--inset {
+    display: flex;
+}
+
+.cta--inset__content {
+    background-color: white;
+    border-radius: 5px;
+    padding: 30px;
+    margin: 0;
+    width: calc(100%/2 + 3rem);
+}
+
+.cta--inset__link {
+    font-weight: bold;
+}
+
+@container cta-content (width <=635px) {
+
+    .cta--standard__content,
+    .cta--inset__content {
+        width: 100%;
+    }
+}
+
+/* The cta--inset needs to be adjusted to fit styling conventions */
+/* .cta--inset {
         display: flex;
         justify-content: end;
 
@@ -470,24 +477,25 @@ a.tag {
         .btn {
             margin-block-start: 1rem;
         }
-    }
+    } */
 
-    @media (width <=745px) {
-        .cta .cta--inset__body {
-            flex-basis: 100%;
-        }
+@media (width <=745px) {
+    .cta .cta--inset__body {
+        flex-basis: 100%;
     }
+}
 
-    .cta--inset.inset--left {
-        justify-content: start;
-    }
+.cta--inset.inset--left {
+    justify-content: start;
+}
 
-    /*WIDGETS*/
-    #libchat_070d032c4d798fce78451e64a2d0f0ea .lci_chat_load, #libchat_070d032c4d798fce78451e64a2d0f0ea iframe {
-        height: 500px !important;
-        border-radius: 14px;
-    }
+/*WIDGETS*/
+#libchat_070d032c4d798fce78451e64a2d0f0ea .lci_chat_load,
+#libchat_070d032c4d798fce78451e64a2d0f0ea iframe {
+    height: 500px !important;
+    border-radius: 14px;
+}
 
-    #s-la-dataNotice a {
-        font-weight: bold;
-    }
+#s-la-dataNotice a {
+    font-weight: bold;
+}
