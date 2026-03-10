@@ -13,13 +13,15 @@
 }
 
 /*LAYOUTS*/
-.grid{
+.grid {
     display: grid;
     gap: 10px;
-    &.three-by-two{
+
+    &.three-by-two {
         grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
     }
-    &.four-by-one{
+
+    &.four-by-one {
         grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
     }
 
@@ -28,9 +30,11 @@
 .main-stack>*+*:not(:nth-child(2)) {
     margin-block-start: 2rem;
 }
-.stack>*+*{
+
+.stack>*+* {
     margin-block-start: 1rem;
 }
+
 .flex-50-50 {
     display: flex;
     gap: 16px;
@@ -126,13 +130,23 @@ li.card,
     border-radius: var(--corner-radius-brand);
     overflow: clip;
     position: relative;
-    &.white-bg{
+
+    &.white-bg {
         background-color: #fff;
         border: 1px solid var(--color-brand-neutral-stone, #B6B1A9);
-        & p,span{color: var(--color-brand-core-blue, #00629B);}
-        & svg{color: var(--color-brand-accent-magenta, #D462AD);}
+
+        & p,
+        span {
+            color: var(--color-brand-core-blue, #00629B);
+        }
+
+        & svg {
+            color: var(--color-brand-accent-magenta, #D462AD);
+        }
+
         /* hover and focus logic pending */
     }
+
     /* For usability/accessibility we're treating this an element of a card, not body */
     & a.card__link-target::after,
     a.tile__link-target::after {
@@ -161,7 +175,12 @@ li.card,
             padding-block: 10px;
             display: block;
         }
-        svg{height: 32px; width: 32px;}
+
+        svg {
+            height: 32px;
+            width: 32px;
+        }
+
         height: 100%;
     }
 
@@ -182,26 +201,38 @@ li.card,
     }
 }
 
-.card.card--featured {
-    /* this flex setting needs to be brough into the Content-type-listing page CSS. It's not global. */
-    flex: 0 0 calc(820px/3);
-    border: #000 1px solid;
+.featured-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding-inline-start: 0;
 
-    img {
-        display: inline-block;
-        width: 100%;
-        min-height: 380px;
-    }
+    & .card.card--featured {
+        /* this flex setting needs to be brough into the Content-type-listing page CSS. It's not global. */
+        flex: 0 0 calc(820px/3);
+        border: #000 1px solid;
 
-    & .card--featured__body {
-        color: #fff;
-        background-color: var(--color-brand-core-navy);
+        img {
+            display: inline-block;
+            width: 100%;
+            min-height: 380px;
+        }
 
-        span,
-        a {
+        & .card--featured__body {
             color: #fff;
+            background-color: var(--color-brand-core-navy);
+            &.white-bg{background-color: initial; 
+                h3{color: var(--color-brand-core-blue, #00629B);}
+                p{color: initial;}
+            }
+            span,
+            a {
+                color: #fff;
+            }
         }
     }
+
 }
 
 .card.card--horizontal {
@@ -212,22 +243,40 @@ li.card,
         position: relative;
         padding: 20px;
         color: var(--color-brand-core-navy);
-        
+
         p,
         span {
             color: var(--color-brand-core-navy);
         }
     }
-    & .card--horizontal__body--img{
+
+    & .card--horizontal__body--img {
         position: relative;
         display: flex;
         padding: 0px;
-        .card__body__content{
-            h3{color: var(--color-brand-core-blue, #00629B);}
-            address{text-decoration: underline;}
+
+        .card__body__content {
+            h3 {
+                color: var(--color-brand-core-blue, #00629B);
+            }
+
+            address {
+                text-decoration: underline;
+            }
+
             padding: 1rem 2rem;
-            .is-open{text-transform: uppercase; span{font: inherit;}}
-            .btn{display: block;}
+
+            .is-open {
+                text-transform: uppercase;
+
+                span {
+                    font: inherit;
+                }
+            }
+
+            .btn {
+                display: block;
+            }
         }
     }
 }

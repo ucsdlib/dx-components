@@ -26,12 +26,17 @@
 
     <!-- START: LIBGUIDES CUSTOM HOME PAGE CONTENT -->
     <style>
-        root{
+        root {
             --brand-heading3-font: 400 2.5rem/1.5 "Roboto";
         }
-        body.s-lib-public-body main>*+* {
-            margin-block-end: 3rem;
+        main{
+            max-width: 1350px;
+            width: 98%;
+            margin-inline: auto;
         }
+        /* body.s-lib-public-body main>*+* {
+            margin-block-end: 3rem;
+        } */
 
         h1#s-lib-public-header-title,
         section,
@@ -75,7 +80,7 @@
 
         .KAS-tiles-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
             gap: 1em;
         }
 
@@ -128,26 +133,36 @@
 
         #featured {
             background-color: #F5f0E6;
-            ul{
+
+            ul {
                 padding: 0;
                 display: grid;
-                grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
                 list-style: none;
-                li .fa-external-link{display: none;}
-                li a{font: var(--brand-heading3-font);  color: #182b49;}
+
+                li .fa-external-link {
+                    display: none;
+                }
+
+                li a {
+                    font: var(--brand-heading3-font);
+                    color: #182b49;
+                }
             }
-            & .s-lg-widget-list-more-results{
+
+            & .s-lg-widget-list-more-results {
                 display: none;
             }
-        } 
+        }
+
         #research-essentials {
             h2 {
                 color: #fff !important;
             }
-
             background-image: url('https://cdn.ucsd.edu/cms/decorator-5/img/bg-orbs-1.jpg');
             background-position: 50%;
             background-repeat:no-repeat;
+            .is-hidden{display: none;}
         }
 
         .tabs-list__tab[role="tab"][aria-selected="true"] {
@@ -263,16 +278,212 @@
                     </button>
                 </div>
                 <div id="tabpanel-1" class="tabpanel" role="tabpanel" aria-labelledby="tab-1">
-                    <p>Content</p>
+                    <div class="KAS-tiles-container">
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">Research Data Curation</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Explore organized guides to resources in your field.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/sb.php">
+                            </a>
+                        </div>
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M128 128C128 92.7 156.7 64 192 64L341.5 64C358.5 64 374.8 70.7 386.8 82.7L493.3 189.3C505.3 201.3 512 217.6 512 234.6L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 128zM336 122.5L336 216C336 229.3 346.7 240 360 240L453.5 240L336 122.5zM248 320C234.7 320 224 330.7 224 344C224 357.3 234.7 368 248 368L392 368C405.3 368 416 357.3 416 344C416 330.7 405.3 320 392 320L248 320zM248 416C234.7 416 224 426.7 224 440C224 453.3 234.7 464 248 464L392 464C405.3 464 416 453.3 416 440C416 426.7 405.3 416 392 416L248 416z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">Finding Data &amp; Statistics</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Find materials and guidance specific to your class.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/courseguides">
+                            </a>
+                        </div>
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M544 269.8C529.2 279.6 512.2 287.5 494.5 293.8C447.5 310.6 385.8 320 320 320C254.2 320 192.4 310.5 145.5 293.8C127.9 287.5 110.8 279.6 96 269.8L96 352C96 396.2 196.3 432 320 432C443.7 432 544 396.2 544 352L544 269.8zM544 192L544 144C544 99.8 443.7 64 320 64C196.3 64 96 99.8 96 144L96 192C96 236.2 196.3 272 320 272C443.7 272 544 236.2 544 192zM494.5 453.8C447.6 470.5 385.9 480 320 480C254.1 480 192.4 470.5 145.5 453.8C127.9 447.5 110.8 439.6 96 429.8L96 496C96 540.2 196.3 576 320 576C443.7 576 544 540.2 544 496L544 429.8C529.2 439.6 512.2 447.5 494.5 453.8z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">A-Z Databases</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Find databases and information resources.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/az.php">
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div id="tabpanel-2" class="tabpanel" role="tabpanel" aria-labelledby="tab-2" class="hidden">
-                    <p>Content</p>
+                    <div class="KAS-tiles-container">
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">How to cite</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Explore organized guides to resources in your field.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/sb.php">
+                            </a>
+                        </div>
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M128 128C128 92.7 156.7 64 192 64L341.5 64C358.5 64 374.8 70.7 386.8 82.7L493.3 189.3C505.3 201.3 512 217.6 512 234.6L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 128zM336 122.5L336 216C336 229.3 346.7 240 360 240L453.5 240L336 122.5zM248 320C234.7 320 224 330.7 224 344C224 357.3 234.7 368 248 368L392 368C405.3 368 416 357.3 416 344C416 330.7 405.3 320 392 320L248 320zM248 416C234.7 416 224 426.7 224 440C224 453.3 234.7 464 248 464L392 464C405.3 464 416 453.3 416 440C416 426.7 405.3 416 392 416L248 416z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">EndNote Online</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Find materials and guidance specific to your class.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/courseguides">
+                            </a>
+                        </div>
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M544 269.8C529.2 279.6 512.2 287.5 494.5 293.8C447.5 310.6 385.8 320 320 320C254.2 320 192.4 310.5 145.5 293.8C127.9 287.5 110.8 279.6 96 269.8L96 352C96 396.2 196.3 432 320 432C443.7 432 544 396.2 544 352L544 269.8zM544 192L544 144C544 99.8 443.7 64 320 64C196.3 64 96 99.8 96 144L96 192C96 236.2 196.3 272 320 272C443.7 272 544 236.2 544 192zM494.5 453.8C447.6 470.5 385.9 480 320 480C254.1 480 192.4 470.5 145.5 453.8C127.9 447.5 110.8 439.6 96 429.8L96 496C96 540.2 196.3 576 320 576C443.7 576 544 540.2 544 496L544 429.8C529.2 439.6 512.2 447.5 494.5 453.8z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">Copyright &amp; Fair Use</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Find databases and information resources.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/az.php">
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div id="tabpanel-3" class="tabpanel" role="tabpanel" aria-labelledby="tab-3">
-                    <p>Content</p>
+                    <div class="KAS-tiles-container">
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">Oepn Access Publishing &amp; Policies</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Explore organized guides to resources in your field.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/sb.php">
+                            </a>
+                        </div>
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M128 128C128 92.7 156.7 64 192 64L341.5 64C358.5 64 374.8 70.7 386.8 82.7L493.3 189.3C505.3 201.3 512 217.6 512 234.6L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 128zM336 122.5L336 216C336 229.3 346.7 240 360 240L453.5 240L336 122.5zM248 320C234.7 320 224 330.7 224 344C224 357.3 234.7 368 248 368L392 368C405.3 368 416 357.3 416 344C416 330.7 405.3 320 392 320L248 320zM248 416C234.7 416 224 426.7 224 440C224 453.3 234.7 464 248 464L392 464C405.3 464 416 453.3 416 440C416 426.7 405.3 416 392 416L248 416z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">Scholarly Communication</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Find materials and guidance specific to your class.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/courseguides">
+                            </a>
+                        </div>
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M544 269.8C529.2 279.6 512.2 287.5 494.5 293.8C447.5 310.6 385.8 320 320 320C254.2 320 192.4 310.5 145.5 293.8C127.9 287.5 110.8 279.6 96 269.8L96 352C96 396.2 196.3 432 320 432C443.7 432 544 396.2 544 352L544 269.8zM544 192L544 144C544 99.8 443.7 64 320 64C196.3 64 96 99.8 96 144L96 192C96 236.2 196.3 272 320 272C443.7 272 544 236.2 544 192zM494.5 453.8C447.6 470.5 385.9 480 320 480C254.1 480 192.4 470.5 145.5 453.8C127.9 447.5 110.8 439.6 96 429.8L96 496C96 540.2 196.3 576 320 576C443.7 576 544 540.2 544 496L544 429.8C529.2 439.6 512.2 447.5 494.5 453.8z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">Creating Scholarly Posters in PowerPoint</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Find databases and information resources.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/az.php">
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div id="tabpanel-4" class="tabpanel" role="tabpanel" aria-labelledby="tab-4">
-                    <p>Content</p>
+                    <div class="KAS-tiles-container">
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">Measuring Impact</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Explore organized guides to resources in your field.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/sb.php">
+                            </a>
+                        </div>
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M128 128C128 92.7 156.7 64 192 64L341.5 64C358.5 64 374.8 70.7 386.8 82.7L493.3 189.3C505.3 201.3 512 217.6 512 234.6L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 128zM336 122.5L336 216C336 229.3 346.7 240 360 240L453.5 240L336 122.5zM248 320C234.7 320 224 330.7 224 344C224 357.3 234.7 368 248 368L392 368C405.3 368 416 357.3 416 344C416 330.7 405.3 320 392 320L248 320zM248 416C234.7 416 224 426.7 224 440C224 453.3 234.7 464 248 464L392 464C405.3 464 416 453.3 416 440C416 426.7 405.3 416 392 416L248 416z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">Course Guides</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Find materials and guidance specific to your class.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/courseguides">
+                            </a>
+                        </div>
+                        <div class="KAS-tile">
+                            <div class="KAS-tile__body">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M544 269.8C529.2 279.6 512.2 287.5 494.5 293.8C447.5 310.6 385.8 320 320 320C254.2 320 192.4 310.5 145.5 293.8C127.9 287.5 110.8 279.6 96 269.8L96 352C96 396.2 196.3 432 320 432C443.7 432 544 396.2 544 352L544 269.8zM544 192L544 144C544 99.8 443.7 64 320 64C196.3 64 96 99.8 96 144L96 192C96 236.2 196.3 272 320 272C443.7 272 544 236.2 544 192zM494.5 453.8C447.6 470.5 385.9 480 320 480C254.1 480 192.4 470.5 145.5 453.8C127.9 447.5 110.8 439.6 96 429.8L96 496C96 540.2 196.3 576 320 576C443.7 576 544 540.2 544 496L544 429.8C529.2 439.6 512.2 447.5 494.5 453.8z"
+                                        fill="currentColor" />
+                                </svg>
+                                <h3 class="KAS-tile__heading">A-Z Databases</h3>
+                                <!-- hello -->
+                                <p class="KAS-tile__lead">Find databases and information resources.</p>
+                            </div>
+                            <a aria-label="Subject Guides" class="KAS-tile__target-link"
+                                href="https://ucsd.libguides.com/az.php">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
