@@ -1,8 +1,9 @@
 /*VARIABLES/CUSTOM Properties*/
 :root {
     --color-brand-accent-magenta: #D462AD;
+    --color-brand-accent-orange: #FC8900;
     --color-brand-accent-magenta-hover: #CA3F9B;
-    --color-brand-accent-turqoise: #00C6D7;
+    --color-brand-accent-turquoise: #00C6D7;
     --color-brand-core-blue: #00629B;
     --color-brand-core-navy: #182B49;
     --color-brand-neutral-stone: #B6B1A9;
@@ -165,7 +166,7 @@ li.card,
         padding-inline: 10px;
         padding-block-end: 1rem;
         text-wrap-style: pretty;
-
+        height: fit-content;
         a {
             text-decoration: none;
         }
@@ -180,23 +181,21 @@ li.card,
             height: 32px;
             width: 32px;
         }
-
-        height: 100%;
     }
 
     & .card__toolbar,
     .tile__toolbar {
         padding-block: 1rem;
         padding-inline-start: 20px;
-
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem 1rem;
         &.toolbar--fill {
             background-color: var(--color-brand-core-navy);
 
-            .tag {
-                color: #333;
-                font-weight: 600;
-                background-color: var(--color-brand-accent-magenta);
-            }
+        }
+        .tag {
+            color: #333;
         }
     }
 }
@@ -225,6 +224,15 @@ li.card,
             &.white-bg{background-color: initial; 
                 h3{color: var(--color-brand-core-blue, #00629B);}
                 p{color: initial;}
+            }
+            &.spaces{
+                span{
+                    text-transform: uppercase;
+                    color: initial;
+                    font-size: 14px;
+                    font-weight: 600;
+                    padding-bottom: 0;
+                }
             }
             span,
             a {
@@ -320,12 +328,32 @@ li.card,
 }
 
 /*Tags*/
-tag,
+.tag,
 a.tag {
     border-radius: var(--corner-radius-brand) 0px;
     padding: 8px 16px;
     display: inline-block;
-    border: 2px solid var(--color-brand-accent-magenta);
+    &.magenta{
+        border: 2px solid var(--color-brand-accent-magenta);
+    }
+    &.magenta--fill{
+        border: 2px solid var(--color-brand-accent-magenta);
+        background-color: var(--color-brand-accent-magenta);
+    }
+    &.orange{
+        border: 2px solid var(--color-brand-accent-orange);
+    }
+    &.orange--fill{
+        border: 2px solid var(--color-brand-accent-orange);
+        background-color: var(--color-brand-accent-orange);
+    }
+    &.turquoise{
+        border: 2px solid var(--color-brand-accent-turquoise);
+    }
+    &.turquoise--fill{
+        border: 2px solid var(--color-brand-accent-turquoise);
+        background-color: var(--color-brand-accent-turquoise);
+    }
     text-decoration: none;
 
     &:hover {

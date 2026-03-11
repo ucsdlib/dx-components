@@ -29,11 +29,13 @@
         root {
             --brand-heading3-font: 400 2.5rem/1.5 "Roboto";
         }
-        main{
+
+        main {
             max-width: 1350px;
             width: 98%;
             margin-inline: auto;
         }
+
         /* body.s-lib-public-body main>*+* {
             margin-block-end: 3rem;
         } */
@@ -80,7 +82,7 @@
 
         .KAS-tiles-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
             gap: 1em;
         }
 
@@ -159,21 +161,40 @@
             h2 {
                 color: #fff !important;
             }
+
             background-image: url('https://cdn.ucsd.edu/cms/decorator-5/img/bg-orbs-1.jpg');
-            background-position: 50%;
-            background-repeat:no-repeat;
-            .is-hidden{display: none;}
+
+            .is-hidden {
+                display: none;
+            }
         }
 
-        .tabs-list__tab[role="tab"][aria-selected="true"] {
-            padding: 2px 2px 4px;
-            margin-top: 0;
-            border-width: 2px;
-            border-top-width: 6px;
-            border-top-color: rgb(36 116 214);
-            border-bottom-color: hsl(220deg 43% 99%);
-            background: hsl(220deg 43% 99%);
+        #tabs-container {
+            .tabslist {
+                container: tabs-list / inline-size;
+                border-bottom: 1px solid #fff;
+                margin-block-end: 1rem;
+                display: flex;
+                display: flex;
+                flex-direction: column;
+                height: 44px;
+                &.is-open{height: fit-content;}
+                .tabslist__tab {
+                    background: none;
+                    border: none;
+                    span {
+                        text-transform: uppercase;
+                        color: #fff;
+                    }
+                }
+
+                .tabslist__tab[aria-selected="true"] {
+                    border-bottom: 2.5px #fff solid;
+                    &.in-mobile{order: 1;}
+                }
+            }
         }
+
 
         #need-assistance {
             h2 {
@@ -262,18 +283,18 @@
         </section>
         <section id="research-essentials">
             <h2 id="s-lib-public-header-desc">Research Essentials</h2>
-            <div id="tabs-cotnainer">
-                <div id="tabs-list" role="tablist" aria-labelledby="s-lib-public-header-desc">
-                    <button type="button" role="tab" class="tabs-list__tab" id="tab-1" aria-controls="tabpanel-1">
+            <div id="tabs-container">
+                <div id="tabs-list" role="tablist" class="tabslist" aria-labelledby="s-lib-public-header-desc">
+                    <button type="button" role="tab" class="tabslist__tab" id="tab-1" aria-controls="tabpanel-1">
                         <span>Start Research</span>
                     </button>
-                    <button type="button" role="tab" class="tabs-list__tab" id="tab-2" aria-controls="tabpanel-2">
+                    <button type="button" role="tab" class="tabslist__tab" id="tab-2" aria-controls="tabpanel-2">
                         <span>Cite Sources</span>
                     </button>
-                    <button type="button" role="tab" class="tabs-list__tab" id="tab-3" aria-controls="tabpanel-3">
+                    <button type="button" role="tab" class="tabslist__tab" id="tab-3" aria-controls="tabpanel-3">
                         <span>Share Your Work</span>
                     </button>
-                    <button type="button" role="tab" class="tabs-list__tab" id="tab-4" aria-controls="tabpanel-4">
+                    <button type="button" role="tab" class="tabslist__tab" id="tab-4" aria-controls="tabpanel-4">
                         <span>After Publishing</span>
                     </button>
                 </div>
@@ -381,7 +402,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="tabpanel-3" class="tabpanel" role="tabpanel" aria-labelledby="tab-3">
+                <div id="tabpanel-3" class="tabpanel is-hidden" role="tabpanel" aria-labelledby="tab-3">
                     <div class="KAS-tiles-container">
                         <div class="KAS-tile">
                             <div class="KAS-tile__body">
@@ -433,7 +454,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="tabpanel-4" class="tabpanel" role="tabpanel" aria-labelledby="tab-4">
+                <div id="tabpanel-4" class="tabpanel is-hidden" role="tabpanel" aria-labelledby="tab-4">
                     <div class="KAS-tiles-container">
                         <div class="KAS-tile">
                             <div class="KAS-tile__body">
