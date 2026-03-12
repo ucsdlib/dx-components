@@ -172,14 +172,19 @@
         #tabs-container {
             .tabslist {
                 container: tabs-list / inline-size;
-                border-bottom: 1px solid #fff;
-                margin-block-end: 1rem;
-                display: flex;
+                /* border-bottom: 1px solid #fff; */
+                margin-block-end: 3rem;
                 display: flex;
                 flex-direction: column;
-                height: 44px;
-                &.is-open{height: fit-content;}
-                .tabslist__tab {
+                overflow-y: hidden;
+                max-height: 44px;
+
+                &.is-open {
+                    min-height: fit-content;
+                }
+
+                & .tabslist__tab{
+                    min-height: 44px;
                     background: none;
                     border: none;
                     span {
@@ -188,9 +193,24 @@
                     }
                 }
 
+                #selected-display-mobile {
+                    text-transform: uppercase;
+                    color: #fff;
+                    font-family: inherit;
+                    font-size: inherit;
+                    line-height: inherit;
+                    text-align: center;
+                    padding-block: 1rem;
+                    padding-inline: 6px;
+                    min-height: 44px;
+                    background: none;
+                    border-bottom: 2px solid #00C6D7;
+
+                }
+
                 .tabslist__tab[aria-selected="true"] {
-                    border-bottom: 2.5px #fff solid;
-                    &.in-mobile{order: 1;}
+                    background-color: #fff;
+                    span{color: #00629B;}
                 }
             }
         }
@@ -285,6 +305,7 @@
             <h2 id="s-lib-public-header-desc">Research Essentials</h2>
             <div id="tabs-container">
                 <div id="tabs-list" role="tablist" class="tabslist" aria-labelledby="s-lib-public-header-desc">
+                    <div id="selected-display-mobile" aria-hidden="true">Big Test</div>
                     <button type="button" role="tab" class="tabslist__tab" id="tab-1" aria-controls="tabpanel-1">
                         <span>Start Research</span>
                     </button>
