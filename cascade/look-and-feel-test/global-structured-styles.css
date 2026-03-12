@@ -4,12 +4,13 @@
     --color-brand-accent-orange: #FC8900;
     --color-brand-accent-magenta-hover: #CA3F9B;
     --color-brand-accent-turquoise: #00C6D7;
+    --color-brand-accent-sand: #F5F0E6;
     --color-brand-core-blue: #00629B;
     --color-brand-core-navy: #182B49;
     --color-brand-neutral-stone: #B6B1A9;
     --corner-radius-brand: 8px;
     --color-brand-core-yellow: #ffcd00;
-    --brand-border: solid 1px var(--color-brand-core-navy);
+    --brand-border: solid 1px;
     --brand-heading3-font: 400 1.5rem/1.5 "Roboto";
 }
 
@@ -131,6 +132,12 @@ li.card,
     border-radius: var(--corner-radius-brand);
     overflow: clip;
     position: relative;
+    border: 1px solid var(--color-brand-neutral-stone, #B6B1A9);
+    transition: background-color .3s ease-in-out;
+    img {
+        display: inline-block;
+        /* width: 100%; */
+    }
 
     &.white-bg {
         background-color: #fff;
@@ -163,10 +170,11 @@ li.card,
 
     & .card__body,
     .tile__body {
-        padding-inline: 10px;
-        padding-block-end: 1rem;
+        /* padding-inline: 10px; */
+        padding-block-end: .5rem;
         text-wrap-style: pretty;
         height: fit-content;
+        position: relative;
         a {
             text-decoration: none;
         }
@@ -185,15 +193,17 @@ li.card,
 
     & .card__toolbar,
     .tile__toolbar {
-        padding-block: 1rem;
-        padding-inline-start: 20px;
+        padding-block: 0 1rem;
+        padding-inline-start: 10px;
         display: flex;
         flex-wrap: wrap;
         gap: .5rem 1rem;
+
         &.toolbar--fill {
             background-color: var(--color-brand-core-navy);
-
+        
         }
+
         .tag {
             color: #333;
         }
@@ -204,29 +214,37 @@ li.card,
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: .5rem;
     padding-inline-start: 0;
 
     & .card.card--featured {
         /* this flex setting needs to be brough into the Content-type-listing page CSS. It's not global. */
-        flex: 0 0 calc(820px/3);
-        border: #000 1px solid;
+        flex: 0 0 calc(840px/3);
 
-        img {
-            display: inline-block;
-            width: 100%;
-            min-height: 380px;
-        }
-
+        &:hover, &:has(a.card__link-target:focus) {background-color: var(--color-brand-accent-sand, #F5F0E6);}
         & .card--featured__body {
+            img {
+                width: 100%;
+                min-height: 300px;
+                object-fit: cover;
+            }
             color: #fff;
             background-color: var(--color-brand-core-navy);
-            &.white-bg{background-color: initial; 
-                h3{color: var(--color-brand-core-blue, #00629B);}
-                p{color: initial;}
+            h3, p,span{margin-inline:10px;}
+            &.white-bg {
+                background-color: initial;
+
+                h3 {
+                    color: var(--color-brand-core-blue, #00629B);
+                }
+
+                p {
+                    color: initial;
+                }
             }
-            &.spaces{
-                span{
+
+            &.spaces {
+                span {
                     text-transform: uppercase;
                     color: initial;
                     font-size: 14px;
@@ -234,6 +252,7 @@ li.card,
                     padding-bottom: 0;
                 }
             }
+
             span,
             a {
                 color: #fff;
@@ -244,7 +263,6 @@ li.card,
 }
 
 .card.card--horizontal {
-    border: var(--brand-border);
     margin-block-end: 1rem;
 
     & .card--horizontal__body {
@@ -295,7 +313,7 @@ li.card,
     background-color: var(--color-brand-core-blue);
 
     p,
-    span {
+    span, svg {
         color: #fff;
     }
 
@@ -331,29 +349,36 @@ li.card,
 .tag,
 a.tag {
     border-radius: var(--corner-radius-brand) 0px;
-    padding: 8px 16px;
+    padding: 4px 8px;
     display: inline-block;
-    &.magenta{
+
+    &.magenta {
         border: 2px solid var(--color-brand-accent-magenta);
     }
-    &.magenta--fill{
+
+    &.magenta--fill {
         border: 2px solid var(--color-brand-accent-magenta);
         background-color: var(--color-brand-accent-magenta);
     }
-    &.orange{
+
+    &.orange {
         border: 2px solid var(--color-brand-accent-orange);
     }
-    &.orange--fill{
+
+    &.orange--fill {
         border: 2px solid var(--color-brand-accent-orange);
         background-color: var(--color-brand-accent-orange);
     }
-    &.turquoise{
+
+    &.turquoise {
         border: 2px solid var(--color-brand-accent-turquoise);
     }
-    &.turquoise--fill{
+
+    &.turquoise--fill {
         border: 2px solid var(--color-brand-accent-turquoise);
         background-color: var(--color-brand-accent-turquoise);
     }
+
     text-decoration: none;
 
     &:hover {
