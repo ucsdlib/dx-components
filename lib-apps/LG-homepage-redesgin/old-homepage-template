@@ -1,0 +1,290 @@
+<body class="s-lib-public-body">
+
+	<!-- BEGIN: Page Header -->
+	{{public_header}}
+	<!-- END: Page Header -->
+
+	<!-- BEGIN: Content Header -->
+	<style>
+		#s-lib-public-header h1 {color: #00629b; letter-spacing: .5px; font-size: 39px; font-weight: 400; line-height: 1.1;}
+		#s-lib-public-header h2 {color: #333333; letter-spacing: .5px; font-size: 28px; font-weight: 400; line-height: 1.1;}
+	</style>
+	<div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
+		<div id="s-lib-bc">{{breadcrumbs}}</div>
+		<h1 id="s-lib-public-header-title">{{title}}</h1>
+		<h2><div id="s-lib-public-header-desc">{{system_intro}}</div></h2>
+	</div>
+	<!-- END: Content Header -->
+
+	<!-- BEGIN: Nav Bar--> 
+	<div id="s-lib-public-nav" class="container s-lib-side-borders">
+		{{page_nav}}
+		<div id="s-lg-guide-header" class="container s-lib-header s-lib-side-borders"></div>
+	</div>
+	<!--END: Nav Bar --> 
+
+	<!-- BEGIN: content -->
+	<div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders">
+		<div id="s-lg-index-cols"  class="row">
+			<div id="col1" class="col-md-8 center">
+				
+				
+<!-- START: LIBGUIDES CUSTOM HOME PAGE CONTENT -->
+<style>
+	main {display: flex;}
+	main > div {width: 33.333%}
+	main > div > div {margin-bottom: 1em; padding: 0 1em 0 0;}
+	main > div h3 {margin: 0 0 15px 0; font-size: 1.3em; font-weight: 700; font-family: "Roboto Condensed", sans-serif; border-bottom: 1px solid #6E963B; padding-bottom: 10px;}
+	main > div ul {margin: 0; padding: 0; list-style-type: none;}
+	main > div li {margin: 0 0 10px 0; padding: 0;}
+	main > div a {line-height: 1.2em; display: inline-block; font-size:1em;}
+	main .saz-col-1 li {margin-bottom: 15px;}
+	main .saz-col-2 li {margin-bottom: 15px;}
+	main .saz-col-3 li {margin-bottom: 5px;}
+	/* Extra Small Devices, Phones */ 
+	@media only screen and (max-width : 479px)
+	{
+		main {flex-direction: column;}
+		main > div {width: 100%;}
+		main > div h3 {font-size: 1.7em; border-bottom: 1px solid #ccc; padding-bottom: 10px;}
+		main > div a {font-size: 1.5em;}
+	}
+</style>
+<main>
+<div class="saz-col-1">
+
+	<div>
+		<h3>Arts &amp; Humanities</h3>
+		<ul>
+			<li><a href="https://ucsd.libguides.com/africanstudies">African Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/architecture">Architecture</a></li>
+			<li><a href="https://ucsd.libguides.com/sb.php?subject_id=21607">Chinese Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/classics">Classical Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/european">European Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/filmstudies">Film Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/History">History</a></li>
+			<li><a href="https://ucsd.libguides.com/histsci">History of Science</a></li>
+			<li><a href="https://ucsd.libguides.com/JapaneseStudies">Japanese Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/c.php?g=91081">Jewish Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/korea">Korean Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/c.php?g=123619">Literatures in English</a></li>
+			<li><a href="https://ucsd.libguides.com/c.php?g=90792">Literatures in Spanish &amp; Portuguese</a></li>
+			<li><a href="https://ucsd.libguides.com/middleeaststudies">Middle East Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/c.php?g=90800">Music</a></li>
+			<li><a href="https://ucsd.libguides.com/philosophy">Philosophy</a></li>
+			<li><a href="https://ucsd.libguides.com/religion">Religion</a></li>
+			<li><a href="https://ucsd.libguides.com/southasia">South Asian Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/td">Theatre &amp; Dance</a></li>
+			<li><a href="https://ucsd.libguides.com/c.php?g=91062">US History</a></li>
+			<li><a href="https://ucsd.libguides.com/sb.php?subject_id=21597">Visual Arts</a></li>
+			<li><a class="view-more" href="https://ucsd.libguides.com/arts-humanities">View more <span class="sr-only">Arts and Humanities guides.</span></a></li>
+		</ul>
+	</div>
+
+
+	<div>
+		<h3>Biological Sciences</h3>
+		<ul>
+			<li><a href="https://ucsd.libguides.com/biology">Biology</a></li>
+			<li><a class="view-more" href="https://ucsd.libguides.com/biological-sciences">View more <span class="sr-only">Biological Sciences guides.</span></a></li>
+		</ul>
+	</div>
+
+	<div>
+		<h3>Business</h3>
+		<ul>
+			<li><a href="https://ucsd.libguides.com/accounting">Accounting</a></li>
+			<li><a href="https://ucsd.libguides.com/business">Business</a></li>
+			<li><a href="https://ucsd.libguides.com/analytics">Business Analytics</a></li>
+			<li><a href="https://ucsd.libguides.com/busethics">Business Ethics &amp; CSR</a></li>
+			<li><a href="https://ucsd.libguides.com/careers">Careers, Jobs &amp; Internships</a></li>
+			<li><a href="https://ucsd.libguides.com/finance">Finance Research</a></li>
+			<li><a href="https://ucsd.libguides.com/marketresearch">Market Research & Entrepreneurship</a></li>
+			<li><a href="https://ucsd.libguides.com/PM">Project Management</a></li>
+			<li><a class="view-more" href="https://ucsd.libguides.com/allbizguides">View more <span class="sr-only">Business guides.</span></a></li>
+		</ul>
+	</div>
+
+</div>
+<div class="saz-col-2">
+
+	<div>
+		<h3>Climate, Earth, Marine, &amp; Oceanography (SIO)</h3>
+		<ul>
+			<li><a href="https://ucsd.libguides.com/climate">Climate &amp; Atmospheric Sciences</a></li>
+			<li><a href="https://ucsd.libguides.com/csp">Climate Science &amp; Policy</a></li>
+			<li><a href="https://ucsd.libguides.com/ecology">Ecology &amp; Environmental Science</a></li>
+			<li><a href="https://ucsd.libguides.com/geosciences">Geosciences, Geochemistry &amp; Geophysics</a></li>
+			<li><a href="https://ucsd.libguides.com/mbc">Marine Biodiversity &amp; Conservation</a></li>
+			<li><a href="https://ucsd.libguides.com/marine">Marine Biology</a></li>
+			<li><a href="https://library.ucsd.edu/research-and-collections/about/notable-collections/sio/index.html">Oceanography</a></li>
+			<li><a class="view-more" href="https://ucsd.libguides.com/earth-marine">View more <span class="sr-only">Climate, Earth, Marine, and Oceanography (SIO) guides.</span></a></li>
+		</ul>
+	</div>
+
+	<div>
+		<h3>Data &amp; GIS</h3>
+		<ul>
+			<li><a href="https://ucsd.libguides.com/data-science">Data Science</a></li>
+			<li><a href="https://ucsd.libguides.com/data-viz">Data Visualization</a></li>
+			<li><a href="https://ucsd.libguides.com/digital-scholarship">Digital Scholarship</a></li>
+			<li><a href="https://ucsd.libguides.com/data-statistics">Finding Data &amp; Stats</a></li>
+			<li><a href="https://ucsd.libguides.com/gis">GIS &amp; Geospatial Technologies</a></li>
+			<li><a class="view-more" href="https://ucsd.libguides.com/data-gis">View more <span class="sr-only">Data and GIS guides.</span></a></li>
+		</ul>
+	</div>
+
+	<div>
+		<h3>Engineering</h3>
+		<ul>
+			<li><a href="https://ucsd.libguides.com/beng">Bioengineering</a></li>
+			<li><a href="https://ucsd.libguides.com/chemeng">Chemical Engineering</a></li>
+			<li><a href="https://ucsd.libguides.com/csee">Computer Science &amp; Electrical Engineering</a></li>
+			<li><a href="https://ucsd.libguides.com/matsci">Materials Science</a></li>
+			<li><a href="https://ucsd.libguides.com/mae">Mechanical &amp; Aerospace Engineering</a></li>
+			<li><a href="https://ucsd.libguides.com/nano">NanoEngineering</a></li>
+			<li><a href="https://ucsd.libguides.com/se">Structural Engineering</a></li>
+			<li><a class="view-more" href="https://ucsd.libguides.com/engineering">View more <span class="sr-only">Engineering guides.</span></a></li>
+		</ul>
+	</div>
+
+	<div>
+		<h3>Government</h3>
+		<ul>
+			<li><a href="https://ucsd.libguides.com/cagovinfo">California Gov Info</a></li>
+			<li><a href="https://ucsd.libguides.com/census">Census</a></li>
+			<li><a href="https://ucsd.libguides.com/intlgovinfo">International Gov Info</a></li>
+			<li><a href="https://ucsd.libguides.com/sdgov">San Diego Gov Info</a></li>
+			<li><a href="https://ucsd.libguides.com/usgov">US Gov Info</a></li>
+			<li><a class="view-more" href="https://ucsd.libguides.com/government">View more <span class="sr-only">Government guides.</span></a></li>
+		</ul>
+	</div>
+
+</div>
+<div class="saz-col-3">
+
+	<div>
+		<h3>Health Sciences</h3>
+		<ul>
+			<li><a href="https://ucsd.libguides.com/bioinformatics">Biomedical Informatics</a></li>
+			<li><a href="https://ucsd.libguides.com/medicine">Medicine: Online Clinical Library</a></li>
+			<li><a href="https://ucsd.libguides.com/clinical">Medicine: Literature Search</a></li>
+			<li><a href="https://ucsd.libguides.com/Neurosciences">Neurosciences</a></li>
+			<li><a href="https://ucsd.libguides.com/medicine/nursing">Nursing</a></li>
+			<li><a href="https://ucsd.libguides.com/sb.php?subject_id=21596">Pharmacy &amp; Pharmacology</a></li>
+			<li><a href="https://ucsd.libguides.com/psychiatry">Psychiatry</a></li>
+			<li><a href="https://ucsd.libguides.com/publichealth">Public Health</a></li>
+			<li><a class="view-more" href="https://ucsd.libguides.com/health-sciences">View more <span class="sr-only">Health Sciences guides.</span></a></li>
+		</ul>
+	</div>
+
+	<div>
+		<h3>Physical Sciences</h3>
+		<ul>
+			<li><a href="https://ucsd.libguides.com/chemistry">Chemistry &amp; Biochemistry</a></li>
+			<li><a href="https://ucsd.libguides.com/math">Mathematics &amp; Statistics</a></li>
+			<li><a href="http://ucsd.libguides.com/phys-astro">Physics &amp; Astronomy</a></li>
+			<li><a class="view-more" href="https://ucsd.libguides.com/physical-sciences">View more <span class="sr-only">Physical Sciences guides.</span></a></li>
+		</ul>
+	</div>
+
+	<div>
+		<h3>Social Sciences</h3>
+		<ul>
+			<li><a href="https://ucsd.libguides.com/africanamericanstudies">African American Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/sb.php?subject_id=21610">Anthropology</a></li>
+			<li><a href="https://ucsd.libguides.com/archaeology">Archaeology</a></li>
+			<li><a href="https://ucsd.libguides.com/cogsci">Cognitive Science</a></li>
+			<li><a href="https://ucsd.libguides.com/communication">Communication</a></li>
+			<li><a href="https://ucsd.libguides.com/cgs">Critical Gender Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/econguide">Economics</a></li>
+			<li><a href="https://ucsd.libguides.com/eds">Education Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/environmentalpolicy">Environmental Policy</a></li>
+			<li><a href="https://ucsd.libguides.com/ethn">Ethnic Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/global">Global Policy &amp; Strategy</a></li>
+			<li><a href="https://ucsd.libguides.com/GlobalPublicHealth">Global Public Health</a></li>
+			<li><a href="https://ucsd.libguides.com/hds">Human Developmental Sciences</a></li>
+			<li><a href="https://ucsd.libguides.com/humanrights">Human Rights</a></li>
+			<li><a href="https://ucsd.libguides.com/immigration">International Migration Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/internationalstudies">International Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/sb.php?subject_id=21604">Latin American Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/law">Law</a></li>
+			<li><a href="https://ucsd.libguides.com/ling">Linguistics</a></li>
+			<li><a href="https://ucsd.libguides.com/Pacific_Studies">Pacific Island Studies</a></li>
+			<li><a href="https://ucsd.libguides.com/politicalscience">Political Science</a></li>
+			<li><a href="https://ucsd.libguides.com/psyc">Psychology</a></li>
+			<li><a href="https://ucsd.libguides.com/soc">Sociology</a></li>
+			<li><a href="https://ucsd.libguides.com/usp">Urban Studies &amp; Planning</a></li>
+			<li><a href="https://ucsd.libguides.com/USMEX">US-Mexican Border Studies</a></li>
+			<li><a class="view-more" href="https://ucsd.libguides.com/social-sciences">View more <span class="sr-only">Social Sciences guides.</span></a></li>
+		</ul>
+	</div>
+
+	<div>
+		<h3>Writing Programs</h3>
+		<ul>
+			<li><a href="https://ucsd.libguides.com/awp102">AWP 102</a></li>
+			<li><a href="https://ucsd.libguides.com/CAT">CAT</a></li>
+			<li><a href="https://ucsd.libguides.com/DOC">DOC</a></li>
+			<li><a class="view-more" href="https://ucsd.libguides.com/wp">View more <span class="sr-only">Writing Programs guides.</span></a></li>
+		</ul>
+	</div>
+
+</div>
+</main>
+<!-- END: LIBGUIDES CUSTOM HOME PAGE CONTENT -->
+
+
+
+			</div>
+			<div  id="col2"  class="col-md-4 center" style="border-left: 1px solid #eee;padding-left: 30px;">
+				{{content_boxes}}
+			</div>
+		</div>
+	</div>
+	<!-- END: content -->
+
+	<!-- BEGIN: Page Footer -->
+	<div id="s-lib-footer-public" class="s-lib-footer footer container  s-lib-side-borders">
+		<div>
+			<div id="s-lib-footer-brand">Powered by <a href="http://www.springshare.com">Springshare</a>.</div>
+			<div id="s-lib-footer-rights">All rights reserved.</div>
+			<div id="s-lib-footer-login-link"><a href="{{login_url}}">Login to LibApps</a>.</div>
+		</div>
+		<div id="s-lib-footer-support-link"></div>
+	</div>
+	<!-- END: Page Footer -->
+
+	<div id="s-lib-alert" title="">
+		<div id="s-lib-alert-content"></div>
+	</div>        
+	<div id="s-lib-popover-title" class="hide">
+		<span class="text-info"><strong>title</strong></span> 
+		<button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">&times;</button> 
+	</div>
+	<div id="s-lib-popover-content" class="hide">
+		<i class="fa fa-refresh fa-spin"></i> Loading...
+		<button class="btn btn-default btn-sm popclose" type="button">Close</button>
+	</div>        
+
+	<div id="s-lib-scroll-top" title="Back to Top">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-square-o fa-stack-2x"></i>
+			<i class="fa fa-angle-double-up fa-stack-1x" style="position:relative; bottom:2px;"></i>
+		</span>
+	</div>
+
+	<!-- BEGIN: Custom Footer -->
+	{{public_footer}}
+	<!-- END: Custom Footer -->
+	
+
+<!-- LA CHAT WIDGET -->
+<style>
+.s-lch-widget-float{-webkit-transform: translate3d(0,0,0);} /* Fixes Safari icon stuttering */
+.s-lch-widget-float-btn{box-shadow: 0 0 0 2px #fff!important;}
+.s-lch-widget-float-btn img{border-radius: 5px!important;}
+</style>
+<script src="https://ucsd.libanswers.com/load_chat.php?hash=c84cd9a431f84ae111b094a4607c399a"></script>
+
+</body>
