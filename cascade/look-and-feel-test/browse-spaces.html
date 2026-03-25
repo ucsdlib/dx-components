@@ -524,6 +524,7 @@
                                                 .multi-select-filter-bar {
                                                         display: flex;
                                                         gap: 1rem;
+
                                                         .multi-select-filter-dropdown {
                                                                 background-color: #fff;
                                                                 flex: 1;
@@ -533,10 +534,38 @@
                                                                 border-radius: var(--corner-radius-brand, 8px);
                                                                 padding: 6px 12px;
                                                                 border: var(--brand-border) var(--color-brand-neutral-cool-grey, #747678);
-                                                                svg{margin-inline-start: auto;
+
+                                                                svg {
+                                                                        margin-inline-start: auto;
                                                                 }
-                                                                &.active{svg{transform: rotate(180deg);}}
+
+                                                                &.active {
+                                                                        svg {
+                                                                                transform: rotate(180deg);
+                                                                        }
+                                                                }
                                                         }
+                                                }
+                                        }
+
+                                        #results-list {
+                                                ul {
+                                                        padding: 0;
+                                                }
+
+                                                & li {
+                                                        list-style: none !important;
+                                                        .card__body__content{
+                                                                padding: 1rem 1.5rem 0 1.5rem;
+                                                        }
+                                                }
+
+                                                .card--result img {
+                                                        min-width: 288px;
+                                                        max-height: 250px;
+                                                }
+                                                .card__tool-bar{
+                                                        a{margin-inline-end: .5rem;}
                                                 }
                                         }
                                 </style>
@@ -599,6 +628,111 @@
                                                                 </svg>
                                                         </div>
                                                 </form>
+                                        </section>
+                                        <section id="results-list">
+                                                <div aria-live="polite">
+                                                        <h2>X Spaces were Found</h2>
+                                                </div>
+                                                <ul>
+                                                        <li>
+                                                                <article class="card card--full-width card--result">
+                                                                        <div
+                                                                                class="card__body card--full-width__body--img">
+                                                                                <img alt=""
+                                                                                        src="./resources/graduate-study-lounge.png">
+                                                                                <div class="card__body__content stack">
+                                                                                        <p>WongAvery Floor 1 Breezeway
+                                                                                        </p>
+                                                                                        <a href="">
+                                                                                                <h3>Geisel Library</h3>
+                                                                                        </a>
+                                                                                        <p>As an iconic symbol of the
+                                                                                                school, Geisel
+                                                                                                Library boasts 8 floors
+                                                                                                of dedicated
+                                                                                                study and researching
+                                                                                                space for every
+                                                                                                student.</p>
+                                                                                                <div class="card__tool-bar">
+                                                                                                        <a class="tag magenta"
+                                                                                                                href="">WongAvery</a>
+                                                                                                        <a class="tag orange"
+                                                                                                                href="">General
+                                                                                                                Study</a>
+                                                                                                        <a class="tag turquoise"
+                                                                                                                href="">Minimal
+                                                                                                                Noise</a>
+                                                                                                </div>
+                                                                                </div>
+                                                                        </div>
+
+                                                                </article>
+                                                                <article class="card card--full-width card--result">
+                                                                        <div
+                                                                                class="card__body card--full-width__body--img">
+                                                                                <img alt=""
+                                                                                        src="./resources/graduate-study-lounge.png">
+                                                                                <div class="card__body__content stack">
+                                                                                        <p>WongAvery Floor 1 Breezeway
+                                                                                        </p>
+                                                                                        <a href="">
+                                                                                                <h3>Geisel Library</h3>
+                                                                                        </a>
+                                                                                        <p>As an iconic symbol of the
+                                                                                                school, Geisel
+                                                                                                Library boasts 8 floors
+                                                                                                of dedicated
+                                                                                                study and researching
+                                                                                                space for every
+                                                                                                student.</p>
+                                                                                                <div class="card__tool-bar">
+                                                                                                        <a class="tag magenta"
+                                                                                                                href="">WongAvery</a>
+                                                                                                        <a class="tag orange"
+                                                                                                                href="">General
+                                                                                                                Study</a>
+                                                                                                        <a class="tag turquoise"
+                                                                                                                href="">Minimal
+                                                                                                                Noise</a>
+                                                                                                </div>
+                                                                                </div>
+                                                                        </div>
+
+                                                                </article>
+                                                                <article class="card card--full-width card--result">
+                                                                        <div
+                                                                                class="card__body card--full-width__body--img">
+                                                                                <img alt=""
+                                                                                        src="./resources/graduate-study-lounge.png">
+                                                                                <div class="card__body__content stack">
+                                                                                        <p>WongAvery Floor 1 Breezeway
+                                                                                        </p>
+                                                                                        <a href="">
+                                                                                                <h3>Geisel Library</h3>
+                                                                                        </a>
+                                                                                        <p>As an iconic symbol of the
+                                                                                                school, Geisel
+                                                                                                Library boasts 8 floors
+                                                                                                of dedicated
+                                                                                                study and researching
+                                                                                                space for every
+                                                                                                student.</p>
+                                                                                                <div class="card__tool-bar">
+                                                                                                        <a class="tag magenta"
+                                                                                                                href="">WongAvery</a>
+                                                                                                        <a class="tag orange"
+                                                                                                                href="">General
+                                                                                                                Study</a>
+                                                                                                        <a class="tag turquoise"
+                                                                                                                href="">Minimal
+                                                                                                                Noise</a>
+                                                                                                </div>
+                                                                                </div>
+                                                                        </div>
+
+                                                                </article>
+                                                        </li>
+                                                </ul>
                                         </section>
                                 </section>
 

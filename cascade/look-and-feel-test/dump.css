@@ -1,0 +1,9 @@
+.card.card--featured {
+    & .card--featured__body {
+    img{
+    width: 100%;
+    height: auto;
+    object-fit: initial;
+    }
+}
+}
