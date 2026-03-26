@@ -507,6 +507,17 @@
                 </div>
                 <div class="container">
                         <div class="row"> <!-- display the main content -->
+                                <style>
+                                        @media (width <= 675px){
+                                                article.card--full-width:has(.card--full-width__body--img){
+                                                        margin-inline: auto;
+                                                        width: clamp(350px, 87vw, 500px);
+                                                }
+                                                .card--full-width__body--img{
+                                                        flex-direction: column;
+                                                }
+                                        }
+                                </style>
                                 <section aria-label="Main Content" class="col-xs-12 col-md-9 main-section pull-right">
                                         <h1>Library Spaces</h1>
                                         <section>
