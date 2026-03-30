@@ -513,10 +513,10 @@
                                                 --color-brand-neutral-cool-grey: #747678;
                                         }
 
-                                        .multi-select-filter-container {
+                                        .multi-select-filters-container {
                                                 background-color: var(--color-brand-core-blue, #00629B);
                                                 padding: .5rem 1rem 1rem 1rem;
-
+                                                container: filters/inline-size;
                                                 h2 {
                                                         color: #fff;
                                                 }
@@ -525,7 +525,15 @@
                                                         display: flex;
                                                         gap: 1rem;
 
-                                                        .multi-select-filter-dropdown {
+                                                        & .multi-select-filter-container{
+                                                                flex:1;
+                                                                > span{
+                                                                color: #fff;
+                                                                display: inline-block;
+                                                                margin-block-end: .5rem;
+                                                                }
+                                                        }
+                                                        & .multi-select-filter-dropdown {
                                                                 background-color: #fff;
                                                                 flex: 1;
                                                                 display: flex;
@@ -555,7 +563,8 @@
 
                                                 & li {
                                                         list-style: none !important;
-                                                        .card__body__content{
+
+                                                        .card__body__content {
                                                                 padding: 1rem 1.5rem 0 1.5rem;
                                                         }
                                                 }
@@ -564,9 +573,27 @@
                                                         min-width: 288px;
                                                         max-height: 250px;
                                                 }
-                                                .card__tool-bar{
-                                                        a{margin-inline-end: .5rem;}
+
+                                                .card__tool-bar {
+                                                        a {
+                                                                margin-inline-end: .5rem;
+                                                        }
                                                 }
+                                        }
+                                        @media (width <= 675px){
+                                                article.card--full-width:has(.card--full-width__body--img){
+                                                        margin-inline: auto;
+                                                        width: clamp(350px, 87vw, 500px);
+                                                }
+                                                .card--full-width__body--img{
+                                                        flex-direction: column;
+                                                        .card__tool-bar{
+                                                                margin-block-end: 1rem;
+                                                        }
+                                                }
+                                        }
+                                        @container filters (width <= 670px){
+                                                .multi-select-filter-bar{flex-direction: column;}
                                         }
                                 </style>
                                 <section aria-label="Main Content" class="col-xs-12 col-md-9 main-section pull-right">
@@ -574,64 +601,92 @@
                                         <p>Filter through all of the Library’s group study rooms, individual study
                                                 spaces, de-stress spaces, and collaborative areas to find the perfect
                                                 spot.</p>
-                                        <section class="multi-select-filter-container">
+                                        <section class="multi-select-filters-container">
                                                 <h2>Filter Spaces by:</h2>
                                                 <form class="multi-select-filter-bar">
-                                                        <div class="multi-select-filter-dropdown">
-                                                                <span id=" multi-select-label">Building</span>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10"
-                                                                        height="6" viewBox="0 0 10 6" fill="none">
-                                                                        <path d="M0.600098 0.600098L4.6001 4.6001L8.6001 0.600098"
-                                                                                stroke="black" stroke-width="1.2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round" />
-                                                                </svg>
+                                                        <div class="multi-select-filter-container">
+                                                                <span id="building">Building</span>
+                                                                <div aria-labelledby="Building"
+                                                                        class="multi-select-filter-dropdown" <span aria-hidden="true" class="multi-select-filter-label">Building</span>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="10" height="6" viewBox="0 0 10 6"
+                                                                                fill="none">
+                                                                                <path d="M0.600098 0.600098L4.6001 4.6001L8.6001 0.600098"
+                                                                                        stroke="black"
+                                                                                        stroke-width="1.2"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                        </svg>
+                                                                </div>
                                                         </div>
-                                                        <div class="multi-select-filter-dropdown">
-                                                                <span id="multi-select-filter-label">Space Type</span>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10"
-                                                                        height="6" viewBox="0 0 10 6" fill="none">
-                                                                        <path d="M0.600098 0.600098L4.6001 4.6001L8.6001 0.600098"
-                                                                                stroke="black" stroke-width="1.2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round" />
-                                                                </svg>
+                                                        <div class="multi-select-filter-container">
+                                                                <span id="space-type">Space Type</span>
+                                                                <div aria-labelledby="space-type"
+                                                                        class="multi-select-filter-dropdown" <span aria-hidden="true" class="multi-select-filter-label">Space
+                                                                                Type</span>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="10" height="6" viewBox="0 0 10 6"
+                                                                                fill="none">
+                                                                                <path d="M0.600098 0.600098L4.6001 4.6001L8.6001 0.600098"
+                                                                                        stroke="black"
+                                                                                        stroke-width="1.2"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                        </svg>
+                                                                </div>
                                                         </div>
-                                                        <div class="multi-select-filter-dropdown">
-                                                                <span id="multi-select-filter-label">Noise Level</span>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10"
-                                                                        height="6" viewBox="0 0 10 6" fill="none">
-                                                                        <path d="M0.600098 0.600098L4.6001 4.6001L8.6001 0.600098"
-                                                                                stroke="black" stroke-width="1.2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round" />
-                                                                </svg>
+                                                        <div class="multi-select-filter-container">
+                                                                <span id="noise-level">Noise Level</span>
+                                                                <div aria-labelledby="noise-level" class="multi-select-filter-dropdown" 
+                                                                <span aria-hidden="true" class="multi-select-filter-label">Noise Level</span>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="10" height="6" viewBox="0 0 10 6"
+                                                                                fill="none">
+                                                                                <path d="M0.600098 0.600098L4.6001 4.6001L8.6001 0.600098"
+                                                                                        stroke="black"
+                                                                                        stroke-width="1.2"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                        </svg>
+                                                                </div>
                                                         </div>
-                                                        <div class="multi-select-filter-dropdown">
-                                                                <span id="multi-select-filter-label">Features</span>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10"
-                                                                        height="6" viewBox="0 0 10 6" fill="none">
-                                                                        <path d="M0.600098 0.600098L4.6001 4.6001L8.6001 0.600098"
-                                                                                stroke="black" stroke-width="1.2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round" />
-                                                                </svg>
+                                                        <div class="multi-select-filter-container">
+                                                                <span id="features">Features</span>
+                                                                <div aria-labelledby="features"
+                                                                        class="multi-select-filter-dropdown">
+                                                                        <span aria-hidden="true" class="multi-select-filter-label">Features</span>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="10" height="6" viewBox="0 0 10 6"
+                                                                                fill="none">
+                                                                                <path d="M0.600098 0.600098L4.6001 4.6001L8.6001 0.600098"
+                                                                                        stroke="black"
+                                                                                        stroke-width="1.2"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                        </svg>
+                                                                </div>
                                                         </div>
-                                                        <div class="multi-select-filter-dropdown">
-                                                                <span id="multi-select-filter-label">Capacity</span>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="10"
-                                                                        height="6" viewBox="0 0 10 6" fill="none">
-                                                                        <path d="M0.600098 0.600098L4.6001 4.6001L8.6001 0.600098"
-                                                                                stroke="black" stroke-width="1.2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round" />
-                                                                </svg>
+                                                        <div class="multi-select-filter-container">
+                                                                <span id="capacity">Capacity</span>
+                                                                <div aria-labelledby="capacity"
+                                                                        class="multi-select-filter-dropdown">
+                                                                        <span aria-hidden="true" class="multi-select-filter-label">Capacity</span>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="10" height="6" viewBox="0 0 10 6"
+                                                                                fill="none">
+                                                                                <path d="M0.600098 0.600098L4.6001 4.6001L8.6001 0.600098"
+                                                                                        stroke="black"
+                                                                                        stroke-width="1.2"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                        </svg>
+                                                                </div>
                                                         </div>
                                                 </form>
                                         </section>
                                         <section id="results-list">
                                                 <div aria-live="polite">
-                                                        <h2>X Spaces were Found</h2>
+                                                        <h2>3 Spaces were Found</h2>
                                                 </div>
                                                 <ul>
                                                         <li>
@@ -653,16 +708,16 @@
                                                                                                 study and researching
                                                                                                 space for every
                                                                                                 student.</p>
-                                                                                                <div class="card__tool-bar">
-                                                                                                        <a class="tag magenta"
-                                                                                                                href="">WongAvery</a>
-                                                                                                        <a class="tag orange"
-                                                                                                                href="">General
-                                                                                                                Study</a>
-                                                                                                        <a class="tag turquoise"
-                                                                                                                href="">Minimal
-                                                                                                                Noise</a>
-                                                                                                </div>
+                                                                                        <div class="card__tool-bar">
+                                                                                                <a class="tag magenta"
+                                                                                                        href="">WongAvery</a>
+                                                                                                <a class="tag orange"
+                                                                                                        href="">General
+                                                                                                        Study</a>
+                                                                                                <a class="tag turquoise"
+                                                                                                        href="">Minimal
+                                                                                                        Noise</a>
+                                                                                        </div>
                                                                                 </div>
                                                                         </div>
 
@@ -685,16 +740,16 @@
                                                                                                 study and researching
                                                                                                 space for every
                                                                                                 student.</p>
-                                                                                                <div class="card__tool-bar">
-                                                                                                        <a class="tag magenta"
-                                                                                                                href="">WongAvery</a>
-                                                                                                        <a class="tag orange"
-                                                                                                                href="">General
-                                                                                                                Study</a>
-                                                                                                        <a class="tag turquoise"
-                                                                                                                href="">Minimal
-                                                                                                                Noise</a>
-                                                                                                </div>
+                                                                                        <div class="card__tool-bar">
+                                                                                                <a class="tag magenta"
+                                                                                                        href="">WongAvery</a>
+                                                                                                <a class="tag orange"
+                                                                                                        href="">General
+                                                                                                        Study</a>
+                                                                                                <a class="tag turquoise"
+                                                                                                        href="">Minimal
+                                                                                                        Noise</a>
+                                                                                        </div>
                                                                                 </div>
                                                                         </div>
 
@@ -717,16 +772,16 @@
                                                                                                 study and researching
                                                                                                 space for every
                                                                                                 student.</p>
-                                                                                                <div class="card__tool-bar">
-                                                                                                        <a class="tag magenta"
-                                                                                                                href="">WongAvery</a>
-                                                                                                        <a class="tag orange"
-                                                                                                                href="">General
-                                                                                                                Study</a>
-                                                                                                        <a class="tag turquoise"
-                                                                                                                href="">Minimal
-                                                                                                                Noise</a>
-                                                                                                </div>
+                                                                                        <div class="card__tool-bar">
+                                                                                                <a class="tag magenta"
+                                                                                                        href="">WongAvery</a>
+                                                                                                <a class="tag orange"
+                                                                                                        href="">General
+                                                                                                        Study</a>
+                                                                                                <a class="tag turquoise"
+                                                                                                        href="">Minimal
+                                                                                                        Noise</a>
+                                                                                        </div>
                                                                                 </div>
                                                                         </div>
 

@@ -508,8 +508,20 @@
                 <div class="container">
                         <div class="row"> <!-- display the main content -->
                                 <style>
+                                        .card--full-width{
+                                                .card__body__content{
+                                                        address{margin-block-end: 0px;}
+                                                        & .address-container, .time-container{
+                                                                svg{color: var(--color-brand-core-blue, #00629B);
+                                                                width: 1.4rem;
+                                                                height: 1.4rem;
+                                                                }
+                                                        }
+                                                }
+                                                a{display: inline-block;}
+                                        }
                                         @media (width <= 675px){
-                                                article.card--full-width:has(.card--full-width__body--img){
+                                                article.card--full-width:has(.card--full-width__body--img, .grid > .card--featured){
                                                         margin-inline: auto;
                                                         width: clamp(350px, 87vw, 500px);
                                                 }
@@ -604,18 +616,26 @@
                                                         <div class="card__body card--full-width__body--img">
                                                                 <img alt="" src="./resources/geisel-library.png">
                                                                 <div class="card__body__content stack">
-                                                                        <h3>Geisel Library</h3>
+                                                                        <a href="">
+                                                                                <h3>Geisel Library</h3>
+                                                                        </a>
                                                                         <p class="is-open">open</p>
                                                                         <p>As an iconic symbol of the school, Geisel
                                                                                 Library boasts 8 floors of dedicated
                                                                                 study and researching space for every
                                                                                 student.</p>
-                                                                        <a
+                                                                        <div class="address-container">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z" fill="currentColor"/></svg>
+                                                                                <a
                                                                                 href="https://map.concept3d.com/?id=1005#!m/229669?s/">
                                                                                 <address>9701 Hopkins Dr, La Jolla, CA
                                                                                         92093</address>
                                                                         </a>
-                                                                        <time>7 a.m. - 12 p.m.</time>
+                                                                        </div>
+                                                                        <div class="time-container">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64zM296 184L296 320C296 328 300 335.5 306.7 340L402.7 404C413.7 411.4 428.6 408.4 436 397.3C443.4 386.2 440.4 371.4 429.3 364L344 307.2L344 184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184z" fill="currentColor"/></svg>
+                                                                                <time>7 a.m. - 12 p.m.</time>
+                                                                        </div>
                                                                         <a href="" class="btn btn-primary">Explore
                                                                                 Spaces in
                                                                                 Geisel</a>
@@ -627,19 +647,27 @@
                                                         <div class="card__body card--full-width__body--img">
                                                                 <img alt="" src="./resources/wa-library.png">
                                                                 <div class="card__body__content stack">
-                                                                        <h3>Sally T. WongAvery Library</h3>
+                                                                        <a href="">
+                                                                                <h3>Sally T. WongAvery Library</h3>
+                                                                        </a>
                                                                         <p class="is-open">open</p>
                                                                         <p>Located at the south end of campus in the
                                                                                 School of Medicine complex, WongAvery
                                                                                 Library serves all students looking for
                                                                                 a quiet study place filled with natural
                                                                                 lighting.</p>
-                                                                        <a
+                                                                        <div class="address-container">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z" fill="currentColor"/></svg>
+                                                                                <a
                                                                                 href="https://map.concept3d.com/?id=1005#!m/186270?s/">
                                                                                 <address>100 Biomedical Sciences Wy, San
                                                                                         Diego, CA 92093</address>
                                                                         </a>
-                                                                        <time>10 a.m. - 8 p.m.</time>
+                                                                        </div>
+                                                                        <div class="time-container">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64zM296 184L296 320C296 328 300 335.5 306.7 340L402.7 404C413.7 411.4 428.6 408.4 436 397.3C443.4 386.2 440.4 371.4 429.3 364L344 307.2L344 184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184z" fill="currentColor"/></svg>
+                                                                                <time>10 a.m. - 8 p.m.</time>
+                                                                        </div>
                                                                         <a href="" class="btn btn-primary">Explore
                                                                                 Spaces in
                                                                                 WongAvery Library</a>
