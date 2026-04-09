@@ -508,6 +508,9 @@
                 <div class="container">
                         <div class="row"> <!-- display the main content -->
                                 <style>
+                                        .three-by-one{
+                                                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                                        }
                                         .card--full-width{
                                                 .card__body__content{
                                                         address{margin-block-end: 0px;}
@@ -521,7 +524,7 @@
                                                 a{display: inline-block;}
                                         }
                                         @media (width <= 675px){
-                                                article.card--full-width:has(.card--full-width__body--img, .grid > .card--featured){
+                                                .card, .grid > .card{
                                                         margin-inline: auto;
                                                         width: clamp(350px, 87vw, 500px);
                                                 }
@@ -680,7 +683,7 @@
                                                 <h2>Explore Featured Spaces</h2>
                                                 <p>Discover a space new to you or learn more about your favorite spots
                                                         in Geisel and WongAvery Libraries.</p>
-                                                <div class="featured-container">
+                                                <div class="grid three-by-one">
                                                         <article class="card card--featured">
                                                                 <div
                                                                         class="card__body card--featured__body white-bg spaces">
