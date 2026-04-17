@@ -1,0 +1,69 @@
+## Learnigs based on Endowmentes work
+
+## Grabing metadata node
+    #set($endowments = $_.query().byContentType("Library-Endowment").byFolderPath("about/support-the-library/endowments").sortBy("title").execute())
+    #foreach($endowment in $endowments)
+    $_PropertyTool.outputProperties($endowment.Metadata)
+    $endowment.Metadata.title
+    ...
+    #set($titleForSlug = $_EscapeTool.xml($endowmentNode.getChild("title").textValue))
+    #set( $slug = $titleForSlug.toLowerCase().replace(" ", "-").replace(".",""))
+
+## Querying a contenttype and filtering out base-asset
+    #set($contentTypeList = $_.query().byContentType($contentType).sortBy("title").execute())
+        #set($contentTypeListClean = [])
+        #foreach ( $item in $contentTypeList )
+            #if(!$_PropertyTool.isNull($item.Metadata.displayName.trim()) && !$_PropertyTool.isEmpty($item.Metadata.displayName.trim()))
+                #set($dummy = $contentTypeListClean.add($item))
+            #end
+        #end
+
+## Querying a contenttype based on it's input in a field
+#set($services = [])
+#foreach($service in $valuesArr)
+    #set($serviceToAdd =
+    $_.query().byContentType("Library-Service").hasAnyStructuredDataValues("library-service/system-name",[$service]).execute())
+    #set($dummy = $services.add($serviceToAdd[0]))
+#end
+
+## ### What I ended up coding, but didn't need for a Listing Page without a search function
+#set($listSection= $currentPage.getStructuredDataNodes("sections/presentation-section"))
+    #set($pageTitle = $_EscapeTool.xml($currentPage.getStructuredDataNode("page-header").textValue))
+    #set($pageIntro = $_EscapeTool.xml($currentPage.getStructuredDataNode("page-intro").textValue))
+    #set($contentType = $currentPage.getStructuredDataNode("content-type").textValue)
+    #set($contentTypeList = $_.query().byContentType($contentType).sortBy("title").execute())
+    ## ^^ this would technically need a filtering out for base-asset
+    #set($cleanContentTypeNodeList = [])
+    #foreach($contentTypeAPIObj in $contentTypeList)
+        #set($contentTypeNode =  $contentTypeAPIObj.getStructuredDataNode($contentType))
+        #if($contentTypeNode.getChild("is-base-asset").textValue == "no")
+            $contentTypeNode.getChild("title").textValue
+        #set($dummy = $cleanContentTypeNodeList.add($contentTypeNode))
+        #end
+    #end  
+    ## When I was searching for a listing-format in particular to display all content, but the idea of how I want search to function precludes this logic
+    <div class = "listing-page">
+            #if($contentType == "Library-Endowment")
+        #import("site://Library/_cms/_internal/The Library/Formats/presentation-formats/Library-Endowment")
+        #listLibraryEndowments($cleanContentTypeNodeList)
+        #end
+    ## building out WYSIWYG
+    #set( $purposeNode = $libraryEndowment.getChild("purpose"))
+        #set( $purposeJdom = $purposeNode.getTextValueAsXMLElement())
+        #set( $purposeHtml = $_SerializerTool.serialize($purposeJdom, true) )
+    ### OR
+    #set($bodyTextJdom  = $bodyTextNode.getTextValueAsXMLElement())
+    #set($bodyTextHtml  = $_EscapeTool.javascript($_SerializerTool.serialize($bodyTextJdom, true)))
+    ## Getting Structured JDOM of whole structured data block (for XPath or serialization) at page level
+    #set($jDomPage = $currentPage.getStructuredData().getTextValueAsXMLElement())
+    ## Spliting and Joining in Velocity
+    #set($donorsToJoin = $_EscapeTool.xml($libraryEndowment.getChild("donors").textValue))
+        #set($donorsArr = $donorsToJoin.split(";"))
+        #set($donorsList = $_ListTool.toList($donorsArr))
+        #if($donorsList.size() > 2)
+            #set($donors = $_DisplayTool.list($donorsList, ", ", ",and"))
+            #elseif(#$donorsList.size() == 2)
+                #set($donors = $_DisplayTool.list($donorsList, ", ", " and"))
+            #elseif($donorsList.size() == 1)
+                #set($donors = $donorsList[0])
+        #end
