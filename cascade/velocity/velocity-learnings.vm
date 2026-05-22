@@ -41,6 +41,13 @@
         #set($dummy = $cleanContentTypeNodeList.add($contentTypeNode))
         #end
     #end  
+    ##The validation pass runs with no real page data, so the list is empty there even though it works fine in preview/publish.This error will keep appearing on any .get(), $sample.anything, or any call that assumes the list is populated. As a general rule for this format going forward — wrap everything that depends on $cleanContentList having data inside that #if block, and the templateValidation errors will stop. New cloud context.
+    #if($cleanContentList.size() > 0)
+        #set($sample = $cleanContentList.get(0))
+        $_PropertyTool.outputProperties($sample)
+        $_PropertyTool.outputProperties($sample.Metadata)
+    #end
+
     ## When I was searching for a listing-format in particular to display all content, but the idea of how I want search to function precludes this logic
     <div class = "listing-page">
             #if($contentType == "Library-Endowment")
@@ -56,6 +63,9 @@
     #set($bodyTextHtml  = $_EscapeTool.javascript($_SerializerTool.serialize($bodyTextJdom, true)))
     ## Getting Structured JDOM of whole structured data block (for XPath or serialization) at page level
     #set($jDomPage = $currentPage.getStructuredData().getTextValueAsXMLElement())
+    ##Grabbing block node within campus two-column velocity script
+    #macro(ExampleMacro)
+    #set($exampleNode = $_XPathTool.selectSingleNode($node,'default/content/system-data-structure'))
     ## Spliting and Joining in Velocity
     #set($donorsToJoin = $_EscapeTool.xml($libraryEndowment.getChild("donors").textValue))
         #set($donorsArr = $donorsToJoin.split(";"))
@@ -67,3 +77,11 @@
             #elseif($donorsList.size() == 1)
                 #set($donors = $donorsList[0])
         #end
+    ## Adding page level scripts and stylesheets
+    <!--#protect
+        <head>
+            <link rel="stylesheet" href="https://library.ucsd.edu/_resources/css/structured-content/endowments.css"/>
+            <script defer src="/_resources/test_resources/ctaExploreSearch.js" type="module"></script>
+            <script defer src="/_resources/test_resources/navBarAutoScroll.js"></script>
+        </head>
+    #protect-->
