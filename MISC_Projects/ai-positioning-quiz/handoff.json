@@ -1,0 +1,178 @@
+{
+  "project": "UCSD Library DX — Individual AI Positioning Quiz",
+  "repo": "ai-positioning-quiz",
+  "stack": ["React", "Vite", "Tailwind CSS", "shadcn/ui", "Framer Motion", "Vercel"],
+  "briefing": "Read CLAUDE.md and DESIGN.md before doing any work. CLAUDE.md is the behavioral contract (stack, coding standards, scoring logic, file structure). DESIGN.md is the visual source of truth (component patterns, layout specs, animations, responsive rules).",
+  "steps": [
+    {
+      "id": 1,
+      "title": "Scaffold the project",
+      "status": "done",
+      "description": "Initialize Vite + React, install all dependencies, configure Tailwind, init shadcn/ui, add required shadcn components.",
+      "commands": [
+        "npm create vite@latest . -- --template react",
+        "npm install",
+        "npm install tailwindcss @tailwindcss/vite",
+        "npm install framer-motion",
+        "npx shadcn@latest init",
+        "npx shadcn@latest add button card progress badge"
+      ],
+      "notes": "Configure Tailwind plugin in vite.config.js and import in index.css."
+    },
+    {
+      "id": 2,
+      "title": "Populate data files",
+      "status": "done",
+      "description": "Create src/data/questions.js (14 questions verbatim from PRD) and src/data/positions.js (9 positions verbatim from PRD). No decisions needed — content is fully specified.",
+      "files": [
+        "src/data/questions.js",
+        "src/data/positions.js"
+      ],
+      "notes": "Do not reorder questions. They alternate x/y axis. Position descriptions are placeholders — quiz owner will revise manually."
+    },
+    {
+      "id": 3,
+      "title": "Write scoring logic",
+      "status": "done",
+      "description": "Create src/lib/scoring.js with getBucket(score) and getPosition(xScore, yScore). Pure functions only — no side effects.",
+      "files": [
+        "src/lib/scoring.js"
+      ],
+      "notes": "Buckets: score <= -5 = 0 (low), -4 to +4 = 1 (mid), >= +5 = 2 (high). Matrix: [[1,2,3],[4,5,6],[7,8,9]] indexed by [yBucket][xBucket]."
+    },
+    {
+      "id": 4,
+      "title": "Build App.jsx — state and flow controller",
+      "status": "done",
+      "description": "Set up top-level state and screen routing. State shape: { screen, currentQuestion, answers, result }. Screens: intro | question | calculating | result. Implement handleAnswer and handleNext. Render correct screen component based on state.",
+      "files": [
+        "src/App.jsx"
+      ],
+      "notes": "Calculating screen triggers a 1.5s delay then computes result via scoring.js and sets screen to result."
+    },
+    {
+      "id": 5,
+      "title": "Build QuizIntro",
+      "status": "done",
+      "description": "Static intro screen. Title: 'Where do you stand on AI?'. Subtitle: 'A positioning quiz for the UCSD Library DX team'. 2-3 sentence framing. shadcn Button labeled 'Start'. On click sets screen to 'question'.",
+      "files": [
+        "src/components/QuizIntro.jsx"
+      ],
+      "notes": "Centered layout, vertically centered on screen. Framer Motion fade-in on mount."
+    },
+    {
+      "id": 6,
+      "title": "Build ProgressBar",
+      "status": "done",
+      "description": "Thin wrapper around shadcn Progress component. Props: current (1-14), total (14). Shows 'Question X of 14' label above the bar.",
+      "files": [
+        "src/components/ProgressBar.jsx"
+      ],
+      "notes": "Keep it simple — no animation needed here, shadcn Progress handles the fill."
+    },
+    {
+      "id": 7,
+      "title": "Build QuizQuestion",
+      "status": "done",
+      "description": "Renders one question at a time. Purely presentational — no local state. Props: question, selected, onSelect. Renders question text, optional blockquote, 4 answer Cards. Selected card gets accent border. Next button and selected state live in App.jsx, not here.",
+      "files": [
+        "src/components/QuizQuestion.jsx"
+      ],
+      "notes": "Quote styling: italic, smaller, left border in accent color, attribution below. Answer cards: 1-col mobile, 2-col desktop grid. Question text area has min-h-[10rem] to anchor options position regardless of text length. No Next button in this component."
+    },
+    {
+      "id": 8,
+      "title": "Build calculating screen",
+      "status": "done",
+      "description": "Inline in App.jsx or as a tiny component. Centered 'Plotting your position...' text with animated dots (Framer Motion). useEffect with setTimeout(1500) advances to result screen.",
+      "files": [
+        "src/App.jsx"
+      ],
+      "notes": "Framer Motion fade transition in and out. No actual computation here — result is computed when advancing from question 14."
+    },
+    {
+      "id": 9,
+      "title": "Build MatrixDisplay",
+      "status": "done",
+      "description": "Custom 3x3 CSS grid component. Props: highlightedId (1-9). Columns left-to-right: Human Craft | Hybrid Navigator | Integrated AI. Rows top-to-bottom: Intentional & Planned | Balanced | Flexible / Ad-hoc. Each cell shows position number + name. Highlighted cell gets accent background or border. Non-highlighted cells are muted. Axis labels on edges.",
+      "files": [
+        "src/components/MatrixDisplay.jsx"
+      ],
+      "notes": "Build as CSS grid, not a table. Responsive: compact on mobile, full-size on desktop. text-xs on mobile, text-sm on desktop. All 9 cells must be readable at mobile width."
+    },
+    {
+      "id": 10,
+      "title": "Build QuizResult",
+      "status": "done",
+      "description": "Result screen. Props: positionId. Looks up position from positions.js. Layout top-to-bottom: (1) position name as large heading, (2) two axis pills showing X and Y bucket labels, (3) MatrixDisplay with highlightedId, (4) position description, (5) caveat block with verbatim copy, (6) 'Retake quiz' Button that resets App state to intro.",
+      "files": [
+        "src/components/QuizResult.jsx"
+      ],
+      "notes": "Caveat block copy is verbatim — do not change. Framer Motion: fade in on mount, position name drifts upward slightly on entry. Caveat block should be visually distinct (muted background or border)."
+    },
+    {
+      "id": 11,
+      "title": "Wire Framer Motion transitions in App",
+      "status": "done",
+      "description": "AnimatePresence mode=wait wraps all screens. Nested AnimatePresence mode=wait wraps QuizQuestion for question-to-question transitions. ProgressBar and Next button sit outside AnimatePresence so they never animate — only question content fades.",
+      "files": [
+        "src/App.jsx"
+      ],
+      "notes": "All question transitions are pure fade (opacity only, 0.2s) — no slide or y-movement. Slide was removed due to motion discomfort. Answer card selection: scale pulse 1.02, duration 0.15s (lives in QuizQuestion). selected state lives in App.jsx and resets to null on each question advance."
+    },
+    {
+      "id": 12,
+      "title": "Polish and responsive QA",
+      "status": "done",
+      "description": "End-to-end walkthrough. Check: answer cards 1-col mobile / 2-col desktop, matrix readable on mobile, Next button disabled state, scoring edge cases (score exactly -5 and +5 land in outer bucket), caveat copy is verbatim, no raw scores shown on result screen.",
+      "files": [],
+      "notes": "Test all 9 positions reachable by manipulating answers. Confirm no horizontal scrolling on mobile."
+    },
+    {
+      "id": 13,
+      "title": "Deploy to Vercel",
+      "status": "pending",
+      "description": "Commit all work, push to GitHub, connect repo to Vercel, deploy. No environment variables required.",
+      "commands": [
+        "git add .",
+        "git commit -m 'Initial build'",
+        "git push"
+      ],
+      "notes": "Vercel should auto-detect Vite. Build command: npm run build. Output directory: dist."
+    }
+  ],
+  "feedback_phase": [
+    {
+      "id": 14,
+      "title": "Clickable matrix cells — position explorer",
+      "status": "pending",
+      "description": "Make each cell in MatrixDisplay interactive. Clicking any cell updates a selected state and renders a description panel directly below the matrix showing that position's name, axis pills, and description. The user's own result cell is pre-selected on load so the description panel is populated immediately. Clicking a different cell swaps the panel content in place. No navigation, no modals.",
+      "files": [
+        "src/components/MatrixDisplay.jsx",
+        "src/components/QuizResult.jsx"
+      ],
+      "notes": "selectedId state lives in QuizResult, initialized to positionId (the user's result). Pass selectedId and onSelect down to MatrixDisplay. Description panel sits between the matrix and the existing position description — or replaces it, since the pre-selected cell already shows the user's own description. Highlighted cell (user's result) keeps its existing accent styling. Selected-but-not-result cell gets a distinct active style (e.g. secondary border). Framer Motion: fade the panel content on cell change, duration 0.15s."
+    },
+    {
+      "id": 15,
+      "title": "LiSN link on result screen",
+      "status": "pending",
+      "description": "Add a 'Learn more on LiSN' link to the result screen pointing to the LiSN matrix overview page. Place it after the description panel and before the caveat block. Include a short framing line: 'Want to go deeper? The full matrix is documented on LiSN.' followed by the link.",
+      "files": [
+        "src/components/QuizResult.jsx"
+      ],
+      "notes": "URL to be provided by quiz owner before this step is started. Use a plain anchor tag styled as a text link — no Button component. Open in a new tab (target=_blank, rel=noreferrer)."
+    }
+  ],
+  "post_build_changes": [
+    "MatrixDisplay Y-axis labels changed from rotated vertical text to horizontal row headers above each row — rotated text was too cramped for labels like 'Intentional & Planned'.",
+    "ProgressBar moved out of QuizQuestion into App.jsx so it stays fixed during question transitions.",
+    "Next/Finish button moved out of QuizQuestion into App.jsx so it stays fixed during question transitions.",
+    "selected state lifted from QuizQuestion to App.jsx — QuizQuestion is now fully presentational.",
+    "Question text area given min-h-[10rem] to anchor options position regardless of question text length.",
+    "Avatar.svg copied to public/favicon.svg as tab icon.",
+    "index.html page title set to 'Where do you stand on AI?'.",
+    "jsconfig.json created for @ path alias resolution (required by shadcn)."
+  ],
+  "caveat_copy": "No position is better or worse than another — the best fit depends on your workflow, experience level, and the specific problem you're solving.\n\nMixed positioning is normal. You might sit in one position for some work while landing somewhere else entirely for other aspects. You shouldn't expect to fit neatly inside a single box."
+}
