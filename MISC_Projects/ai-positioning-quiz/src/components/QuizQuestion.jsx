@@ -23,15 +23,15 @@ export default function QuizQuestion({ question, selected, onSelect }) {
       <div className="flex flex-col gap-4 min-h-[10rem]">
         {question.quote && (
           <blockquote className="border-l-2 border-primary pl-4 py-1">
-            <p className="text-sm italic text-muted-foreground">
+            <p className="text-sm md:text-base italic text-muted-foreground">
               "{question.quote.text}"
             </p>
-            <footer className="text-xs text-muted-foreground/70 mt-1">
+            <footer className="text-xs md:text-sm text-muted-foreground/70 mt-1">
               — {question.quote.source}
             </footer>
           </blockquote>
         )}
-        <p className="text-lg font-medium text-foreground leading-snug">
+        <p className="text-lg md:text-xl font-medium text-foreground leading-snug">
           {question.text}
         </p>
         {question.hint && (
@@ -53,7 +53,7 @@ export default function QuizQuestion({ question, selected, onSelect }) {
             >
               <Card
                 onClick={() => onSelect(option)}
-                className={`p-4 cursor-pointer text-left transition-colors h-full ${
+                className={`p-4 md:p-5 cursor-pointer text-left transition-colors h-full ${
                   isSelected
                     ? isExclusive
                       ? 'border-destructive bg-destructive/5'
@@ -63,7 +63,7 @@ export default function QuizQuestion({ question, selected, onSelect }) {
                     : 'hover:border-primary/40'
                 }`}
               >
-                <p className="text-sm text-foreground leading-snug">{option.text}</p>
+                <p className="text-sm md:text-base text-foreground leading-snug">{option.text}</p>
               </Card>
             </motion.div>
           )

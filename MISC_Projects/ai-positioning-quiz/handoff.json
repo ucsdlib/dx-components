@@ -145,7 +145,7 @@
     {
       "id": 14,
       "title": "Question quality audit — double-barrel and multi-select",
-      "status": "pending",
+      "status": "done",
       "description": "Two related problems make it hard for users to select a single honest answer. (1) Double-barrel options bundle two independent factors into one choice, so a user who matches only one factor has no clean option. (2) Some questions describe a spectrum of behaviors where real users do several of them — forcing a single pick misrepresents their position. Fix both: rewrite double-barrel options to vary on one dimension only, and convert questions whose answers aren't mutually exclusive to multi-select.",
       "files": [
         "src/data/questions.js",
@@ -174,9 +174,42 @@
         "src/components/QuizResult.jsx"
       ],
       "notes": "URL to be provided by quiz owner before this step is started. Use a plain anchor tag styled as a text link — no Button component. Open in a new tab (target=_blank, rel=noreferrer)."
+    },
+    {
+      "id": 18,
+      "title": "Typography scale and accessibility sizing",
+      "status": "pending",
+      "description": "The current type scale is too small at laptop and desktop sizes. Reading and comparing specific sentences is the core interaction of this app — typography needs to support that. Bump up the scale at md+ breakpoints and verify all text meets AAA contrast and size requirements. Quotes and answer options are the most noticeable pain points.",
+      "files": [
+        "src/components/QuizQuestion.jsx",
+        "src/components/QuizResult.jsx",
+        "src/components/QuizIntro.jsx",
+        "src/index.css"
+      ],
+      "notes": "Siteimprove flagged elements below AAA size thresholds — treat that as a floor, not a target, given the reading-heavy nature of the app. Priority areas: answer option cards (currently text-sm), blockquote text (currently text-sm italic), result position description, caveat block. At md+ breakpoints consider stepping answer text to text-base and quotes to text-sm/text-base. Do not shrink mobile sizes — mobile is already tight. Use responsive Tailwind classes (md:text-base etc.) rather than changing base sizes globally."
+    },
+    {
+      "id": 19,
+      "title": "Consistent container and heading structure",
+      "status": "pending",
+      "description": "Add a consistent max-width container and semantic heading hierarchy across all screens. Currently each screen manages its own width and heading levels inconsistently. A shared container ensures visual rhythm is predictable throughout the flow. Semantic headings are required for screen reader navigation and general accessibility best practice.",
+      "files": [
+        "src/App.jsx",
+        "src/components/QuizIntro.jsx",
+        "src/components/QuizQuestion.jsx",
+        "src/components/QuizResult.jsx"
+      ],
+      "notes": "Container: a single max-width wrapper (already roughly in place in App.jsx at max-w-2xl) should be the single source of truth — child screens should not re-declare their own widths. Headings: QuizIntro title should be h1, QuizQuestion question text should be a heading (h2 or label equivalent) not a plain p tag, QuizResult position name is already h1 — verify the full heading order is logical. Do not use heading tags purely for size — if something needs to look like a heading but isn't one semantically, use a p with font-semibold instead. Verify with a screen reader or accessibility tree that the heading outline makes sense end-to-end."
     }
   ],
   "post_build_changes": [
+    "Q1 options 2 and 3 rewritten to remove task-type qualifier — frequency is now the only variable.",
+    "Q7 option 1 simplified to 'Indifferent' — removed conflation of 'relieved' and 'indifferent' and trailing workflow claim.",
+    "Q8 option 2 rewritten to focus on a single dimension — how developed your thinking is — removing the separate 'general values' claim.",
+    "Q9 question stem updated with 'Overall' to anchor single-select to gestalt approach rather than task-by-task.",
+    "Q11 question stem updated with 'most commonly' to anchor single-select to dominant writing pattern.",
+    "Q12 option 3 simplified to specific sources/people without conflating multiple independent dimensions. Option 4 typo fixed ('what how' → 'how').",
+    "Q3 converted to multi-select. Options reordered with exclusive 'no AI' option last, styled with destructive border. Scores: end +1, middle +1, beginning +2, no AI -2 (exclusive). Scoring uses max of selected values (not average) to preserve axis semantics — more stages selected should never lower the score. 'Select all that apply' pill added below question text.",
     "MatrixDisplay Y-axis labels changed from rotated vertical text to horizontal row headers above each row — rotated text was too cramped for labels like 'Intentional & Planned'.",
     "ProgressBar moved out of QuizQuestion into App.jsx so it stays fixed during question transitions.",
     "Next/Finish button moved out of QuizQuestion into App.jsx so it stays fixed during question transitions.",
