@@ -16,12 +16,14 @@ A web-based quiz that places DX team members on a 3×3 Individual AI Positioning
 |---|---|
 | UI framework | React (functional components, hooks only) |
 | Styling | Tailwind CSS |
-| Component library | shadcn/ui (Button, Card, Progress) |
+| Component library | shadcn/ui (Button, Card, Progress, Badge) |
 | Animation | Framer Motion |
+| Routing | react-router-dom (BrowserRouter, Routes, Route, useNavigate) |
 | Build tool | Vite |
 | Deployment | Vercel |
+| Storage | Vercel KV (@vercel/kv) — Phase 2 only |
 
-No backend. No auth. All logic is client-side, single-session.
+Phase 1 is fully client-side. Phase 2 adds two Vercel serverless functions and a KV store. No auth. No user accounts.
 
 ---
 
@@ -38,20 +40,27 @@ npm run preview   # preview production build
 ## File Structure
 
 ```
+/api                        ← Vercel serverless functions (Phase 2)
+  submit.js                 ← POST: store a submission in KV
+  results.js                ← GET: return all submissions from KV
 /src
   /components
     QuizIntro.jsx
     QuizQuestion.jsx
     QuizResult.jsx
-    MatrixDisplay.jsx
+    MatrixDisplay.jsx       ← supports both single-result and team mode
     ProgressBar.jsx
   /data
-    questions.js      ← 14 questions, options, scores (verbatim from PRD)
-    positions.js      ← 9 positions: names, descriptions, coordinates
+    questions.js            ← 14 questions, options, scores (verbatim from PRD)
+    positions.js            ← 9 positions: names, descriptions, coordinates
+    teams.js                ← predefined team name list (Phase 2, quiz owner provides)
   /lib
-    scoring.js        ← getBucket(), getPosition() functions
+    scoring.js              ← getBucket(), getPosition() functions
+  /pages
+    TeamView.jsx            ← /team route (Phase 2)
   App.jsx
   main.jsx
+vercel.json                 ← SPA rewrite rule for /team route (Phase 2)
 ```
 
 ---
@@ -162,11 +171,58 @@ Position descriptions are verbatim from the PRD and are placeholder text — the
 
 ---
 
+## Quiz Flow
+
+```
+QuizIntro (name + team + employment type) → QuizQuestion (×14) → Calculating screen (1.5s) → QuizResult → /team
+```
+
+---
+
+## Phase 2 — Submission and Team View
+
+### Submission data shape
+
+```js
+{
+  name: String,           // from intro screen
+  team: String,           // from intro screen dropdown
+  employmentType: String, // 'Student Employee' | 'Full-Time Staff'
+  xScore: Number,         // -14 to +14
+  yScore: Number,         // -14 to +14
+  positionId: Number,     // 1–9
+  xLabel: String,
+  yLabel: String,
+  submittedAt: String,    // ISO timestamp
+}
+```
+
+### KV storage strategy
+
+- Key per person: `submission:{name_slug}` where slug = `name.toLowerCase().trim().replace(/\s+/g, '-')`
+- Value: JSON submission object
+- Index set: `submissions_index` tracks all slugs
+- Retakes overwrite — one result per person, always most recent
+
+### Aggregate logic
+
+Average all xScores → `getBucket()`. Average all yScores → `getBucket()`. Pass both to `getPosition()`. All functions are in existing `scoring.js` — no new logic needed.
+
+### Navigation
+
+- Team Results link visible on intro screen and result screen only — not during questions
+- After successful submission, result screen shows a "View team results →" link (not auto-navigate)
+- `/team` page has a "Take the quiz →" link back to `/`
+
+### Share Results button states
+
+`idle` → `loading` → `success` (1.5s hold, then reveal "View team results →") → (error shows inline, re-enables button)
+
+---
+
 ## Out of Scope
 
-- No user accounts or saved results
-- No analytics or result aggregation
-- No sharing beyond a basic copy/screenshot prompt
-- No admin panel
-- No backend
+- No user accounts or auth
+- No analytics beyond what is stored in KV
+- No admin panel or result deletion UI
 - No ability to go back between questions

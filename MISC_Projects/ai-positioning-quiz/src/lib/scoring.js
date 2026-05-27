@@ -1,10 +1,10 @@
-function getBucket(score) {
+export function getBucket(score) {
   if (score <= -5) return 0;
   if (score >= 5) return 2;
   return 1;
 }
 
-function getPosition(xScore, yScore) {
+export function getPosition(xScore, yScore) {
   const xBucket = getBucket(xScore);
   const yBucket = getBucket(yScore);
   const matrix = [

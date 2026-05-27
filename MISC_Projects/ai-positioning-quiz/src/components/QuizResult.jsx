@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { Share2, Check, RefreshCw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
@@ -20,11 +22,38 @@ function AxisPill({ label, variant = 'secondary' }) {
   )
 }
 
-export default function QuizResult({ positionId, onRetake }) {
+export default function QuizResult({ positionId, onRetake, name, team, employmentType, xScore, yScore }) {
   const shouldReduceMotion = useReducedMotion()
   const position = positions[positionId]
   const [selectedId, setSelectedId] = useState(positionId)
   const selectedPosition = positions[selectedId]
+  const [submitState, setSubmitState] = useState('idle')
+  const [showTeamLink, setShowTeamLink] = useState(false)
+
+  async function handleShare() {
+    setSubmitState('loading')
+    try {
+      const res = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          team,
+          employmentType,
+          xScore,
+          yScore,
+          positionId,
+          xLabel: position.xLabel,
+          yLabel: position.yLabel,
+        }),
+      })
+      if (!res.ok) throw new Error('Submit failed')
+      setSubmitState('success')
+      setTimeout(() => setShowTeamLink(true), 1500)
+    } catch {
+      setSubmitState('error')
+    }
+  }
 
   return (
     <motion.div
@@ -43,6 +72,10 @@ export default function QuizResult({ positionId, onRetake }) {
         >
           {position.name}
         </motion.h1>
+
+        {name && (
+          <p className="text-base text-muted-foreground">Your result, {name}</p>
+        )}
 
         <div className="flex gap-2 flex-wrap">
           <AxisPill label={position.xLabel} />
@@ -121,10 +154,51 @@ export default function QuizResult({ positionId, onRetake }) {
         </p>
       </div>
 
-      <div className="flex justify-center">
-        <Button variant="outline" onClick={onRetake}>
-          Retake quiz
-        </Button>
+      <div className="flex flex-col items-center gap-3">
+        <div className="flex gap-3 flex-wrap justify-center">
+          <Button variant="outline" onClick={onRetake}>
+            Retake quiz
+          </Button>
+          {name && (
+            submitState === 'success' ? (
+              <span className="flex items-center gap-2 px-4 py-2 rounded-md bg-green-600 text-white text-sm font-medium">
+                <Check className="w-4 h-4" />
+                Results shared!
+              </span>
+            ) : (
+              <Button
+                onClick={handleShare}
+                disabled={submitState === 'loading'}
+                className="gap-2"
+              >
+                {submitState === 'loading' ? (
+                  <>
+                    <RefreshCw className="w-4 h-4 animate-spin" />
+                    Sharing...
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="w-4 h-4" />
+                    Share Results
+                  </>
+                )}
+              </Button>
+            )
+          )}
+        </div>
+
+        {submitState === 'error' && (
+          <p className="text-sm text-destructive">Something went wrong. Try again.</p>
+        )}
+
+        {showTeamLink && (
+          <Link
+            to="/team"
+            className="text-sm text-foreground underline underline-offset-2 hover:text-foreground/70 transition-colors"
+          >
+            View team results →
+          </Link>
+        )}
       </div>
     </motion.div>
   )

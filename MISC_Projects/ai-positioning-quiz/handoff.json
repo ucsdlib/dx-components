@@ -1,7 +1,15 @@
 {
   "project": "UCSD Library DX — Individual AI Positioning Quiz",
   "repo": "ai-positioning-quiz",
-  "stack": ["React", "Vite", "Tailwind CSS", "shadcn/ui", "Framer Motion", "Vercel"],
+  "stack": [
+    "React",
+    "Vite",
+    "Tailwind CSS",
+    "shadcn/ui",
+    "Framer Motion",
+    "Vercel"
+  ],
+  "phase_1_status": "done",
   "briefing": "Read CLAUDE.md and DESIGN.md before doing any work. CLAUDE.md is the behavioral contract (stack, coding standards, scoring logic, file structure). DESIGN.md is the visual source of truth (component patterns, layout specs, animations, responsive rules).",
   "steps": [
     {
@@ -131,7 +139,7 @@
     {
       "id": 13,
       "title": "Deploy to Vercel",
-      "status": "pending",
+      "status": "done",
       "description": "Commit all work, push to GitHub, connect repo to Vercel, deploy. No environment variables required.",
       "commands": [
         "git add .",
@@ -173,7 +181,7 @@
       "files": [
         "src/components/QuizResult.jsx"
       ],
-      "notes": "URL to be provided by quiz owner before this step is started. Use a plain anchor tag styled as a text link — no Button component. Open in a new tab (target=_blank, rel=noreferrer)."
+      "notes": "URL inserted: https://ucsdlibrary.atlassian.net/wiki/x/AwAU3w. Plain anchor tag, opens in new tab."
     },
     {
       "id": 18,
@@ -231,5 +239,111 @@
     "index.html page title set to 'Where do you stand on AI?'.",
     "jsconfig.json created for @ path alias resolution (required by shadcn)."
   ],
+  "phase_2": {
+    "briefing": "Phase 2 adds a team results layer on top of the existing quiz. Each person enters their name and sub-team before starting, takes the quiz as normal, then submits their result to a Vercel KV store. A separate /team page fetches all submissions, computes the team average position, and renders everyone on the matrix in real time. No auth, no accounts — results are keyed by name and overwritten on retake. Read CLAUDE.md before starting. No new UI libraries. Reuse existing components wherever possible.",
+    "navigation_strategy": "The /team page is a standalone route — the primary entry points are: (1) the 'View team results →' link that appears on the result screen after a successful submission; (2) a persistent 'Team Results' link in the top-right corner of the app visible on the intro and result screens only — not during the quiz (question screens) so it does not distract mid-flow; (3) the /team URL itself, which the facilitator shares directly for the projector view. The /team page has a 'Take the quiz →' link back to / for anyone who lands there first. Do not show nav during question screens.",
+    "new_infrastructure": [
+      "@vercel/kv — Vercel-native Redis KV store. Free tier. Add via Vercel dashboard, env vars auto-injected.",
+      "react-router-dom — client-side routing for /team route.",
+      "vercel.json — SPA rewrite rule so /team resolves to index.html.",
+      "api/ directory — Vercel serverless functions (Node.js)."
+    ],
+    "data_schema": {
+      "submission": {
+        "name": "String — entered by user on intro screen",
+        "team": "String — selected from predefined list on intro screen. Quiz owner to provide team options before Step 23.",
+        "employmentType": "String — 'Student Employee' or 'Full-Time Staff'. Selected on intro screen.",
+        "xScore": "Number — raw axis score, -14 to +14",
+        "yScore": "Number — raw axis score, -14 to +14",
+        "positionId": "Number 1-9",
+        "xLabel": "String — e.g. 'Hybrid Navigator'",
+        "yLabel": "String — e.g. 'Balanced'",
+        "submittedAt": "ISO timestamp"
+      },
+      "kv_strategy": "Key per person: submission:{name_slug}. Value: JSON submission object. Separate set key submissions_index tracks all name slugs. Overwrite on retake — one result per person, always most recent."
+    },
+    "aggregate_logic": "Average xScore across all submissions. Average yScore. Pass both to getBucket() then getPosition() from existing scoring.js. No new scoring logic needed.",
+    "steps": [
+      {
+        "id": 21,
+        "title": "Infrastructure setup",
+        "status": "done",
+        "description": "Create Vercel KV store, install packages, add vercel.json SPA rewrite.",
+        "commands": [
+          "npm install @vercel/kv react-router-dom",
+          "vercel env pull .env.local (after creating KV store in Vercel dashboard)"
+        ],
+        "files": [
+          "vercel.json",
+          "package.json"
+        ],
+        "notes": "Create KV store in Vercel dashboard under Storage tab — link it to the ai-positioning-quiz project. Env vars (KV_REST_API_URL, KV_REST_API_TOKEN) are auto-injected into the project. Pull them locally with vercel env pull for dev. vercel.json needs one rewrite rule: { source: '/((?!api/).*)', destination: '/index.html' } so /team resolves client-side."
+      },
+      {
+        "id": 22,
+        "title": "Build API endpoints",
+        "status": "done",
+        "description": "Two serverless functions: POST /api/submit stores a submission, GET /api/results returns all submissions.",
+        "files": [
+          "api/submit.js",
+          "api/results.js"
+        ],
+        "notes": "submit.js: validate required fields (name, team, employmentType, xScore, yScore, positionId, xLabel, yLabel). Validate employmentType is one of ['Student Employee', 'Full-Time Staff']. Name slug = name.toLowerCase().trim().replace(/\\s+/g, '-'). Write submission JSON to KV at key submission:{slug}. Add slug to the submissions_index set. Return 200. results.js: read submissions_index set, fetch all submission keys, return array sorted by submittedAt descending. Both functions should return 405 for wrong methods. No auth required — internal tool."
+      },
+      {
+        "id": 23,
+        "title": "Name and team capture on intro screen",
+        "status": "done",
+        "description": "Add name text input and team dropdown to QuizIntro. Start button disabled until both fields are filled. Name and team flow up to App.jsx state and are stored for the duration of the session.",
+        "files": [
+          "src/components/QuizIntro.jsx",
+          "src/App.jsx",
+          "src/data/teams.js"
+        ],
+        "notes": "Create src/data/teams.js as a plain exported array of team name strings — quiz owner provides the list before this step starts. Employment type options are hardcoded: ['Student Employee', 'Full-Time Staff']. QuizIntro receives onStart(name, team, employmentType) instead of onStart(). App.jsx adds name, team, and employmentType to state. Start button disabled until all three fields are filled. On result screen, show 'Your result, {name}' as a subtitle beneath the position heading. Do not show team or employment type on the result screen — both are only used in the team view."
+      },
+      {
+        "id": 24,
+        "title": "Share Results button on result screen",
+        "status": "done",
+        "description": "Add a Share Results button to QuizResult that POSTs the submission to /api/submit then navigates to /team. Uses the Share2 icon from lucide-react.",
+        "files": [
+          "src/components/QuizResult.jsx"
+        ],
+        "notes": "lucide-react is already installed as a shadcn dependency — import Share2, Check, RefreshCw from it. Button has four states: (1) default — 'Share Results' with Share2 icon, enabled; (2) loading — spinner icon, disabled, label 'Sharing...'; (3) success — Check icon, label 'Results shared!', green accent, disabled for 1.5s; (4) error — label 'Something went wrong. Try again.', re-enabled. On success after the 1.5s hold, do NOT auto-navigate — instead reveal a 'View team results →' text link below the button. This keeps the user on their result screen and lets them choose when to go. Auto-navigating would be disorienting. On error: show a short inline error message below the button, do not navigate. Pass name, team, employmentType, xScore, yScore as props from App.jsx to QuizResult. Track submission state locally in QuizResult: 'idle' | 'loading' | 'success' | 'error'."
+      },
+      {
+        "id": 25,
+        "title": "React Router setup",
+        "status": "done",
+        "description": "Wrap the app in BrowserRouter. Add two routes: / for the quiz (existing App content), /team for the team results page.",
+        "files": [
+          "src/main.jsx",
+          "src/App.jsx"
+        ],
+        "notes": "Add BrowserRouter in main.jsx wrapping App. In App.jsx, add Routes with Route path='/' for the quiz flow and Route path='/team' for TeamView. The quiz flow is unchanged — all existing state and screen logic stays in App. TeamView is a sibling route, not nested inside the quiz flow."
+      },
+      {
+        "id": 26,
+        "title": "Extend MatrixDisplay for team view",
+        "status": "done",
+        "description": "Add an optional submissions prop to MatrixDisplay. When provided, render a compact name tag for each person inside their cell. Team average cell gets a distinct marker.",
+        "files": [
+          "src/components/MatrixDisplay.jsx"
+        ],
+        "notes": "submissions prop: array of submission objects (optional — existing single-result usage is unchanged when prop is absent). Group submissions by positionId. Inside each cell, render a flex-wrap list of first-name chips (text-xs, muted, truncated at ~10 chars). If a cell contains the team average positionId, add a small 'Team Avg' badge below the name chips. Cells must remain readable at mobile widths — limit visible chips to 3 and show '+N more' if overflow. The highlightedId prop (user's own result) is not used in team view — pass null."
+      },
+      {
+        "id": 27,
+        "title": "Build TeamView page",
+        "status": "done",
+        "description": "The /team route. Fetches all submissions from /api/results, computes the team average position, renders MatrixDisplay in team mode, and shows a submission list below. Auto-refreshes every 15 seconds.",
+        "files": [
+          "src/pages/TeamView.jsx"
+        ],
+        "notes": "Create src/pages/ directory. On mount, fetch /api/results. Compute avgX = mean of all xScores, avgY = mean of all yScores, teamPositionId = getPosition(getBucket(avgX), getBucket(avgY)) from scoring.js. Pass submissions and teamPositionId to MatrixDisplay. Below the matrix: a table or list showing each person's name, team, employment type, position name, xScore, yScore. Sort by submittedAt descending. Consider grouping or adding a filter toggle for employmentType (Student Employee / Full-Time Staff / All) so the presenter can see how each group maps across the matrix independently. Auto-refresh: useEffect with setInterval(15000) that re-fetches and re-computes. Show a 'Last updated' timestamp. Add a manual Refresh button (RefreshCw icon from lucide-react) for presenters who want to trigger an immediate update. Loading and empty states required: spinner on initial load, 'No results yet' message if submissions array is empty."
+      }
+    ]
+  },
   "caveat_copy": "No position is better or worse than another — the best fit depends on your workflow, experience level, and the specific problem you're solving.\n\nMixed positioning is normal. You might sit in one position for some work while landing somewhere else entirely for other aspects. You shouldn't expect to fit neatly inside a single box."
 }

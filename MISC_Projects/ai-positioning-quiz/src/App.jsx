@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { questions } from './data/questions'
 import { computeResult } from './lib/scoring'
@@ -7,6 +8,7 @@ import QuizIntro from './components/QuizIntro'
 import QuizQuestion from './components/QuizQuestion'
 import QuizResult from './components/QuizResult'
 import ProgressBar from './components/ProgressBar'
+import TeamView from './pages/TeamView'
 
 export default function App() {
   const shouldReduceMotion = useReducedMotion()
@@ -15,8 +17,14 @@ export default function App() {
   const [answers, setAnswers] = useState([])
   const [selected, setSelected] = useState(null)
   const [result, setResult] = useState(null)
+  const [name, setName] = useState('')
+  const [team, setTeam] = useState('')
+  const [employmentType, setEmploymentType] = useState('')
 
-  function handleStart() {
+  function handleStart(submittedName, submittedTeam, submittedEmploymentType) {
+    setName(submittedName)
+    setTeam(submittedTeam)
+    setEmploymentType(submittedEmploymentType)
     setScreen('question')
   }
 
@@ -71,6 +79,9 @@ export default function App() {
     setAnswers([])
     setSelected(null)
     setResult(null)
+    setName('')
+    setTeam('')
+    setEmploymentType('')
   }
 
   useEffect(() => {
@@ -84,10 +95,18 @@ export default function App() {
 
   const isLastQuestion = currentQuestion === questions.length - 1
 
-  return (
+  const quizContent = (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl flex flex-col gap-6">
+      {(screen === 'intro' || screen === 'result') && (
+        <Link
+          to="/team"
+          className="fixed top-4 right-4 text-sm text-muted-foreground hover:text-foreground transition-colors z-10"
+        >
+          Team Results →
+        </Link>
+      )}
 
+      <div className="w-full max-w-2xl flex flex-col gap-6">
         {screen === 'question' && (
           <ProgressBar current={currentQuestion + 1} total={questions.length} />
         )}
@@ -129,7 +148,16 @@ export default function App() {
             </motion.div>
           )}
           {screen === 'result' && result && (
-            <QuizResult key="result" positionId={result.positionId} onRetake={handleRetake} />
+            <QuizResult
+              key="result"
+              positionId={result.positionId}
+              onRetake={handleRetake}
+              name={name}
+              team={team}
+              employmentType={employmentType}
+              xScore={result.xScore}
+              yScore={result.yScore}
+            />
           )}
         </AnimatePresence>
 
@@ -147,8 +175,14 @@ export default function App() {
             </Button>
           </div>
         )}
-
       </div>
     </div>
+  )
+
+  return (
+    <Routes>
+      <Route path="/" element={quizContent} />
+      <Route path="/team" element={<TeamView />} />
+    </Routes>
   )
 }
