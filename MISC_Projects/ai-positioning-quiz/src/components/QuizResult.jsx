@@ -49,6 +49,7 @@ export default function QuizResult({ positionId, onRetake }) {
         </div>
       </div>
 
+      <h2 className="sr-only">Explore other positions</h2>
       <MatrixDisplay
         highlightedId={positionId}
         selectedId={selectedId}

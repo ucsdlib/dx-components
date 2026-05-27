@@ -31,9 +31,9 @@ export default function QuizQuestion({ question, selected, onSelect }) {
             </footer>
           </blockquote>
         )}
-        <p className="text-lg md:text-xl font-medium text-foreground leading-snug">
+        <h2 className="text-lg md:text-xl font-medium text-foreground leading-snug">
           {question.text}
-        </p>
+        </h2>
         {question.hint && (
           <span className="inline-flex self-start items-center text-xs font-medium px-2.5 py-1 rounded-full border border-primary/30 text-primary/80 bg-primary/5">
             {question.hint}
