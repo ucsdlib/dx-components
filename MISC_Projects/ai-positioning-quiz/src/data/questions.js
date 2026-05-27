@@ -26,13 +26,15 @@ export const questions = [
   {
     id: 3,
     axis: 'x',
-    text: "When you're working on a DX project such as a UX problem, at what point does AI typically enter your process?",
+    multiSelect: true,
+    hint: 'Select all that apply',
+    text: "When you're working on a DX project such as a UX problem, at what points does AI enter your process?",
     quote: null,
     options: [
-      { text: "I don't use AI at all, I work through design and content problems without it", score: -2 },
-      { text: "At the end I might use it to review, summarize, or clean up", score: -1 },
+      { text: "At the end I might use it to review, summarize, or clean up", score: 1 },
       { text: "I might use it in the middle of the design process when I hit a specific snag", score: 1 },
       { text: "I incorporate AI into the beginning of my design process, it's part of how I frame and approach the problem", score: 2 },
+      { text: "I don't use AI at all, I work through design and content problems without it", score: -2, exclusive: true },
     ]
   },
   {
@@ -98,7 +100,7 @@ export const questions = [
   {
     id: 9,
     axis: 'x',
-    text: "You're redesigning a section of the library website. This includes new information architecture, updated copy, and a fresh visual direction. Which best describes your approach?",
+    text: "You're redesigning a section of the library website. This includes new information architecture, updated copy, and a fresh visual direction. Overall, which best describes how AI is involved in your approach?",
     quote: null,
     options: [
       { text: "I'd work through all of it myself. All the research, writing, and design decisions are mine to make", score: -2 },
@@ -122,7 +124,7 @@ export const questions = [
   {
     id: 11,
     axis: 'x',
-    text: "When you're writing, whether that's documentation, UX copy, a proposal, or an email, what does your AI use look like?",
+    text: "When you're writing, whether that's documentation, UX copy, a proposal, or an email, what does your AI use most commonly look like?",
     quote: null,
     options: [
       { text: "I write everything myself. AI doesn't play a role at all", score: -2 },

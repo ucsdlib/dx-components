@@ -20,18 +20,45 @@ export default function App() {
   }
 
   function handleSelect(option) {
-    setSelected(option)
-    setAnswers(prev => {
-      const updated = [...prev]
-      updated[currentQuestion] = { axis: questions[currentQuestion].axis, score: option.score }
-      return updated
-    })
+    const q = questions[currentQuestion]
+    if (q.multiSelect) {
+      setSelected(prev => {
+        const arr = Array.isArray(prev) ? prev : []
+        if (option.exclusive) {
+          return arr.some(s => s.text === option.text) ? [] : [option]
+        } else {
+          const withoutExclusive = arr.filter(s => !s.exclusive)
+          const alreadySelected = withoutExclusive.some(s => s.text === option.text)
+          return alreadySelected
+            ? withoutExclusive.filter(s => s.text !== option.text)
+            : [...withoutExclusive, option]
+        }
+      })
+    } else {
+      setSelected(option)
+      setAnswers(prev => {
+        const updated = [...prev]
+        updated[currentQuestion] = { axis: q.axis, score: option.score }
+        return updated
+      })
+    }
   }
 
   function handleNext() {
+    const q = questions[currentQuestion]
+    if (q.multiSelect) {
+      const scores = (Array.isArray(selected) ? selected : []).map(s => s.score)
+      const avgScore = scores.reduce((a, b) => a + b, 0) / scores.length
+      setAnswers(prev => {
+        const updated = [...prev]
+        updated[currentQuestion] = { axis: q.axis, score: avgScore }
+        return updated
+      })
+    }
     if (currentQuestion < questions.length - 1) {
+      const nextQ = questions[currentQuestion + 1]
       setCurrentQuestion(i => i + 1)
-      setSelected(null)
+      setSelected(nextQ.multiSelect ? [] : null)
     } else {
       setScreen('calculating')
     }
@@ -107,7 +134,14 @@ export default function App() {
 
         {screen === 'question' && (
           <div className="flex justify-end">
-            <Button onClick={handleNext} disabled={selected === null}>
+            <Button
+              onClick={handleNext}
+              disabled={
+                questions[currentQuestion].multiSelect
+                  ? !Array.isArray(selected) || selected.length === 0
+                  : selected === null
+              }
+            >
               {isLastQuestion ? 'Finish' : 'Next'}
             </Button>
           </div>
