@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { questions } from './data/questions'
 import { computeResult } from './lib/scoring'
 import { Button } from '@/components/ui/button'
@@ -9,6 +9,7 @@ import QuizResult from './components/QuizResult'
 import ProgressBar from './components/ProgressBar'
 
 export default function App() {
+  const shouldReduceMotion = useReducedMotion()
   const [screen, setScreen] = useState('intro')
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState([])
@@ -120,8 +121,8 @@ export default function App() {
                   <motion.span
                     key={i}
                     className="w-2 h-2 rounded-full bg-primary"
-                    animate={{ opacity: [0.3, 1, 0.3] }}
-                    transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.2 }}
+                    animate={shouldReduceMotion ? { opacity: 1 } : { opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 0.9, repeat: shouldReduceMotion ? 0 : Infinity, delay: i * 0.2 }}
                   />
                 ))}
               </div>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
@@ -21,6 +21,7 @@ function AxisPill({ label, variant = 'secondary' }) {
 }
 
 export default function QuizResult({ positionId, onRetake }) {
+  const shouldReduceMotion = useReducedMotion()
   const position = positions[positionId]
   const [selectedId, setSelectedId] = useState(positionId)
   const selectedPosition = positions[selectedId]
@@ -35,7 +36,7 @@ export default function QuizResult({ positionId, onRetake }) {
     >
       <div className="flex flex-col gap-3">
         <motion.h1
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
           className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground"

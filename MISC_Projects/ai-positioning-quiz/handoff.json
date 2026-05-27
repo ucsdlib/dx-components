@@ -178,7 +178,7 @@
     {
       "id": 18,
       "title": "Typography scale and accessibility sizing",
-      "status": "pending",
+      "status": "done",
       "description": "The current type scale is too small at laptop and desktop sizes. Reading and comparing specific sentences is the core interaction of this app — typography needs to support that. Bump up the scale at md+ breakpoints and verify all text meets AAA contrast and size requirements. Quotes and answer options are the most noticeable pain points.",
       "files": [
         "src/components/QuizQuestion.jsx",
@@ -191,7 +191,7 @@
     {
       "id": 19,
       "title": "Consistent container and heading structure",
-      "status": "pending",
+      "status": "done",
       "description": "Add a consistent max-width container and semantic heading hierarchy across all screens. Currently each screen manages its own width and heading levels inconsistently. A shared container ensures visual rhythm is predictable throughout the flow. Semantic headings are required for screen reader navigation and general accessibility best practice.",
       "files": [
         "src/App.jsx",
@@ -200,6 +200,18 @@
         "src/components/QuizResult.jsx"
       ],
       "notes": "Container: a single max-width wrapper (already roughly in place in App.jsx at max-w-2xl) should be the single source of truth — child screens should not re-declare their own widths. Headings: QuizIntro title should be h1, QuizQuestion question text should be a heading (h2 or label equivalent) not a plain p tag, QuizResult position name is already h1 — verify the full heading order is logical. Do not use heading tags purely for size — if something needs to look like a heading but isn't one semantically, use a p with font-semibold instead. Verify with a screen reader or accessibility tree that the heading outline makes sense end-to-end."
+    },
+    {
+      "id": 20,
+      "title": "Keyboard navigation, ARIA roles, reduced motion, focus management",
+      "status": "done",
+      "description": "Four accessibility gaps not covered in Steps 18–19. (1) Answer cards are divs with onClick — not reachable or activatable by keyboard. (2) Single-select and multi-select question options have no ARIA roles — screen readers announce them as generic elements with no checked state. (3) Framer Motion animations do not respect prefers-reduced-motion — motion-sensitive users see all animations. (4) Focus is not managed on question advance — screen reader users do not know new content has loaded.",
+      "files": [
+        "src/components/QuizQuestion.jsx",
+        "src/components/QuizResult.jsx",
+        "src/App.jsx"
+      ],
+      "notes": "KEYBOARD NAV: Add tabIndex={0} and onKeyDown (Enter/Space triggers onSelect) to each answer Card in QuizQuestion. MatrixDisplay already uses button elements — no change needed there. ARIA ROLES: Wrap the answer grid in role='radiogroup' (single-select) or role='group' (multi-select) with aria-label='Answer options'. Each card gets role='radio' or role='checkbox' and aria-checked={isSelected}. REDUCED MOTION: Use useReducedMotion() from framer-motion. Disable whileTap scale on answer cards, disable y-movement on result position name, disable pulsing dot animation on calculating screen. Screen fades are subtle enough to leave as-is. FOCUS MANAGEMENT: Add a ref to the question h2 in QuizQuestion and call .focus() in a useEffect on mount. Use tabIndex={-1} so it is programmatically focusable without entering the tab order. Add outline-none to suppress the visible focus ring on programmatic focus only."
     }
   ],
   "post_build_changes": [
