@@ -144,8 +144,20 @@
   "feedback_phase": [
     {
       "id": 14,
-      "title": "Clickable matrix cells — position explorer",
+      "title": "Question quality audit — double-barrel and multi-select",
       "status": "pending",
+      "description": "Two related problems make it hard for users to select a single honest answer. (1) Double-barrel options bundle two independent factors into one choice, so a user who matches only one factor has no clean option. (2) Some questions describe a spectrum of behaviors where real users do several of them — forcing a single pick misrepresents their position. Fix both: rewrite double-barrel options to vary on one dimension only, and convert questions whose answers aren't mutually exclusive to multi-select.",
+      "files": [
+        "src/data/questions.js",
+        "src/components/QuizQuestion.jsx",
+        "src/App.jsx"
+      ],
+      "notes": "SCORING: Multi-select uses score averaging. If a user selects options scoring +1 and +2, the question contributes +1.5. Per-question contribution stays in the -2 to +2 range, so the per-axis total range (-14 to +14) and bucket thresholds are unchanged. scoring.js needs no changes. handleAnswer in App.jsx needs to average an array of scores instead of taking a single value. QuizQuestion needs a multiSelect prop that switches from radio to checkbox behavior; a 'Continue' button should only enable once at least one option is selected. DOUBLE-BARREL FIXES (keep single-select): Q1 options 2 and 3 conflate frequency with task type — rewrite so frequency is the only variable. Q7 option 1 collapses 'relieved' and 'indifferent' into one — these are different positions and should be separate options. Q8 option 2 bundles general values with AI-specific thinking — someone could have one without the other. Q12 options 3 and 4 pack in multiple independent things (sources, people, what-to-track, how-to-track) — simplify each to a single dimension. MULTI-SELECT CONVERSIONS: Q3 ('at what point does AI enter your process') — users commonly use AI at multiple stages; convert to multi-select. Q9 ('which best describes your approach' on a website redesign) — the scenario spans multiple distinct tasks; a user might go solo on IA but use AI for copy; convert to multi-select. Q11 ('what does your AI use look like for writing') — a user might polish some pieces and fully draft others; convert to multi-select."
+    },
+    {
+      "id": 16,
+      "title": "Clickable matrix cells — position explorer",
+      "status": "done",
       "description": "Make each cell in MatrixDisplay interactive. Clicking any cell updates a selected state and renders a description panel directly below the matrix showing that position's name, axis pills, and description. The user's own result cell is pre-selected on load so the description panel is populated immediately. Clicking a different cell swaps the panel content in place. No navigation, no modals.",
       "files": [
         "src/components/MatrixDisplay.jsx",
@@ -154,9 +166,9 @@
       "notes": "selectedId state lives in QuizResult, initialized to positionId (the user's result). Pass selectedId and onSelect down to MatrixDisplay. Description panel sits between the matrix and the existing position description — or replaces it, since the pre-selected cell already shows the user's own description. Highlighted cell (user's result) keeps its existing accent styling. Selected-but-not-result cell gets a distinct active style (e.g. secondary border). Framer Motion: fade the panel content on cell change, duration 0.15s."
     },
     {
-      "id": 15,
+      "id": 17,
       "title": "LiSN link on result screen",
-      "status": "pending",
+      "status": "done",
       "description": "Add a 'Learn more on LiSN' link to the result screen pointing to the LiSN matrix overview page. Place it after the description panel and before the caveat block. Include a short framing line: 'Want to go deeper? The full matrix is documented on LiSN.' followed by the link.",
       "files": [
         "src/components/QuizResult.jsx"

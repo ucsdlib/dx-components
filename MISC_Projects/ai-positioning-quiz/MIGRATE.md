@@ -1,107 +1,27 @@
 # Migration: ai-positioning-quiz to dx-components
 
-Move this project from the personal repo into `MISC_Projects/ai-positioning-quiz/` inside [ucsdlib/dx-components](https://github.com/ucsdlib/dx-components).
-
-The target folder is currently empty (just a README). No monorepo or shared config to worry about -- the project drops in as a self-contained subfolder, same as other projects in that repo.
+✅ **Migration complete** — May 2026
 
 ---
 
-## 1. Clone dx-components and create a branch
+## What was done
 
-```bash
-git clone https://github.com/ucsdlib/dx-components.git
-cd dx-components
-git checkout -b add-ai-positioning-quiz
-```
+1. Cloned `ucsdlib/dx-components` and created branch `ashton-ai-positioning-quiz`
+2. Copied all project files into `MISC_Projects/ai-positioning-quiz/` (excluding `node_modules/`, `dist/`, `.git/`, `.history/`)
+3. Ran `npm install` and `npm run build` — build passed with no errors
+4. Committed and pushed to `origin/ashton-ai-positioning-quiz`
+5. Deployed to Vercel via CLI (`vercel --prod`) — no GitHub integration needed
 
----
+## Current state
 
-## 2. Copy project files
+- **Source:** `ucsdlib/dx-components`, branch `ashton-ai-positioning-quiz`
+- **Live URL:** https://ai-positioning-quiz.vercel.app
+- **Deploys:** Manual — run `vercel --prod` from `MISC_Projects/ai-positioning-quiz/` to push updates
+- **Personal repo:** Can be archived when ready
 
-From the root of this repo (`ai-positioning-quiz/`), copy everything into the new location -- excluding generated and local-only files:
-
-```bash
-rsync -av --exclude='node_modules' \
-          --exclude='dist' \
-          --exclude='.git' \
-          --exclude='.history' \
-          ../ai-positioning-quiz/ \
-          MISC_Projects/ai-positioning-quiz/
-```
-
-Or manually copy these files and folders:
-
-```
-src/
-public/
-.claude/
-index.html
-package.json
-package-lock.json
-vite.config.js
-jsconfig.json
-components.json
-tailwind.config.js        (if present)
-.gitignore
-CLAUDE.md
-DESIGN.md
-MIGRATE.md
-UCSD_DX_AI_Quiz_PRD.md
-handoff.json
-```
-
-Do **not** copy: `node_modules/`, `dist/`, `.git/`, `.history/`
-
----
-
-## 3. Install dependencies and verify the build
+## To redeploy
 
 ```bash
 cd MISC_Projects/ai-positioning-quiz
-npm install
-npm run build
+vercel --prod
 ```
-
-Build output should land in `dist/` with no errors.
-
----
-
-## 4. Commit and push
-
-```bash
-cd ../..   # back to dx-components root
-git add MISC_Projects/ai-positioning-quiz
-git commit -m "Add AI positioning quiz to MISC_Projects"
-git push origin add-ai-positioning-quiz
-```
-
-Open a PR into `main` on ucsdlib/dx-components, or push directly to main if you have access.
-
----
-
-## 5. Update Vercel
-
-The existing Vercel project is connected to the personal repo. Reconnect it to the new location:
-
-1. Go to the Vercel project dashboard
-2. **Settings > Git** -- disconnect the current repo
-3. Connect to `ucsdlib/dx-components`
-4. Set **Root Directory** to `MISC_Projects/ai-positioning-quiz`
-5. Confirm build settings:
-   - Build command: `npm run build`
-   - Output directory: `dist`
-   - Install command: `npm install`
-6. Trigger a manual redeploy and confirm it works
-
-The production URL will stay the same -- only the source repo changes.
-
----
-
-## 6. Archive the personal repo
-
-Once Vercel is redeployed and confirmed working:
-
-1. Go to the personal `ai-positioning-quiz` repo on GitHub
-2. **Settings > Danger Zone > Archive this repository**
-
-Archiving preserves the history and URL as read-only without deleting anything.

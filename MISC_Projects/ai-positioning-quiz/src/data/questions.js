@@ -6,8 +6,8 @@ export const questions = [
     quote: null,
     options: [
       { text: "Rarely or never. Most of my work is entirely self-directed", score: -2 },
-      { text: "Occasionally, for specific one-off tasks", score: -1 },
-      { text: "Regularly, for a handful of recurring tasks", score: 1 },
+      { text: "Occasionally, for a few tasks.", score: -1 },
+      { text: "Regularly, for a handful of tasks", score: 1 },
       { text: "All the time. AI is embedded in most of how I work", score: 2 },
     ]
   },
@@ -77,7 +77,7 @@ export const questions = [
     text: "How do you feel when AI tools aren't available for a task you're working on?",
     quote: null,
     options: [
-      { text: "Relieved, or indifferent, I wasn't planning to use them anyway", score: -2 },
+      { text: "Indifferent", score: -2 },
       { text: "Mildly inconvenienced for certain tasks", score: -1 },
       { text: "Noticeably slowed down, I'd have to rework my approach", score: 1 },
       { text: "Significantly disrupted, AI is load-bearing in my workflow", score: 2 },
@@ -90,7 +90,7 @@ export const questions = [
     quote: { text: "Library professionals have concerns about AI including but not limited to ethics, privacy, and training.", source: "Tips and Trends: AI Developments and Resources for Academic Librarians" },
     options: [
       { text: "I'm still forming my framework, I haven't landed anywhere firm yet", score: -2 },
-      { text: "I have general values but I haven't thought through AI specifically", score: -1 },
+      { text: "I have some thoughts about AI and these values but I don't have a fleshed-out perspective", score: -1 },
       { text: "I have a clear personal stance on AI ethics, even if it's not written down", score: 1 },
       { text: "I have an articulated, documented position I can explain and defend", score: 2 },
     ]
@@ -139,8 +139,8 @@ export const questions = [
     options: [
       { text: "I pick things up passively through articles, conversations, and things that cross my path naturally", score: -2 },
       { text: "I follow along informally. I pay attention when something seems relevant but I'm not deliberate about it", score: -1 },
-      { text: "I have a general approach. I have specific sources I return to, people I follow, a rough sense of what I want to track", score: 1 },
-      { text: "I've identified what I need to stay current on and how I do it", score: 2 },
+      { text: "I have a general approach. I have specific sources or people I return to when I want to stay informed", score: 1 },
+      { text: "I've identified how I keep up to date with the latest AI developments", score: 2 },
     ]
   },
   {
