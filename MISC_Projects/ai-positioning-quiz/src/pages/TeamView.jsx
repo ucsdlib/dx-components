@@ -7,12 +7,23 @@ import { Badge } from '@/components/ui/badge'
 import { getPosition } from '@/lib/scoring'
 import MatrixDisplay from '@/components/MatrixDisplay'
 
+const FILTERS = [
+  { value: 'All',              label: 'All Participants',  avgLabel: 'Team Average',    activeClass: 'border-foreground/40 bg-foreground/5 text-foreground' },
+  { value: 'Student Employee', label: 'Student Employees', avgLabel: 'Student Average', activeClass: 'border-amber-500 bg-amber-50 text-amber-900' },
+  { value: 'Full-Time Staff',  label: 'Full-Time Staff',   avgLabel: 'Staff Average',   activeClass: 'border-blue-500 bg-blue-50 text-blue-900' },
+]
+
 export default function TeamView() {
   const [submissions, setSubmissions] = useState([])
   const [loading, setLoading] = useState(true)
   const [lastUpdated, setLastUpdated] = useState(null)
   const [filter, setFilter] = useState('All')
   const [selectedId, setSelectedId] = useState(null)
+
+  function handleFilterChange(value) {
+    setFilter(value)
+    setSelectedId(null)
+  }
 
   const fetchResults = useCallback(async () => {
     try {
@@ -89,17 +100,17 @@ export default function TeamView() {
         ) : (
           <>
             <div className="flex gap-2 flex-wrap">
-              {['All', 'Student Employee', 'Full-Time Staff'].map(f => (
+              {FILTERS.map(f => (
                 <button
-                  key={f}
-                  onClick={() => setFilter(f)}
-                  className={`text-sm px-3 py-1.5 rounded-md border transition-colors ${
-                    filter === f
-                      ? 'border-primary bg-primary/10 text-foreground font-medium'
+                  key={f.value}
+                  onClick={() => handleFilterChange(f.value)}
+                  className={`text-sm px-3 py-1.5 rounded-md border transition-colors font-medium ${
+                    filter === f.value
+                      ? f.activeClass
                       : 'border-border text-muted-foreground hover:border-border/80 hover:bg-muted/30'
                   }`}
                 >
-                  {f}
+                  {f.label}
                 </button>
               ))}
             </div>
@@ -123,6 +134,7 @@ export default function TeamView() {
                     const pos = positions[selectedId]
                     const inCell = filtered.filter(s => s.positionId === selectedId)
                     const isAvg = selectedId === teamPositionId
+                    const avgLabel = FILTERS.find(f => f.value === filter)?.avgLabel ?? 'Team Average'
                     return (
                       <motion.div
                         key={selectedId}
@@ -136,7 +148,7 @@ export default function TeamView() {
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-base font-semibold text-foreground">{pos.name}</span>
                             {isAvg && (
-                              <span className="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full font-medium">Team Average</span>
+                              <span className="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full font-medium">{avgLabel}</span>
                             )}
                           </div>
                           <div className="flex gap-2 flex-wrap">
@@ -147,11 +159,11 @@ export default function TeamView() {
 
                         <p className="text-sm text-foreground/80 leading-relaxed">{pos.description}</p>
 
-                        <div className="flex flex-col gap-1.5 pt-1 border-t border-border/50">
-                          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                            {inCell.length === 0 ? 'No one here' : `${inCell.length} ${inCell.length === 1 ? 'person' : 'people'} here`}
-                          </span>
-                          {inCell.length > 0 && (
+                        {inCell.length > 0 && (
+                          <div className="flex flex-col gap-1.5 pt-1 border-t border-border/50">
+                            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                              {inCell.length} {inCell.length === 1 ? 'person' : 'people'} here
+                            </span>
                             <div className="flex flex-col gap-1">
                               {inCell.map((s, i) => (
                                 <div key={i} className="flex items-center justify-between text-sm">
@@ -160,8 +172,8 @@ export default function TeamView() {
                                 </div>
                               ))}
                             </div>
-                          )}
-                        </div>
+                          </div>
+                        )}
                       </motion.div>
                     )
                   })()}
