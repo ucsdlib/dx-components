@@ -1,15 +1,7 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { teams } from '@/data/teams'
 
 export default function QuizIntro({ onStart }) {
-  const [name, setName] = useState('')
-  const [team, setTeam] = useState('')
-  const [employmentType, setEmploymentType] = useState('')
-
-  const canStart = name.trim() !== '' && team !== '' && employmentType !== ''
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -34,56 +26,7 @@ export default function QuizIntro({ onStart }) {
         different way of working. This quiz should take 5 minutes.
       </p>
 
-      <div className="flex flex-col gap-3 w-full max-w-sm">
-        <input
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          placeholder="Your name"
-          aria-label="Your name"
-          className="w-full px-3 py-2 rounded-md border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-        />
-
-        <select
-          value={team}
-          onChange={e => setTeam(e.target.value)}
-          aria-label="Your team"
-          className="w-full px-3 py-2 rounded-md border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-        >
-          <option value="" disabled>Select your team</option>
-          {teams.map(t => (
-            <option key={t} value={t}>{t}</option>
-          ))}
-        </select>
-
-        <div
-          role="group"
-          aria-label="Employment type"
-          className="flex rounded-md border border-input overflow-hidden"
-        >
-          {['Student Employee', 'Full-Time Staff'].map(option => (
-            <button
-              key={option}
-              type="button"
-              onClick={() => setEmploymentType(option)}
-              aria-pressed={employmentType === option}
-              className={`flex-1 px-4 py-2 text-sm transition-colors ${
-                employmentType === option
-                  ? 'bg-primary text-primary-foreground font-medium'
-                  : 'text-muted-foreground hover:bg-muted'
-              }`}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <Button
-        size="lg"
-        disabled={!canStart}
-        onClick={() => onStart(name.trim(), team, employmentType)}
-      >
+      <Button size="lg" onClick={onStart}>
         Start
       </Button>
     </motion.div>

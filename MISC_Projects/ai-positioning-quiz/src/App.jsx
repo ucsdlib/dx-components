@@ -5,6 +5,7 @@ import { questions } from './data/questions'
 import { computeResult } from './lib/scoring'
 import { Button } from '@/components/ui/button'
 import QuizIntro from './components/QuizIntro'
+import QuizProfile from './components/QuizProfile'
 import QuizQuestion from './components/QuizQuestion'
 import QuizResult from './components/QuizResult'
 import ProgressBar from './components/ProgressBar'
@@ -21,7 +22,11 @@ export default function App() {
   const [team, setTeam] = useState('')
   const [employmentType, setEmploymentType] = useState('')
 
-  function handleStart(submittedName, submittedTeam, submittedEmploymentType) {
+  function handleStart() {
+    setScreen('profile')
+  }
+
+  function handleProfile(submittedName, submittedTeam, submittedEmploymentType) {
     setName(submittedName)
     setTeam(submittedTeam)
     setEmploymentType(submittedEmploymentType)
@@ -114,6 +119,9 @@ export default function App() {
         <AnimatePresence mode="wait">
           {screen === 'intro' && (
             <QuizIntro key="intro" onStart={handleStart} />
+          )}
+          {screen === 'profile' && (
+            <QuizProfile key="profile" onContinue={handleProfile} />
           )}
           {screen === 'question' && (
             <AnimatePresence key="question" mode="wait">
