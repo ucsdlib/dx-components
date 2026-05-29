@@ -47,20 +47,19 @@ export default function MatrixDisplay({ highlightedId, selectedId, onSelect, sub
             <div className="grid grid-cols-3 gap-1">
               {row.map(position => {
                 const isHighlighted = !isTeamMode && position.id === highlightedId
-                const isSelected = !isTeamMode && position.id === selectedId
+                const isSelected = position.id === selectedId
                 const isTeamAvg = isTeamMode && position.id === teamPositionId
                 const cellSubs = isTeamMode ? (submissionsByPosition[position.id] ?? []) : []
                 const visibleSubs = cellSubs.slice(0, 3)
                 const overflow = cellSubs.length - 3
 
                 const cellClassName = [
-                  'rounded-md border p-2 flex flex-col gap-0.5 text-left w-full',
+                  'rounded-md border p-2 flex flex-col gap-0.5 text-left w-full cursor-pointer transition-colors',
                   isHighlighted
                     ? 'border-primary bg-primary/10 text-foreground'
                     : isSelected || isTeamAvg
                     ? 'border-primary/50 bg-primary/5 text-foreground/80'
-                    : 'border-border bg-muted/30 text-muted-foreground/60',
-                  !isTeamMode && 'cursor-pointer hover:border-border/80 hover:bg-muted/50 transition-colors',
+                    : 'border-border bg-muted/30 text-muted-foreground/60 hover:border-border/80 hover:bg-muted/50',
                 ].filter(Boolean).join(' ')
 
                 const inner = (
@@ -89,11 +88,7 @@ export default function MatrixDisplay({ highlightedId, selectedId, onSelect, sub
                   </>
                 )
 
-                return isTeamMode ? (
-                  <div key={position.id} className={cellClassName}>
-                    {inner}
-                  </div>
-                ) : (
+                return (
                   <button
                     key={position.id}
                     onClick={() => onSelect(position.id)}

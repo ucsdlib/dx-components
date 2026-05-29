@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { RefreshCw } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { positions } from '@/data/positions'
+import { Badge } from '@/components/ui/badge'
 import { getPosition } from '@/lib/scoring'
 import MatrixDisplay from '@/components/MatrixDisplay'
 
@@ -10,6 +12,7 @@ export default function TeamView() {
   const [loading, setLoading] = useState(true)
   const [lastUpdated, setLastUpdated] = useState(null)
   const [filter, setFilter] = useState('All')
+  const [selectedId, setSelectedId] = useState(null)
 
   const fetchResults = useCallback(async () => {
     try {
@@ -40,6 +43,10 @@ export default function TeamView() {
         filtered.reduce((sum, r) => sum + r.yScore, 0) / filtered.length
       )
     : null
+
+  useEffect(() => {
+    if (teamPositionId && selectedId === null) setSelectedId(teamPositionId)
+  }, [teamPositionId])
 
   return (
     <div className="min-h-screen bg-background p-4">
@@ -105,11 +112,60 @@ export default function TeamView() {
               <>
                 <MatrixDisplay
                   highlightedId={null}
-                  selectedId={null}
-                  onSelect={() => {}}
+                  selectedId={selectedId}
+                  onSelect={setSelectedId}
                   submissions={filtered}
                   teamPositionId={teamPositionId}
                 />
+
+                <AnimatePresence mode="wait">
+                  {selectedId && (() => {
+                    const pos = positions[selectedId]
+                    const inCell = filtered.filter(s => s.positionId === selectedId)
+                    const isAvg = selectedId === teamPositionId
+                    return (
+                      <motion.div
+                        key={selectedId}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.15 }}
+                        className="rounded-lg border bg-card p-4 flex flex-col gap-3"
+                      >
+                        <div className="flex flex-col gap-2">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-base font-semibold text-foreground">{pos.name}</span>
+                            {isAvg && (
+                              <span className="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full font-medium">Team Average</span>
+                            )}
+                          </div>
+                          <div className="flex gap-2 flex-wrap">
+                            <Badge variant="secondary">{pos.xLabel}</Badge>
+                            <Badge variant="secondary">{pos.yLabel}</Badge>
+                          </div>
+                        </div>
+
+                        <p className="text-sm text-foreground/80 leading-relaxed">{pos.description}</p>
+
+                        <div className="flex flex-col gap-1.5 pt-1 border-t border-border/50">
+                          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                            {inCell.length === 0 ? 'No one here' : `${inCell.length} ${inCell.length === 1 ? 'person' : 'people'} here`}
+                          </span>
+                          {inCell.length > 0 && (
+                            <div className="flex flex-col gap-1">
+                              {inCell.map((s, i) => (
+                                <div key={i} className="flex items-center justify-between text-sm">
+                                  <span className="font-medium text-foreground">{s.name}</span>
+                                  <span className="text-muted-foreground text-xs">{s.team} · {s.employmentType}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </motion.div>
+                    )
+                  })()}
+                </AnimatePresence>
 
                 <div className="flex flex-col gap-2">
                   <h2 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
