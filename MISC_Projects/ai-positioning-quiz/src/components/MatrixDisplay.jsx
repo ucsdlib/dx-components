@@ -11,7 +11,7 @@ const grid = Array.from({ length: 3 }, (_, row) =>
   })
 )
 
-export default function MatrixDisplay({ highlightedId, selectedId, onSelect, submissions, teamPositionId }) {
+export default function MatrixDisplay({ highlightedId, selectedId, onSelect, submissions, teamPositionId, teamAvgChipLabel = 'Team Avg', teamAvgChipClass = 'bg-primary/20 text-primary' }) {
   const isTeamMode = Array.isArray(submissions)
 
   const submissionsByPosition = {}
@@ -79,8 +79,8 @@ export default function MatrixDisplay({ highlightedId, selectedId, onSelect, sub
                           <span className="text-[10px] text-muted-foreground px-0.5 py-0.5">+{overflow}</span>
                         )}
                         {isTeamAvg && (
-                          <span className="text-[10px] bg-primary/20 text-primary px-1 py-0.5 rounded font-medium">
-                            Team Avg
+                          <span className={`text-[10px] px-1 py-0.5 rounded font-medium ${teamAvgChipClass}`}>
+                            {teamAvgChipLabel}
                           </span>
                         )}
                       </div>

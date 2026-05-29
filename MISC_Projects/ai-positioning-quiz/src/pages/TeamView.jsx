@@ -8,9 +8,9 @@ import { getPosition } from '@/lib/scoring'
 import MatrixDisplay from '@/components/MatrixDisplay'
 
 const FILTERS = [
-  { value: 'All',              label: 'All Participants',  avgLabel: 'Team Average',    activeClass: 'border-foreground/40 bg-foreground/5 text-foreground' },
-  { value: 'Student Employee', label: 'Student Employees', avgLabel: 'Student Average', activeClass: 'border-amber-500 bg-amber-50 text-amber-900' },
-  { value: 'Full-Time Staff',  label: 'Full-Time Staff',   avgLabel: 'Staff Average',   activeClass: 'border-blue-500 bg-blue-50 text-blue-900' },
+  { value: 'All',              label: 'All Participants',  avgLabel: 'Team Average',    avgChipLabel: 'Team Avg',    activeClass: 'border-foreground/40 bg-foreground/5 text-foreground', avgBadgeClass: 'bg-foreground/10 text-foreground' },
+  { value: 'Student Employee', label: 'Student Employees', avgLabel: 'Student Average', avgChipLabel: 'Student Avg', activeClass: 'border-amber-500 bg-amber-50 text-amber-900',          avgBadgeClass: 'bg-amber-100 text-amber-800' },
+  { value: 'Full-Time Staff',  label: 'Full-Time Staff',   avgLabel: 'Staff Average',   avgChipLabel: 'Staff Avg',   activeClass: 'border-blue-500 bg-blue-50 text-blue-900',            avgBadgeClass: 'bg-blue-100 text-blue-800' },
 ]
 
 export default function TeamView() {
@@ -127,6 +127,8 @@ export default function TeamView() {
                   onSelect={setSelectedId}
                   submissions={filtered}
                   teamPositionId={teamPositionId}
+                  teamAvgChipLabel={FILTERS.find(f => f.value === filter)?.avgChipLabel}
+                  teamAvgChipClass={FILTERS.find(f => f.value === filter)?.avgBadgeClass}
                 />
 
                 <AnimatePresence mode="wait">
@@ -134,7 +136,9 @@ export default function TeamView() {
                     const pos = positions[selectedId]
                     const inCell = filtered.filter(s => s.positionId === selectedId)
                     const isAvg = selectedId === teamPositionId
-                    const avgLabel = FILTERS.find(f => f.value === filter)?.avgLabel ?? 'Team Average'
+                    const currentFilter = FILTERS.find(f => f.value === filter)
+                    const avgLabel = currentFilter?.avgLabel ?? 'Team Average'
+                    const avgBadgeClass = currentFilter?.avgBadgeClass ?? 'bg-foreground/10 text-foreground'
                     return (
                       <motion.div
                         key={selectedId}
@@ -148,7 +152,7 @@ export default function TeamView() {
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-base font-semibold text-foreground">{pos.name}</span>
                             {isAvg && (
-                              <span className="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full font-medium">{avgLabel}</span>
+                              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${avgBadgeClass}`}>{avgLabel}</span>
                             )}
                           </div>
                           <div className="flex gap-2 flex-wrap">
