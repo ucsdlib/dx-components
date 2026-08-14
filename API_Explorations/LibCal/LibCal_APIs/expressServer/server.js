@@ -10,4 +10,5 @@ app.use(cors({
 app.use(express.json(),express.urlencoded({extended:true}));
 // app.use(cookieParser());
 require("./routes/routes.spaces")(app)
+require("./routes/routes.appointments")(app)
 app.listen(MYPORT,()=>console.log(`Listneing on PORT ${MYPORT}`))
