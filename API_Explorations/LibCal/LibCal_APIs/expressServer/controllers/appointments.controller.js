@@ -3,12 +3,33 @@ const path = require('path');
 const AuthController = require('./auth.controller');
 const { baseUrl } = AuthController;
 
-const outputPath = path.join(__dirname, '..', 'appointments.json');
+const CSV_COLUMNS = ['libcal_user_id', 'first_name', 'last_name', 'email', 'url'];
+
+function toCsv(rows) {
+    const escape = (value) => {
+        const str = value == null ? '' : String(value);
+        return /[",\n]/.test(str) ? `"${str.replace(/"/g, '""')}"` : str;
+    };
+    const lines = [CSV_COLUMNS.join(',')];
+    for (const row of rows) {
+        lines.push(CSV_COLUMNS.map((col) => escape(row[col])).join(','));
+    }
+    return lines.join('\n');
+}
+
+const SERIALIZERS = {
+    json: (rows) => JSON.stringify(rows, null, 2),
+    csv: toCsv,
+};
 
 module.exports.getAppointmentsById = async (req, res) => {
-    const { userIds } = req.body;
+    const { userIds, format = 'json' } = req.body;
     if (!Array.isArray(userIds) || userIds.length === 0) {
         return res.status(400).json({ errorMsg: "userIds must be a non-empty array" });
+    }
+    const serialize = SERIALIZERS[format];
+    if (!serialize) {
+        return res.status(400).json({ errorMsg: `format must be one of: ${Object.keys(SERIALIZERS).join(', ')}` });
     }
     try {
         const access_token = await AuthController.ensureAuthenticated();
@@ -31,7 +52,7 @@ module.exports.getAppointmentsById = async (req, res) => {
                 }
                 if(Array.isArray(entry.appointments) && entry.appointments.length > 0){
                     results.push({
-                        user_id: entry.user_id,
+                        libcal_user_id: entry.user_id,
                         first_name: entry.first_name,
                         last_name: entry.last_name,
                         email: entry.email,
@@ -40,7 +61,8 @@ module.exports.getAppointmentsById = async (req, res) => {
                     // }
                 }
             }}
-            fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
+            const outputPath = path.join(__dirname, '..', `appointments.${format}`);
+            fs.writeFileSync(outputPath, serialize(results));
             res.status(201).json({ message: "Appointments aggregated", count: results.length, file: outputPath });
         } catch (error) {
             console.error(error);
