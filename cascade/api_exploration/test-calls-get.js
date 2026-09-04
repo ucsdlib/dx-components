@@ -2,7 +2,7 @@ import { configDotenv } from "dotenv";
 configDotenv();
 
 const cascadeKey = process.env.CASCADE_API_KEY;
-const assetId = "2570913e0a0000953be115e1da5a96dc"
+const assetId = "2570987b0a0000953be115e104e95930"
 const baseUrl = "https://ucsd.cascadecms.com/api/v1/edit";
 
 // 1. Read the existing asset first
